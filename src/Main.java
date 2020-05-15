@@ -12,6 +12,7 @@ public class Main {
         //testResiduos();
         //testSerpientesyescaleras();
         //testRuleta();
+        //Gracias profe ya pude :D
     }
 
     /*
