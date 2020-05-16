@@ -11,8 +11,14 @@
 
 package juegos.mainmenu;
 
+import javax.swing.*;
+
 public class MenuRun {
-    public void correr(){
-        System.out.println("Este proyecto sera genial :D");
+    public MenuRun() {
+        JFrame frame = new JFrame("Menu");
+        frame.setSize(1280,720);
+        frame.add(new Menu());
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(3); //EoC
     }
 }

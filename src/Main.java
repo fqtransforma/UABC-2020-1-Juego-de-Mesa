@@ -25,7 +25,6 @@ public class Main {
 
     static void testMainMenu(){
         MenuRun menu = new MenuRun();
-        menu.correr();
     }
 
     static void testSerpientesYEscaleras(){
