@@ -1,12 +1,9 @@
 package juegos.mainmenu;
 
-import general.Graficos;
 import general.Objeto2D;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import static java.lang.Character.toUpperCase;
 
@@ -15,7 +12,13 @@ public class Menu extends JPanel {
     Objeto2D fondo;
 
     public Menu() {
-        Graficos graficos = new Graficos();
+
+        JLabel prueba = new JLabel();
+        setFocusable(true);
+        prueba.setSize(300,300);
+        prueba.setVisible(true);
+        add(prueba);
+
         fondo = new Objeto2D("src/adobado-pork.png", 0, 0);
 
 
