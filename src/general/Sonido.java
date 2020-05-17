@@ -1,4 +1,4 @@
-package juegos.mainmenu;
+package general;
 
 import javax.sound.sampled.*;
 import java.io.File;

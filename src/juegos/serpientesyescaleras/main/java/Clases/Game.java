@@ -1,4 +1,4 @@
-package Clases;
+package juegos.serpientesyescaleras.main.java.Clases;
 
 import javax.swing.*;
 import java.awt.*;
@@ -175,10 +175,6 @@ public class Game extends Canvas implements Runnable {
 
 
     }
-
-
-
-
 
     public static  void main(String args[]){
 

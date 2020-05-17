@@ -1,4 +1,4 @@
-package Clases;
+package juegos.serpientesyescaleras.main.java.Clases;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;

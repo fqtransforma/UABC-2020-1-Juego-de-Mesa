@@ -1,4 +1,4 @@
-package Clases;
+package juegos.serpientesyescaleras.main.java.Clases;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

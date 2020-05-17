@@ -1,4 +1,4 @@
-package Clases;
+package juegos.serpientesyescaleras.main.java.Clases;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
