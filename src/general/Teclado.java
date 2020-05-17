@@ -3,87 +3,38 @@ package general;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import static java.lang.Character.LETTER_NUMBER;
-import static java.lang.Character.toUpperCase;
+public final class Teclado implements KeyListener {
 
-public class Teclado implements KeyListener {
+    private final static int numeroTeclas = 120;
+    private final boolean [] teclas = new boolean[numeroTeclas];
+    public boolean arriba;
+    public boolean abajo;
+    public boolean izquierda;
+    public boolean derecha;
 
-    private boolean UP = false;
-    private boolean DOWN = false;
-    private boolean LEFT = false;
-    private boolean RIGHT = false;
+    public void actualizar(){
+        arriba = teclas[KeyEvent.VK_W];
+        izquierda = teclas[KeyEvent.VK_A];
+        abajo = teclas[KeyEvent.VK_S];
+        derecha = teclas[KeyEvent.VK_D];
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
-
-        switch (toUpperCase(e.getKeyChar())) {
-            /*
-            case KeyEvent.VK_W:
-                //prueba.setLocation(prueba.getX(),prueba.getY()-10);
-                break;
-            case KeyEvent.VK_A:
-                //prueba.setLocation(prueba.getX()-10,prueba.getY());
-                break;
-            case KeyEvent.VK_S:
-                //prueba.setLocation(prueba.getX(),prueba.getY()+10);
-                break;
-            case KeyEvent.VK_D:
-                //prueba.setLocation(prueba.getX()+10,prueba.getY());
-                break;
-                */
-            case KeyEvent.VK_DOWN:
-                DOWN = true;
-                break;
-
-            case KeyEvent.VK_UP:
-                UP = true;
-                break;
-
-            case KeyEvent.VK_RIGHT:
-                RIGHT = true;
-                break;
-
-            case KeyEvent.VK_LEFT:
-                LEFT = true;
-                break;
-        }
+       /* if(e.getKeyCode() == KeyEvent.VK_DOWN)
+            System.out.println("1");*/
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
 
+        teclas[e.getKeyCode()] = true;
+        System.out.println("actualizando");
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
 
-    }
-
-    public boolean isUP() {
-        boolean res = UP;
-        UP = false;
-
-        return res;
-    }
-
-    public boolean isDOWN() {
-        boolean res = DOWN;
-        DOWN = false;
-
-        return res;
-    }
-
-    public boolean isLEFT() {
-        boolean res = LEFT;
-        LEFT = false;
-
-        return res;
-    }
-
-    public boolean isRIGHT() {
-        boolean res = RIGHT;
-        RIGHT = false;
-
-        return res;
+        teclas[e.getKeyCode()] = false;
     }
 }

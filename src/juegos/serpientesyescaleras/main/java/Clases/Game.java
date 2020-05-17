@@ -175,7 +175,7 @@ public class Game extends Canvas implements Runnable {
 
 
     }
-
+/*
     public static  void main(String args[]){
 
         String filepath= "C:/Users/Fam/IdeaProjects/Serpientes&Escaleras/src/main/Resources/game.wav";
@@ -217,7 +217,7 @@ public class Game extends Canvas implements Runnable {
 
         game.start();
     }
-
+*/
     public BufferedImage getSpriteSheet(){
     return spriteSheet;
     }

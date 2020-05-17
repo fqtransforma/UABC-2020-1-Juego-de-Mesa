@@ -25,6 +25,7 @@ public class Main {
 
     static void testMainMenu(){
         MenuRun menu = new MenuRun();
+        //menu.init();
     }
 
     static void testSerpientesYEscaleras(){
