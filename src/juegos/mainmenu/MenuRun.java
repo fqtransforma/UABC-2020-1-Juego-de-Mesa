@@ -26,7 +26,7 @@ public class MenuRun extends  JPanel implements Runnable{
 
     Objeto2D fondo = new Objeto2D("src/resources/mainmenu_src/graficos/Fondo.png", -6400/2 + 640, -3600/2 + 360, 1280, 720);
     Objeto2D personaje = new Objeto2D("src/resources/mainmenu_src/graficos/EcoMono.png", 640, 360);
-    Objeto2D fondo1 = new Objeto2D("src/resources/mainmenu_src/graficos/primeraPantalla.png",0 ,-0, 1280, 720);
+    Objeto2D fondo1 = new Objeto2D("src/resources/mainmenu_src/graficos/primeraPantalla.png",0 ,0, 1280, 720);
     Menu menu;
 
     private static volatile boolean onOff;
@@ -154,9 +154,8 @@ public class MenuRun extends  JPanel implements Runnable{
            g.drawImage(personaje.getImage(), personaje.getX(), personaje.getY(), this);
        }
        else
-           if(teclado.enter == false){
-               g.drawImage(fondo1.getImage(), fondo1.getX(), fondo1.getY(), fondo1.getSizex(), fondo1.getSizey(), this);
-           }
+           g.drawImage(fondo1.getImage(), fondo1.getX(), fondo1.getY(), fondo1.getSizex(), fondo1.getSizey(), this);
+
 
 
         setOpaque(false);
