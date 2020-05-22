@@ -27,6 +27,8 @@ public class MenuRun extends  JPanel implements Runnable{
     Objeto2D fondo = new Objeto2D("src/resources/mainmenu_src/graficos/Fondo.png", -6400/2 + 640, -3600/2 + 360, 1280, 720);
     Objeto2D personaje = new Objeto2D("src/resources/mainmenu_src/graficos/EcoMono.png", 640, 360);
     Objeto2D fondo1 = new Objeto2D("src/resources/mainmenu_src/graficos/primeraPantalla.png",0 ,0, 1280, 720);
+
+    boolean sesion=false;
     Menu menu;
 
     private static volatile boolean onOff;
@@ -58,8 +60,7 @@ public class MenuRun extends  JPanel implements Runnable{
             name = jp.showInputDialog(frame, "¿Cual es un nombre?");
         }while(name == null);
         frame.setTitle("Juego de Mesa - Usuario:"+name);
-
-
+        sesion=true;
     }
     @Override
     public void run() {
@@ -110,18 +111,22 @@ public class MenuRun extends  JPanel implements Runnable{
 
         if(teclado.abajo){
             fondo.setY(fondo.getY()-1);
+            System.out.println("X:"+fondo.getX()+" Y:"+fondo.getY());
         }
-        else
-            if(teclado.arriba)
-                fondo.setY(fondo.getY()+1);
-            else
-                if(teclado.derecha)
-                    fondo.setX(fondo.getX()-1);
-                else
-                    if(teclado.izquierda)
-                        fondo.setX(fondo.getX()+1);
+        else if(teclado.arriba){
+            fondo.setY(fondo.getY()+1);
+            System.out.println("X:"+fondo.getX()+" Y:"+fondo.getY());
 
+        }
+        else if(teclado.derecha){
+            fondo.setX(fondo.getX()-1);
+            System.out.println("X:"+fondo.getX()+" Y:"+fondo.getY());
+        }
+        else if(teclado.izquierda){
+            System.out.println("X:"+fondo.getX()+" Y:"+fondo.getY());
+            fondo.setX(fondo.getX()+1);
 
+        }
         aps++;
     }
 
@@ -146,33 +151,17 @@ public class MenuRun extends  JPanel implements Runnable{
         }
     }
 
-    public  void paintComponent(Graphics g){
+    public void paintComponent(Graphics g){
         this.repaint();
         actualizar();
-       if(teclado.enter == true){
+       if(sesion){
            g.drawImage(fondo.getImage(), fondo.getX(), fondo.getY(), fondo.getSizex()*5, fondo.getSizey()*5, this);
            g.drawImage(personaje.getImage(), personaje.getX(), personaje.getY(), this);
        }
        else
            g.drawImage(fondo1.getImage(), fondo1.getX(), fondo1.getY(), fondo1.getSizex(), fondo1.getSizey(), this);
-
-
-
         setOpaque(false);
         super.paintComponent(g);
 
     }
-
 }
-/*
-public class MenuRun {
-    public MenuRun() {
-        JFrame frame = new JFrame("Menu");
-        frame.setSize(1280,720);
-        frame.add(new Prueba());
-        frame.add(new Menu());
-        //frame.addKeyListener(teclado);
-        frame.setVisible(true);
-        frame.setDefaultCloseOperation(3); //EoC
-    }
-}*/
