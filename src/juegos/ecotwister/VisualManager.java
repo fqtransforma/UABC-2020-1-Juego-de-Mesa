@@ -1,4 +1,4 @@
-package juegos.ecotwister.java.clases;
+package juegos.ecotwister;
 
 import javax.swing.*;
 import java.awt.*;

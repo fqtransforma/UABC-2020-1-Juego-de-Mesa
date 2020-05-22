@@ -1,7 +1,6 @@
-package juegos.ecotwister.java.clases;
+package juegos.ecotwister;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -13,11 +12,11 @@ private BufferedImage img2;
     public Tablero(int x, int y) {
         super(x, y);
         try {
-            img = ImageIO.read(new File("src/juegos/ecotwister/java/Resources/Tablero.png"));
-            img2 = ImageIO.read(new File("src/juegos/ecotwister/java/Resources/flecha2.png"));
+            img = ImageIO.read(new File("src/resources/ecotwister_src/Tablero.png"));
+            img2 = ImageIO.read(new File("src/resources/ecotwister_src/Tablero.png"));
 
         } catch (IOException e) {
-            System.out.println("Error");
+            e.printStackTrace();
         }
 
     }

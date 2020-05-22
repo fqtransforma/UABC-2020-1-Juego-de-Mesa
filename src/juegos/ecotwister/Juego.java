@@ -1,4 +1,4 @@
-package juegos.ecotwister.java.clases;
+package juegos.ecotwister;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,11 +38,7 @@ public class Juego extends JPanel{
 
     }
 
-    /*public static void main(String [] args)
-    {
-
+    public static void run(){
         Juego m = new Juego();
-
     }
-*/
 }

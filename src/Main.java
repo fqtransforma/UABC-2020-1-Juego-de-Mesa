@@ -3,7 +3,9 @@
  * Fecha: 07/05/2020
  * Descripcion: Clase de arranque del proyecto
  */
+import juegos.ecotwister.Juego;
 import juegos.mainmenu.*;
+import juegos.ruleta.EcoPregunta;
 import juegos.serpientesyescaleras.Game;
 import juegos.serpientesyescaleras.MusicStaff;
 
@@ -16,10 +18,11 @@ public class Main {
     public static void main(String args[]){
         //testMainMenu();
 
-        //testEcotwister();
+        testEcoTwister();
         //testResiduos();
-        testSerpientesYEscaleras();
+        //testSerpientesYEscaleras();
         //testRuleta();
+
         //Gracias profe ya pude :D
     }
 
@@ -28,7 +31,7 @@ public class Main {
      * POR FAVOR NO PONER NADA EN EL METODO MAIN
      */
     static void testEcoTwister(){
-        System.out.println("Nada... por ahora");
+        Juego.run();
     }
 
     static void testMainMenu(){
@@ -42,7 +45,7 @@ public class Main {
     }
 
     static void testRuleta(){
-        System.out.println("Nada... por ahora");
+        EcoPregunta.run();
     }
 
     static void testSerpientesYEscaleras(){

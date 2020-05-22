@@ -1,7 +1,6 @@
-package juegos.ecotwister.java.clases;
+package juegos.ecotwister;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +11,7 @@ public class Menu extends Graficos {
     public Menu(int x, int y) {
         super(x, y);
         try {
-            img = ImageIO.read(new File("src/juegos/ecotwister/java/Resources/logo2.png"));
+            img = ImageIO.read(new File("src/resources/ecotwister_src/logo1.png"));
 
         } catch (IOException e) {
             System.out.println("Error");
