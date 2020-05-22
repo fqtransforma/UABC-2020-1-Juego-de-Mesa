@@ -18,10 +18,10 @@ public class Main {
     public static void main(String args[]){
         //testMainMenu();
 
-        testEcoTwister();
+        //testEcoTwister();
         //testResiduos();
         //testSerpientesYEscaleras();
-        //testRuleta();
+        testRuleta();
 
         //Gracias profe ya pude :D
     }

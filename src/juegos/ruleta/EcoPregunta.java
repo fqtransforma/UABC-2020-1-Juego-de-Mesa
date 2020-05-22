@@ -137,12 +137,12 @@ public class EcoPregunta extends JPanel implements ActionListener{
 
     public void actionPerformed( ActionEvent e)  {
         if (e.getSource() == boton1) {
-            new audioEcoPregunta("/ruleta_src/audio/efectos/ecopregunta/a1.wav");
+            new audioEcoPregunta("src/resources/ruleta_src/audio/efectos/ecopregunta/a1.wav");
             ventana.dispose();
 
         }
         if(e.getSource() == boton2){
-            new audioEcoPregunta("/ruleta_src/audio/efectos/ecopregunta/a2.wav");
+            new audioEcoPregunta("src/ruleta_src/audio/efectos/ecopregunta/a2.wav");
             ventana.dispose();
         }
 
