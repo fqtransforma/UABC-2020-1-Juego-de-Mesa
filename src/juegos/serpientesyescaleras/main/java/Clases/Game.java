@@ -1,16 +1,18 @@
-package juegos.serpientesyescaleras.main.java.Clases;
+package Clases;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Game extends Canvas implements Runnable {
+public class Game extends Canvas implements Runnable, ActionListener {
 
     public static final int WIDTH = 320;
-    public static final int HEIGHT= WIDTH/12*9; //240
+    public static final int HEIGHT= 240; //240
     public static final int SCALE=2;
     public final String TITLE="Tablero: Serpientes y Escaleras";
 
@@ -40,7 +42,7 @@ public class Game extends Canvas implements Runnable {
 
         addKeyListener(new KeyInput(this));
 
-        p =new Player(550,400,this);
+        p =new Player(700,420,this);
         SpriteSheet ss=new SpriteSheet(spriteSheet);
     }
 
@@ -128,7 +130,7 @@ public class Game extends Canvas implements Runnable {
 
         g.drawImage(image,0,0,getWidth(),getHeight(),this);
         g.drawImage(fondo,0,0,getWidth(),getHeight(), this);
-        p.render(g);
+        p.render(g); //Jugador 1
         //dibujar
         g.dispose();
         bs.show();
@@ -173,9 +175,9 @@ public class Game extends Canvas implements Runnable {
             p.setVelY(0);
         }
 
-
     }
-/*
+
+
     public static  void main(String args[]){
 
         String filepath= "C:/Users/Fam/IdeaProjects/Serpientes&Escaleras/src/main/Resources/game.wav";
@@ -188,37 +190,94 @@ public class Game extends Canvas implements Runnable {
         //creando dimensiones
         game.setPreferredSize(new Dimension(WIDTH*SCALE,HEIGHT*SCALE));
         game.setMaximumSize(new Dimension(WIDTH*SCALE,HEIGHT*SCALE));
-        game.setMaximumSize(new Dimension(WIDTH*SCALE,HEIGHT*SCALE));
+        game.setMinimumSize(new Dimension(WIDTH*SCALE,HEIGHT*SCALE));
+
 
         JFrame frame =new JFrame(game.TITLE);
-        frame.add(game);
+        frame.add(game,BorderLayout.NORTH);
         frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+        frame.setResizable(true);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        //Boton
 
-        Boton boton1=new Boton();
+        //JButtons
 
+        JButton boton1= new JButton();
+        JButton boton2= new JButton();
+        JButton boton3= new JButton();
+
+
+        ActionListener e = null;
+
+        //Boton 1 //Jugador 1
         boton1.repaint();
-        boton1.setBounds(0,0,300,120);
+        boton1.setText("[PLAYER1]");
+        boton1.setPreferredSize(new Dimension(100,100));
+        boton1.setBounds(66,20,150,50);
         boton1.setVisible(true);
-        boton1.setResizable(false);
-        boton1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //JLabel
+        boton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource()==boton1) {
+                    int numero1 = (int)(Math.random()*6+1);
+                    System.out.println("JUGADOR 1 MUEVES: "+numero1);}
+            }
+        });
 
-        JLabel label=new JLabel("Tu turno de lanza: ");
-        JPanel panel= new JPanel();
-        frame.add(panel);
-        panel.add(label);
+        //Boton 2 //Jugador 2
+
+        boton2.repaint();
+        boton2.setText("[PLAYER2]");
+        boton2.setPreferredSize(new Dimension(100,100));
+        boton2.setBounds(66,20,150,50);
+        boton2.setVisible(true);
+
+        boton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource()==boton1) {
+                    int numero2 = (int)(Math.random()*6+1);
+                    System.out.println("JUGADOR 2 MUEVES: "+numero2);}
+            }
+        });
+
+        //Boton 3
+
+        boton3.repaint();
+        boton3.setText("[STAR GAME]");
+        boton3.setPreferredSize(new Dimension(100,100));
+        boton3.setBounds(66,20,150,50);
+        boton3.setVisible(true);
+
+        boton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getSource()==boton3) {
+                    game.start();
+                    System.out.println("STARGAME");}
+            }
+        });
+
+        //Botones Player 1,player 2 && stargame
+        frame.add(boton1,BorderLayout.WEST);
+        frame.add(boton2,BorderLayout.EAST);
+        frame.add(boton3,BorderLayout.CENTER);
+        frame.setSize(800,600);
 
         game.start();
     }
-*/
+
     public BufferedImage getSpriteSheet(){
     return spriteSheet;
+
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }

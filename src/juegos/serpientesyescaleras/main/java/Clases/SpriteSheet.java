@@ -1,4 +1,4 @@
-package juegos.serpientesyescaleras.main.java.Clases;
+package Clases;
 
 import java.awt.image.BufferedImage;
 
@@ -15,5 +15,4 @@ public class SpriteSheet {
 
         return img;
     }
-
 }

@@ -1,17 +1,21 @@
-package juegos.serpientesyescaleras.main.java.Clases;
+package Clases;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Player{
 
-    private double x;
-    private double y;
+    public double x;
+    public double y;
 
     private double velX=0;
     private double velY=0;
 
+    private int numero;
+
     private BufferedImage player;
+
+
     public Player(double x,double y,Game game)
     {
         this.x=x;
@@ -24,8 +28,44 @@ public class Player{
 
     public void tick()
     {
+        int limSuperiorX = 800;
+        int limInferiorX = 0;
+        int limSuperiorY = 600;
+        int limInferiorY = 10;
+
+
         x+=velX;
         y+=velY;
+
+
+        //Limitar los bordes de la pantalla para el movimiento
+
+        if(x <= limInferiorX)
+            x = limInferiorX;
+
+        if(x >= limSuperiorX)
+            x = limSuperiorX;
+
+        if(y <= limInferiorY)
+            y = limInferiorY;
+
+        if(y >= limSuperiorY)
+            y = limSuperiorY;
+
+
+        if(y>500) // validar abajo corregir
+            y=450;
+
+        if(y<30)//reset posicion una vez llega tope
+            y=25;
+
+        if(x==800)//valida derecha corregir
+            x=750;
+
+        if(x<1) //valida izquierda
+            x=10;
+
+
 
     }
 
@@ -33,7 +73,6 @@ public class Player{
     {
         g.drawImage(player,(int)x,(int)y,null);
     }
-
 
     public double getX()
     {
@@ -64,13 +103,5 @@ public class Player{
     {
         this.velY=velY;
     }
-
-
-
-
-
-
-
-
 
 }

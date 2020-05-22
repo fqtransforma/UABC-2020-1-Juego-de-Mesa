@@ -1,4 +1,4 @@
-package juegos.serpientesyescaleras.main.java.Clases;
+package Clases;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -48,7 +48,6 @@ public class MusicStaff {
         }catch(Exception e){
             e.printStackTrace();
         }
-
 
     }
 }

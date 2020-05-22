@@ -1,4 +1,4 @@
-package juegos.serpientesyescaleras.main.java.Clases;
+package Clases;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -13,7 +13,5 @@ public class BufferedImageLoader {
         image= ImageIO.read(getClass().getResource(path));
         return image;
     }
-
-
 
 }
