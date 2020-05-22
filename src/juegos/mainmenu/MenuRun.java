@@ -43,7 +43,6 @@ public class MenuRun extends  JPanel implements Runnable{
         teclado = new Teclado();
 
         frame.addKeyListener(teclado);
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setLayout(new BorderLayout());
@@ -51,6 +50,15 @@ public class MenuRun extends  JPanel implements Runnable{
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setTitle("Juego de Mesa -");
+        boolean salir = false;
+        JOptionPane jp = new JOptionPane();
+        String name;
+        do{
+            name = jp.showInputDialog(frame, "¿Cual es un nombre?");
+        }while(name == null);
+        frame.setTitle("Juego de Mesa - Usuario:"+name);
+
 
     }
     @Override
