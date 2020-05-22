@@ -23,7 +23,8 @@ public class MenuRun extends  JPanel implements Runnable{
 
     static Teclado teclado;
     static JFrame frame;
-    Objeto2D fondo = new Objeto2D("src/kirby.jpg", 0, 0);
+    Objeto2D fondo = new Objeto2D("src/Fondo.png", -6400/2 + 640, -3600/2 + 360, 1280, 720);
+    Objeto2D personaje = new Objeto2D("src/Kirby.jpg", 640, 360);
     Menu menu;
 
     private static volatile boolean onOff;
@@ -39,7 +40,7 @@ public class MenuRun extends  JPanel implements Runnable{
 
         teclado = new Teclado();
 
-        frame.addKeyListener(teclado);//por ahora
+        frame.addKeyListener(teclado);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
@@ -98,17 +99,17 @@ public class MenuRun extends  JPanel implements Runnable{
         teclado.actualizar();
 
         if(teclado.abajo){
-            fondo.setY(fondo.getY()+5);
+            fondo.setY(fondo.getY()-1);
         }
         else
             if(teclado.arriba)
-                fondo.setY(fondo.getY()-5);
+                fondo.setY(fondo.getY()+1);
             else
                 if(teclado.derecha)
-                    fondo.setX(fondo.getX()+5);
+                    fondo.setX(fondo.getX()-1);
                 else
                     if(teclado.izquierda)
-                        fondo.setX(fondo.getX()-5);
+                        fondo.setX(fondo.getX()+1);
 
 
         aps++;
@@ -138,7 +139,8 @@ public class MenuRun extends  JPanel implements Runnable{
     public  void paintComponent(Graphics g){
         this.repaint();
         actualizar();
-        g.drawImage(fondo.getImage(), fondo.getX(), fondo.getY(), this);
+        g.drawImage(fondo.getImage(), fondo.getX(), fondo.getY(), fondo.getSizex()*5, fondo.getSizey()*5, this);
+        g.drawImage(personaje.getImage(), personaje.getX(), personaje.getY(), this);
         setOpaque(false);
         super.paintComponent(g);
 
@@ -150,7 +152,9 @@ public class MenuRun {
     public MenuRun() {
         JFrame frame = new JFrame("Menu");
         frame.setSize(1280,720);
+        frame.add(new Prueba());
         frame.add(new Menu());
+        //frame.addKeyListener(teclado);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(3); //EoC
     }
