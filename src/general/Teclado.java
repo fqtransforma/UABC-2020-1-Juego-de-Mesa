@@ -2,6 +2,7 @@ package general;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.security.Key;
 
 public final class Teclado implements KeyListener {
 
@@ -11,6 +12,7 @@ public final class Teclado implements KeyListener {
     public boolean abajo;
     public boolean izquierda;
     public boolean derecha;
+    public boolean enter = false;
 
     public void actualizar(){
         arriba = teclas[KeyEvent.VK_W];
@@ -30,6 +32,9 @@ public final class Teclado implements KeyListener {
 
         teclas[e.getKeyCode()] = true;
         System.out.println("actualizando");
+        if(e.getKeyCode() == KeyEvent.VK_ENTER)
+            enter = true;
+
     }
 
     @Override
