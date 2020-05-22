@@ -23,7 +23,7 @@ public class MenuRun extends  JPanel implements Runnable{
 
     static Teclado teclado;
     static JFrame frame;
-
+    //agregado
     Objeto2D fondo = new Objeto2D("src/resources/mainmenu_src/graficos/Fondo.png", -6400/2 + 640, -3600/2 + 360, 1280, 720);
     Objeto2D personaje = new Objeto2D("src/resources/mainmenu_src/graficos/EcoMono.png", 640, 360);
     Objeto2D fondo1 = new Objeto2D("src/resources/mainmenu_src/graficos/primeraPantalla.png",0 ,0, 1280, 720);
