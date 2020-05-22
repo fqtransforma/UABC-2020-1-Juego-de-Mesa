@@ -8,11 +8,21 @@ public class Objeto2D {
     private ImageIcon icon;
     private int x;
     private int y;
+    private int sizex;
+    private int sizey;
 
     public Objeto2D(String name, int x, int y){
         icon = new ImageIcon(name);
         this.setX(x);
         this.setY(y);
+    }
+
+    public Objeto2D(String name, int x, int y, int sizex, int sizey){
+        icon = new ImageIcon(name);
+        this.setX(x);
+        this.setY(y);
+        this.setSizex(sizex);
+        this.setSizey(sizey);
     }
 
     public Image getImage(){
@@ -33,5 +43,21 @@ public class Objeto2D {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public int getSizex() {
+        return sizex;
+    }
+
+    public void setSizex(int sizex) {
+        this.sizex = sizex;
+    }
+
+    public int getSizey() {
+        return sizey;
+    }
+
+    public void setSizey(int sizey) {
+        this.sizey = sizey;
     }
 }

@@ -1,55 +1,23 @@
 package juegos.mainmenu;
 
-import general.Objeto2D;
-import general.Teclado;
-
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import static java.lang.Character.toUpperCase;
 
-public class Menu extends JPanel{
-
-   public Objeto2D fondo;
-    private JLabel prueba;
-
-    public Menu() {
-
-        prueba = new JLabel();
-        setFocusable(true);
-        prueba.setSize(1280,720);
-        prueba.setVisible(true);
-
-        fondo = new Objeto2D("src/kirby.jpg", 1, 1);
-    }
-
-    public void paintAux(Graphics g, int x, int y, MenuRun menuRun){
-        g.drawImage(fondo.getImage(), x, y, 500, 500,  menuRun);
-    }
-/*
-    public  void paintComponent(Graphics g){
-        g.drawImage(fondo.getImage(), fondo.getX(), fondo.getY(), this);
-        System.out.println(fondo.getY());
-        setOpaque(false);
-        super.paintComponent(g);
-
-    }*/
-}
-/*
-public class Menu extends JPanel implements KeyListener {
+public class Prueba extends JPanel {
 
     private JLabel prueba = new JLabel("");
-    public Menu(){
-        addKeyListener(this);
+    public Prueba(){
+        //addKeyListener(this);
         setFocusable(true);
         prueba.setSize(300,300);
-        prueba.setIcon(new ImageIcon("src/kirby.jpg"));
+       // prueba.setIcon(new ImageIcon("src/adobado-pork.png"));
         prueba.setVisible(true);
         add(prueba);
     }
-
+/*
     @Override
     public void keyTyped(KeyEvent e) {
         switch (toUpperCase(e.getKeyChar())){
@@ -76,5 +44,5 @@ public class Menu extends JPanel implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
 
-    }
-}*/
+    }*/
+}
