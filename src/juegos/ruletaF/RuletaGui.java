@@ -60,17 +60,8 @@ public class RuletaGui extends JFrame {
                     switch(valor){
                         case 1:dispose();new JuegoBasta();break;
                         case 2:dispose(); new Juego();break;
-                       /* case 3:dispose();
-                            WindowApp app = null;
-                            try {
-                                app = new WindowApp("EcoReto");
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            } catch (ClassNotFoundException e) {
-                                e.printStackTrace();
-                            }
-                            app.setIconImage(ImageTool.getImage("Images/ecoreto.png")); //Define imagen de icono en la barra de tareasbreak;
-                    */
+                        case 3:dispose();new WindowApp("EcoReto");
+
                     }
                 }
             }

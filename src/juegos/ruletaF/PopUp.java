@@ -51,7 +51,7 @@ public class PopUp extends JPanel {
 
     private void init() {
 
-        btnTarjeta = new GButton(new Vector2(150, 200), "Images/icons/TarjetaECORETO.png");
+        btnTarjeta = new GButton(new Vector2(150, 200), "resources/ruletaF_src/graficos/ecoReto/TarjetaECORETO.png");
         btnTarjeta.setBounds(900,500, btnTarjeta.getWidth(), btnTarjeta.getHeight());
         btnTarjeta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

@@ -21,8 +21,8 @@ public class Main {
         //testEcoTwister();
         //testResiduos();
         //testSerpientesYEscaleras();
-        //testRuleta();
-        testRuletaF();
+        testRuleta();
+        //testRuletaF();
     }
 
     static void testEcoTwister(){

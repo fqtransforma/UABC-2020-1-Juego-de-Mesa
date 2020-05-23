@@ -20,10 +20,10 @@ public class Home extends JPanel {
     private GButton btnClose;
 
 
-    public Home(final WindowApp app, int width, int height) throws IOException, ClassNotFoundException {
+    public Home(final WindowApp app, int width, int height)  {
         final Home root = this;
         this.app = app;
-        app.audio.run();
+        //app.audio.run();
 
         setLayout(null);
         setSize(width, height);
@@ -32,9 +32,9 @@ public class Home extends JPanel {
         centerIcon = new JLabel();
         centerIcon.setSize((int) (width * 0.75), (int) (height * 0.70));
         centerIcon.setBounds((int) (((getWidth() - centerIcon.getWidth()) / 2) * 1.25), (getHeight() - centerIcon.getHeight()) / 2, centerIcon.getWidth(), centerIcon.getHeight());
-        centerIcon.setIcon(ImageTool.resizeImage("Images/iconHome.png", centerIcon.getWidth(), centerIcon.getHeight()));
+        centerIcon.setIcon(ImageTool.resizeImage("resources/ruletaF_src/graficos/ecoReto/iconHome.png", centerIcon.getWidth(), centerIcon.getHeight()));
 
-        btnInicio = new GButton(new Vector2(150, 150), "Images/icons/Inicio.png");
+        btnInicio = new GButton(new Vector2(150, 150), "resources/ruletaF_src/graficos/ecoReto/Inicio.png");
         btnInicio.setBounds((int) (getWidth() - btnInicio.getWidth()) / 2, (int) (getHeight() - 200), btnInicio.getWidth(), btnInicio.getHeight());
         btnInicio.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -53,7 +53,7 @@ public class Home extends JPanel {
 
 
 
-        btnRedesSociales = new GButton(new Vector2(100, 100), "Images/icons/FQT.png");
+        btnRedesSociales = new GButton(new Vector2(100, 100), "resources/ruletaF_src/graficos/ecoReto/FQT.png");
         btnRedesSociales.setBounds(30, (int) (getHeight() - 30 - btnRedesSociales.getHeight()), btnRedesSociales.getWidth(),btnRedesSociales.getHeight());
         btnRedesSociales.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -62,7 +62,7 @@ public class Home extends JPanel {
         });
 
 
-        btnAyuda = new GButton(new Vector2(100, 100), "Images/icons/News.png");
+        btnAyuda = new GButton(new Vector2(100, 100), "resources/ruletaF_src/graficos/ecoReto/News.png");
         btnAyuda.setBounds(getWidth() - btnInicio.getWidth() - 30, (int) (getHeight() - 30 - btnAyuda.getHeight()), btnAyuda.getWidth(), btnAyuda.getHeight());
         btnAyuda.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -71,13 +71,13 @@ public class Home extends JPanel {
         });
 
 
-        btnClose = new GButton(new Vector2(150, 150), "Images/icons/Close.png");
+        btnClose = new GButton(new Vector2(150, 150), "resources/ruletaF_src/graficos/ecoReto/Close.png");
         btnClose.setBounds(getWidth() - btnClose.getWidth() - 30, 30, btnClose.getWidth(), btnClose.getHeight());
         btnClose.setToolTipText("Cerrar juego");
         btnClose.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (!PopUp.isVisible) {
-                    app.audio.stop();
+                   // app.audio.stop();
                     app.setVisible(false);
                     app.dispose();
                 }
@@ -113,7 +113,7 @@ public class Home extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        g.drawImage(new ImageIcon(ImageTool.getImage("Images/background.jpg")).getImage(), 0, 0, getWidth(), getHeight(), this);
+        g.drawImage(new ImageIcon(ImageTool.getImage("resources/ruletaF_src/graficos/ecoReto/background.jpg")).getImage(), 0, 0, getWidth(), getHeight(), this);
         setOpaque(false);
         if (PopUp.isVisible) {
             for (Component x : getComponents()) x.setVisible(false);
