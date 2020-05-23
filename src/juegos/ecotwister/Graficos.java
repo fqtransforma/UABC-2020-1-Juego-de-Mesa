@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 
-public class Graficos  {
+public class    Graficos  {
     protected BufferedImage img;
     protected Image imgGraphic;
     protected ImageIcon icon;
