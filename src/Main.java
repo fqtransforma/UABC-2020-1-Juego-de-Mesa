@@ -6,6 +6,7 @@
 import juegos.ecotwister.Juego;
 import juegos.mainmenu.*;
 import juegos.ruleta.EcoPregunta;
+import juegos.ruleta.SwingPaint;
 import juegos.ruletaF.RuletaGui;
 import juegos.serpientesyescaleras.Game;
 import juegos.serpientesyescaleras.MusicStaff;
@@ -17,34 +18,6 @@ import java.awt.event.ActionListener;
 
 public class Main {
     public static void main(String []args){
-        //testMainMenu();
-        //testEcoTwister();
-        //testResiduos();
-        //testSerpientesYEscaleras();
-        testRuleta();
-        //testRuletaF();
-    }
-
-    static void testEcoTwister(){
-        Juego.run();
-    }
-
-    static void testMainMenu(){
         MenuRun menu = new MenuRun();
     }
-
-
-    static void testResiduos(){
-        System.out.println("Nada... por ahora");
-    }
-
-    static void testRuleta(){
-        EcoPregunta.run();
-    }
-
-    static void testSerpientesYEscaleras(){
-        Game.StartSerpientesYEscaleras();
-    }
-
-    static void testRuletaF(){ RuletaGui.run(); }
 }

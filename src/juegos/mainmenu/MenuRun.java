@@ -13,18 +13,20 @@ package juegos.mainmenu;
 
 import general.Objeto2D;
 import general.Teclado;
+import juegos.ecotwister.Juego;
+import juegos.ruleta.EcoPregunta;
+import juegos.ruletaF.RuletaGui;
+import juegos.serpientesyescaleras.Game;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MenuRun extends  JPanel implements Runnable{
 
-    private static final long serialVersionUID = 1L;
-
     static Teclado teclado;
     static JFrame frame;
     //agregado
-    Objeto2D fondo = new Objeto2D("src/resources/mainmenu_src/graficos/Fondo.png", -6400/2 + 640, -3600/2 + 360, 1280, 720);
+    Objeto2D fondo = new Objeto2D("src/resources/mainmenu_src/graficos/Fondo.png", -90, -550, 1280, 720);
     Objeto2D personaje = new Objeto2D("src/resources/mainmenu_src/graficos/EcoMono.png", 640, 360);
     Objeto2D fondo1 = new Objeto2D("src/resources/mainmenu_src/graficos/primeraPantalla.png",0 ,0, 1280, 720);
 
@@ -54,14 +56,15 @@ public class MenuRun extends  JPanel implements Runnable{
         frame.setVisible(true);
         frame.setTitle("Juego de Mesa -");
         boolean salir = false;
-        JOptionPane jp = new JOptionPane();
+        /*JOptionPane jp = new JOptionPane();
         String name;
         do{
             name = jp.showInputDialog(frame, "¿Cual es un nombre?");
         }while(name == null);
-        frame.setTitle("Juego de Mesa - Usuario:"+name);
+        frame.setTitle("Juego de Mesa - Usuario:"+name);*/
         sesion=true;
     }
+
     @Override
     public void run() {
         final int nanos = 1000000000;
@@ -76,7 +79,6 @@ public class MenuRun extends  JPanel implements Runnable{
         double delta = 0;
 
         while(onOff) {
-
             final long bucle = System.nanoTime();
 
             tiempo = bucle - refAct;
@@ -92,7 +94,6 @@ public class MenuRun extends  JPanel implements Runnable{
             mostrar();
 
             if(System.nanoTime() - contador > nanos) {
-
                 fps = 0;
                 aps = 0;
 
@@ -109,27 +110,46 @@ public class MenuRun extends  JPanel implements Runnable{
 
         teclado.actualizar();
 
-        if(teclado.abajo){
+        if(teclado.abajo && fondo.getY() > -620){
             fondo.setY(fondo.getY()-1);
             System.out.println("X:"+fondo.getX()+" Y:"+fondo.getY());
         }
-        else if(teclado.arriba){
+        else if(teclado.arriba && fondo.getY() < -530){
             fondo.setY(fondo.getY()+1);
             System.out.println("X:"+fondo.getX()+" Y:"+fondo.getY());
 
         }
-        else if(teclado.derecha){
+        else if(teclado.derecha && fondo.getX() > -2550){
             fondo.setX(fondo.getX()-1);
             System.out.println("X:"+fondo.getX()+" Y:"+fondo.getY());
         }
-        else if(teclado.izquierda){
+        else if(teclado.izquierda && fondo.getX() < 0){
             System.out.println("X:"+fondo.getX()+" Y:"+fondo.getY());
             fondo.setX(fondo.getX()+1);
 
+        } else if(teclado.enter){
+                 menu(-fondo.getX(),-fondo.getY());
         }
         aps++;
     }
 
+    private void menu(int coorX, int coorY){
+        if(coorY >= 530 && coorY <= 550){
+            if(coorX > 345 && coorX < 600)
+                Juego.run();
+            else if(coorX > 760 && coorX < 1020)
+                EcoPregunta.run();
+            else if(coorX > -1170 && coorX < 1420)
+                RuletaGui.run();
+            else if(coorX > 1570 && coorX < 1815)
+                System.out.println("Aqui va lo de clasificacion");
+            else if(coorX > 2035 && coorX < 2250)
+                Game.StartSerpientesYEscaleras();
+
+        }
+        teclado.enter = false;
+
+    }
     public synchronized void init() {
 
         onOff = true;
@@ -155,7 +175,7 @@ public class MenuRun extends  JPanel implements Runnable{
         this.repaint();
         actualizar();
        if(sesion){
-           g.drawImage(fondo.getImage(), fondo.getX(), fondo.getY(), fondo.getSizex()*5, fondo.getSizey()*5, this);
+           g.drawImage(fondo.getImage(), fondo.getX(), fondo.getY(), fondo.getSizex()*3, fondo.getSizey()*3, this);
            g.drawImage(personaje.getImage(), personaje.getX(), personaje.getY(), this);
        }
        else

@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Random;
 
 public class EcoPista {
-    public static void main(String[] args){
+    public static void InitEcopista(){
         cent win = new cent();
 
         win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// al presionar la X del frame se cerrara el programa
