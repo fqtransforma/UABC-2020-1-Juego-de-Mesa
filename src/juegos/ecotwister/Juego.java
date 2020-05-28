@@ -1,7 +1,5 @@
 package juegos.ecotwister;
 
-import juegos.ruletaF.AudioManager;
-
 import javax.swing.*;
 import java.awt.*;
 
