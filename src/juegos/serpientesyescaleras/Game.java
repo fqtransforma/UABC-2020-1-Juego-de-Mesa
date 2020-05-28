@@ -25,7 +25,10 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
     //temp
     private BufferedImage player;
-    private Player p;
+    private static Player p;
+
+    private static JTextArea mensajes = new JTextArea();
+    private static JScrollPane logs = new JScrollPane(mensajes);
 
     public void init()
     {
@@ -213,10 +216,11 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
         JButton boton1= new JButton();
         JButton boton2= new JButton();
-        JButton boton3= new JButton();
+        //
+        //JTextArea
+        mensajes.setEditable(false);
+        mensajes.setAutoscrolls(true);
 
-
-        ActionListener e = null;
 
         //Boton 1 //Jugador 1
         boton1.repaint();
@@ -230,7 +234,9 @@ public class Game extends Canvas implements Runnable, ActionListener {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource()==boton1) {
                     int numero1 = (int)(Math.random()*6+1);
-                    System.out.println("JUGADOR 1 MUEVES: "+numero1);}
+                    mensajes.append("JUGADOR 1 MUEVES: "+numero1+"\n");
+                    msg(numero1);
+                }
             }
         });
 
@@ -242,36 +248,21 @@ public class Game extends Canvas implements Runnable, ActionListener {
         boton2.setBounds(66,20,150,50);
         boton2.setVisible(true);
 
-        boton1.addActionListener(new ActionListener() {
+        boton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource()==boton1) {
+                if (e.getSource()==boton2) {
                     int numero2 = (int)(Math.random()*6+1);
-                    System.out.println("JUGADOR 2 MUEVES: "+numero2);}
-            }
-        });
-
-        //Boton 3
-
-        boton3.repaint();
-        boton3.setText("[STAR GAME]");
-        boton3.setPreferredSize(new Dimension(100,100));
-        boton3.setBounds(66,20,150,50);
-        boton3.setVisible(true);
-
-        boton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource()==boton3) {
-                    game.start();
-                    System.out.println("STARGAME");}
+                    mensajes.append("JUGADOR 2 MUEVES: "+numero2+"\n");
+                    msg(numero2);
+                }
             }
         });
 
         //Botones Player 1,player 2 && stargame
         frame.add(boton1,BorderLayout.WEST);
         frame.add(boton2,BorderLayout.EAST);
-        frame.add(boton3,BorderLayout.CENTER);
+        frame.add(logs,BorderLayout.CENTER);
         frame.setSize(800,600);
 
         game.start();
@@ -280,5 +271,77 @@ public class Game extends Canvas implements Runnable, ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+    }
+
+    public static void msg(int valor){
+        p.avanzar(valor);
+        if(p.getPosicion()==3){
+            p.setPosicion(17);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==6){
+            p.setPosicion(20);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==10){
+            p.setPosicion(19);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==11){
+            p.setPosicion(4);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==16){
+            p.setPosicion(2);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==18){
+            p.setPosicion(30);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==21){
+            p.setPosicion(8);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==22){
+            p.setPosicion(36);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==23){
+            p.setPosicion(9);
+            mensajes.append("Desperdiciaste agua, Bajas al 9"+"\n");
+        }
+        if(p.getPosicion()==28){
+            p.setPosicion(43);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==31){
+            p.setPosicion(40);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==33){
+            p.setPosicion(25);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==38){
+            p.setPosicion(32);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==39){
+            p.setPosicion(45);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==41){
+            p.setPosicion(27);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==44){
+            p.setPosicion(42);
+            mensajes.append(""+"\n");
+        }
+        if(p.getPosicion()==47){
+            p.setPosicion(37);
+            mensajes.append(""+"\n");
+        }
     }
 }

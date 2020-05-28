@@ -10,6 +10,19 @@ public class Player{
 
     private double velX=0;
     private double velY=0;
+    private int posicion=1;
+
+    public int getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(int v) {
+        this.posicion = v;
+    }
+
+    public void avanzar(int suma) {
+        this.posicion = this.posicion+suma;
+    }
 
     private int numero;
 
@@ -66,7 +79,7 @@ public class Player{
             x=10;
 
 
-
+        System.out.println("x: "+x+" y: "+y );
     }
 
     public void render(Graphics g)
@@ -103,5 +116,4 @@ public class Player{
     {
         this.velY=velY;
     }
-
 }
