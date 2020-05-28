@@ -14,6 +14,11 @@ public class Juego extends JPanel{
 
     public Juego()
     {
+        String filepath = "resources/ecotwister_src/audio/musica/musiquita.wav";
+
+        Audio musica = new Audio();
+        musica.Play(filepath);
+
         vim = new VisualManager();
         marco.getContentPane().setLayout(null);
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
