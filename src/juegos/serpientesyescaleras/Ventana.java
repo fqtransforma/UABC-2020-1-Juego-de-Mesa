@@ -79,21 +79,30 @@ public class Ventana {
         boton3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                JOptionPane.showMessageDialog(frame,"CONTROLES\n\n" +
+                        "Jugador 1: Teclas de direccion (flechas) \n\n" +
+                        "Jugador 2: ASWD.\n\n");
             }
         });
 
         //Boton Instrucciones
-        boton4.setText("INSTRUCCIONES");
+        boton4.setText("REGLAS");
         boton4.setBounds(400,575,300,25);
         boton4.setVisible(true);
 
-        boton3.addActionListener(new ActionListener() {
+        boton4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                JOptionPane.showMessageDialog(frame,"Reglas\n\n" +
+                        "1. Cada jugador lanza por turnos el dado y avanza con su ficha tantas casillas como puntos saque.\n\n" +
+                        "2. Si cae en una casilla situada al pie de las escaleras, avanza hasta el final de la misma.\n\n" +
+                        "3. Si cae en la casilla ocupada por la cola de la serpiente, retrocede hasta la cabeza.\n\n" +
+                        "4. Si va caer en la casilla ocupada por el otro jugador, deben intercambiar las casillas. \n\n" +
+                        "5. Se debe llegar al casilla final con el puntaje justo, si no es el caso, retrocede la cantidad que sobrepasó la meta.\n");
             }
         });
+
+
 
         //Botones Player 1,player 2 && stargame
         panel.add(game);
