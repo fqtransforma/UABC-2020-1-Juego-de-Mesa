@@ -13,7 +13,7 @@ private BufferedImage img2;
         super(x, y);
         try {
             img = ImageIO.read(new File("src/resources/ecotwister_src/Tablero.png"));
-            img2 = ImageIO.read(new File("src/resources/ecotwister_src/Tablero.png"));
+            img2 = ImageIO.read(new File("src/resources/ecotwister_src/flecha2.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
