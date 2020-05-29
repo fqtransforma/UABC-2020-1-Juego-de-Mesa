@@ -130,7 +130,7 @@ public class Juego extends JFrame{
         });
         buttons[0][0].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                dispose();
+
                 try {
                     Clip sonido = AudioSystem.getClip();
                     File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
@@ -148,13 +148,13 @@ public class Juego extends JFrame{
         ////
         buttons[0][1].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                dispose();
+
                 try {
                     Clip sonido = AudioSystem.getClip();
                     File a = new File("rc/resources/ruletaF_src/audio/musica/Escojer.wav");
                     sonido.open(AudioSystem.getAudioInputStream(a));
-                    sonido.start();
                     Animales animal1 = new Animales();
+                    sonido.start();
                     animal1.Animal();
                     Thread.sleep(1000);
                     sonido.close();
@@ -166,7 +166,7 @@ public class Juego extends JFrame{
         //
         buttons[0][2].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                dispose();
+
                 try {
                     Clip sonido = AudioSystem.getClip();
                     File a = new File("rc/resources/ruletaF_src/audio/musica/Escojer.wav");
@@ -184,7 +184,7 @@ public class Juego extends JFrame{
         //
         buttons[1][0].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                dispose();
+
                 try {
                     Clip sonido = AudioSystem.getClip();
                     File a = new File("rc/resources/ruletaF_src/audio/musica/Escojer.wav");
@@ -202,7 +202,7 @@ public class Juego extends JFrame{
         //
         buttons[1][1].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                dispose();
+
                 try {
                     Clip sonido = AudioSystem.getClip();
                     File a = new File("rc/resources/ruletaF_src/audio/musica/Escojer.wav");
@@ -220,7 +220,7 @@ public class Juego extends JFrame{
         //
         buttons[1][2].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                dispose();
+
                 try {
                     Clip sonido = AudioSystem.getClip();
                     File a = new File("rc/resources/ruletaF_src/audio/musica/Escojer.wav");
@@ -238,7 +238,7 @@ public class Juego extends JFrame{
         //
         buttons[2][0].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                dispose();
+
                 try {
                     Clip sonido = AudioSystem.getClip();
                     File a = new File("rc/resources/ruletaF_src/audio/musica/Escojer.wav");
@@ -256,7 +256,7 @@ public class Juego extends JFrame{
         //
         buttons[2][1].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                dispose();
+
                 try {
                     Clip sonido = AudioSystem.getClip();
                     File a = new File("rc/resources/ruletaF_src/audio/musica/Escojer.wav");
@@ -274,7 +274,7 @@ public class Juego extends JFrame{
         //
         buttons[2][2].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                dispose();
+
                 try {
                     Clip sonido = AudioSystem.getClip();
                     File a = new File("rc/resources/ruletaF_src/audio/musica/Escojer.wav");
