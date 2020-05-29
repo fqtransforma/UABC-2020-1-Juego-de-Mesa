@@ -14,7 +14,7 @@ public class Juego extends JPanel{
 
     public Juego()
     {
-        String filepath = "resources/ecotwister_src/audio/musica/musiquita.wav";
+        String filepath = "src/resources/ecotwister_src/audio/musica/musica.wav";
 
         Audio musica = new Audio();
         musica.Play(filepath);
