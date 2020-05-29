@@ -78,7 +78,7 @@ public class PopUp extends JPanel {
 
         
         btnTarjeta = new GButton(new Vector2(200, 350), "resources/ruletaF_src/graficos/ecoReto/TarjetaECORETO1.png");
-        btnTarjeta.setBounds((int) (getWidth() - btnTarjeta.getWidth()) / 2, (int) (getHeight() - 400), btnTarjeta.getWidth(), btnTarjeta.getHeight());
+        btnTarjeta.setBounds((int) (getWidth() - btnTarjeta.getWidth()) / 2, (int) (getHeight() - 370), btnTarjeta.getWidth(), btnTarjeta.getHeight());
         btnTarjeta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -89,7 +89,7 @@ public class PopUp extends JPanel {
         });
 
         btnInformacion = new GButton(new Vector2(650, 550), "resources/ruletaF_src/graficos/ecoReto/jugarins.png");
-        btnInformacion.setBounds((int) (getWidth() - btnInformacion.getWidth()) / 2, (int) (getHeight() - 850), btnInformacion.getWidth(), btnInformacion.getHeight());
+        btnInformacion.setBounds((int) (getWidth() - btnInformacion.getWidth()) / 2, (int) (getHeight() - 830), btnInformacion.getWidth(), btnInformacion.getHeight());
 
 
         back = new GButton(new Vector2(250, 50), "");
