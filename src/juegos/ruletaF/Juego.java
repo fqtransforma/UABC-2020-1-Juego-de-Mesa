@@ -83,7 +83,7 @@ public class Juego extends JFrame{
         panelIzquierdoabajo.setLayout(new BoxLayout(panelIzquierdoabajo,BoxLayout.X_AXIS));
 
         label2=new JLabel();
-        labelImage2P = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/escoge.png");
+        labelImage2P = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Escoge.png");
         label2.setIcon(labelImage2P);
         label2.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -102,7 +102,7 @@ public class Juego extends JFrame{
 
         label=new JLabel();
 
-        label.setIcon(new ImageIcon(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/fondoCaricaturas.jpg").getImage().getScaledInstance(800,900, Image.SCALE_SMOOTH)));
+        label.setIcon(new ImageIcon(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/fondo.jpg").getImage().getScaledInstance(800,900, Image.SCALE_SMOOTH)));
         panelDerechoarriba.add(label);
         panelDerecho.add(panelDerechoarriba,BorderLayout.CENTER);
 
