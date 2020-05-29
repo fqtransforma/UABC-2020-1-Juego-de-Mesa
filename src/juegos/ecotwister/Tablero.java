@@ -24,6 +24,6 @@ private BufferedImage img2;
     @Override
     public void draw(Graphics g) {
             g.drawImage(img, 0, 0, 1000,700, null);
-            g.drawImage(img2, 505, 318, 85,65, null);
+            g.drawImage(img2, 503, 312, 100,80, null);
     }
 }
