@@ -17,6 +17,7 @@ import juegos.ecotwister.Juego;
 import juegos.ruleta.EcoPregunta;
 import juegos.ruletaF.RuletaGui;
 import juegos.serpientesyescaleras.Game;
+import juegos.serpientesyescaleras.Ventana;
 
 import javax.swing.*;
 import java.awt.*;
@@ -128,7 +129,7 @@ public class MenuRun extends  JPanel implements Runnable{
             fondo.setX(fondo.getX()+1);
 
         } else if(teclado.enter){
-                 menu(-fondo.getX(),-fondo.getY());
+            menu(-fondo.getX(),-fondo.getY());
         }
         aps++;
     }
@@ -144,7 +145,7 @@ public class MenuRun extends  JPanel implements Runnable{
             else if(coorX > 1570 && coorX < 1815)
                 System.out.println("Aqui va lo de clasificacion");
             else if(coorX > 2035 && coorX < 2250)
-                Game.StartSerpientesYEscaleras();
+                Ventana.Start();
 
         }
         teclado.enter = false;
@@ -174,12 +175,12 @@ public class MenuRun extends  JPanel implements Runnable{
     public void paintComponent(Graphics g){
         this.repaint();
         actualizar();
-       if(sesion){
-           g.drawImage(fondo.getImage(), fondo.getX(), fondo.getY(), fondo.getSizex()*3, fondo.getSizey()*3, this);
-           g.drawImage(personaje.getImage(), personaje.getX(), personaje.getY(), this);
-       }
-       else
-           g.drawImage(fondo1.getImage(), fondo1.getX(), fondo1.getY(), fondo1.getSizex(), fondo1.getSizey(), this);
+        if(sesion){
+            g.drawImage(fondo.getImage(), fondo.getX(), fondo.getY(), fondo.getSizex()*3, fondo.getSizey()*3, this);
+            g.drawImage(personaje.getImage(), personaje.getX(), personaje.getY(), this);
+        }
+        else
+            g.drawImage(fondo1.getImage(), fondo1.getX(), fondo1.getY(), fondo1.getSizex(), fondo1.getSizey(), this);
         setOpaque(false);
         super.paintComponent(g);
 
