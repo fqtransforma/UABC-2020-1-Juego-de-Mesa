@@ -23,10 +23,10 @@ public class Juego extends JPanel{
 
     public Juego()
     {
-        //String filepath = "resources/ecotwister_src/audio/musica/musiquita.wav";
+       String filepath = "resources/ecotwister_src/audio/musica/musiquita.wav";
 
-        //Audio musica = new Audio();
-        //musica.Play(filepath);
+        Audio musica = new Audio();
+        musica.Play(filepath);
 
         vim = new VisualManager();
         marco.getContentPane().setLayout(null);
@@ -97,7 +97,7 @@ public class Juego extends JPanel{
 
         Juego m = new Juego();
 
-    } */
+    }*/
 
     public static void run(){
         Juego m = new Juego();
