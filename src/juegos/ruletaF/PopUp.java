@@ -88,8 +88,8 @@ public class PopUp extends JPanel {
             }
         });
 
-        btnInformacion = new GButton(new Vector2(800, 600), "resources/ruletaF_src/graficos/ecoReto/jugarins.png");
-        btnInformacion.setBounds((int) (getWidth() - btnInformacion.getWidth()) / 2, (int) (getHeight() - 950), btnInformacion.getWidth(), btnInformacion.getHeight());
+        btnInformacion = new GButton(new Vector2(650, 550), "resources/ruletaF_src/graficos/ecoReto/jugarins.png");
+        btnInformacion.setBounds((int) (getWidth() - btnInformacion.getWidth()) / 2, (int) (getHeight() - 850), btnInformacion.getWidth(), btnInformacion.getHeight());
 
 
         back = new GButton(new Vector2(250, 50), "");
