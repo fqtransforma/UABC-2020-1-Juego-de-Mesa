@@ -84,6 +84,7 @@ public class Juego extends JFrame{
         panelIzquierdoabajo= new JPanel();
         panelIzquierdoabajo.setLayout(new BoxLayout(panelIzquierdoabajo,BoxLayout.X_AXIS));
 
+
         label2=new JLabel();
         labelImage2P = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Escoge.png");
         label2.setIcon(labelImage2P);
