@@ -16,9 +16,9 @@ public class RecursosRenov extends JFrame implements ActionListener {
         setUndecorated(true);
 
         setVisible(true);
+
         setContentPane(new JLabel(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Renovables.png")));
         setBounds(900, 80, 645, 800);
-
         boton1=new JButton("Ayuda");
         ImageIcon icono1 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Help.png");
         boton1.setIcon(icono1);
@@ -34,9 +34,7 @@ public class RecursosRenov extends JFrame implements ActionListener {
         boton2.setBounds(600,10,35,35);
         add(boton2);
         boton2.addActionListener(this);
-
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == boton1) {
@@ -51,7 +49,6 @@ public class RecursosRenov extends JFrame implements ActionListener {
             } catch (Exception tipoError) {
                 System.out.println("" + tipoError);
             }
-
         }
         if (e.getSource() == boton2) {
             try {

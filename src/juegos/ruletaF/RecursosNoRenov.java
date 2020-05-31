@@ -9,6 +9,7 @@ import java.io.File;
 
 public class RecursosNoRenov extends JFrame implements ActionListener {
     private JButton boton1,boton2;
+
     public void NoRenovable(){
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -16,11 +17,7 @@ public class RecursosNoRenov extends JFrame implements ActionListener {
 
         setVisible(true);
 
-
-
         setContentPane(new JLabel(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Nrenovables.png")));
-
-
         setBounds(900,80,645,800);
         boton1=new JButton("Ayuda");
         ImageIcon icono1 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Help.png");
@@ -37,16 +34,14 @@ public class RecursosNoRenov extends JFrame implements ActionListener {
         boton2.setBounds(600,10,35,35);
         add(boton2);
         boton2.addActionListener(this);
-
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()==boton1) {
 
             try {
                 Clip sonido = AudioSystem.getClip();
-                File a= new File("src/resources/ruletaF_src/musica/audio/Mhelp.wav");
+                File a= new File("src/resources/ruletaF_src/audio/musica/Mhelp.wav");
                 sonido.open(AudioSystem.getAudioInputStream(a));
                 sonido.start();
                 JOptionPane.showMessageDialog(null, "El usuario debe mencionar Recursos no Renovables \n"+"ejemplo\n"+"residuos fosiles\nDerivados del  petroleo");
@@ -54,7 +49,6 @@ public class RecursosNoRenov extends JFrame implements ActionListener {
             } catch (Exception tipoError) {
                 System.out.println("" + tipoError);
             }
-
         }
         if (e.getSource() == boton2) {
 
