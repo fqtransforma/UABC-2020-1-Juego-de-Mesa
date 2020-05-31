@@ -7,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;			// para random
 import java.lang.*;         //para  java.lang.System.currentTimeMillis
+import java.util.List;
+import java.util.stream.Stream;
 
 public class JuegoBasta extends JFrame implements Runnable{
 
@@ -30,20 +32,40 @@ public class JuegoBasta extends JFrame implements Runnable{
     private JPanel panelsubAbajo;
     private JPanel panelsubCentral;
 
-
     private JLabel label;
     private JLabel label2;
-    private JLabel tiempo; //para reloj
+    private JLabel label3;
+    private JLabel label4;
+    private JLabel label5;
+    private JLabel tiempo;
+    private JLabel labelAciertos;
+    private JLabel probando = new JLabel("");
 
     private ImageIcon labelImageP;
     private ImageIcon labelImage;
     private ImageIcon labelImage2P;
     private ImageIcon labelImage2;
+    private ImageIcon labelImage3P;
 
     private Random r1= new Random(System.currentTimeMillis());
     private PlayMusic musica= new PlayMusic();
     private JTextArea cajaTexto = new JTextArea(25,60);
-    private JLabel probando = new JLabel("");
+
+    private String [] verduras ={};
+    private String [] frutas ={};
+    private String [] minerales ={};
+    private String [] animales ={};
+    private String [] rNaturales ={};
+    private String [] plantas ={};
+    private String [] rOrganicos ={};
+    private String [] rInorganicos ={};
+    private String [] rRenovables ={};
+    private String [] rNorenovables ={};
+
+    private ArrayList<String> nombres;
+    private List<String> respuestaUsuario;
+    private Stream<String> tokenStream ;
+    private String cadena ="";
 
     private int valor;//valor imagen de letra
     private int aux;//auxiliar imagen letra
