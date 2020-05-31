@@ -227,7 +227,7 @@ public class Juego extends JFrame{
                     Clip sonido = AudioSystem.getClip();
                     File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
                     sonido.open(AudioSystem.getAudioInputStream(a));
-                    RecursosOrg recurso=new RecursosOrg()
+                    RecursosOrg recurso=new RecursosOrg();
                     sonido.start();
                     recurso.Organico();
                     Thread.sleep(1000);
@@ -245,7 +245,7 @@ public class Juego extends JFrame{
                     Clip sonido = AudioSystem.getClip();
                     File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
                     sonido.open(AudioSystem.getAudioInputStream(a));
-                    RecursosRenov recurso=new RecursosRenov()
+                    RecursosRenov recurso=new RecursosRenov();
                     sonido.start();
                     recurso.Renovable();
                     Thread.sleep(1000);
@@ -263,7 +263,7 @@ public class Juego extends JFrame{
                     Clip sonido = AudioSystem.getClip();
                     File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
                     sonido.open(AudioSystem.getAudioInputStream(a));
-                    SeresNoVivos seres =new SeresNoVivos()
+                    SeresNoVivos seres =new SeresNoVivos();
                     sonido.start();
                     seres.NoVivo();
                     Thread.sleep(1000);
@@ -281,7 +281,7 @@ public class Juego extends JFrame{
                     Clip sonido = AudioSystem.getClip();
                     File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
                     sonido.open(AudioSystem.getAudioInputStream(a));
-                    Plantas planta = new Plantas()
+                    Plantas planta = new Plantas();
                     sonido.start();
                     planta.Planta();
                     Thread.sleep(1000);
