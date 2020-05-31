@@ -9,25 +9,9 @@ import java.io.IOException;
 
 public class WindowApp extends JFrame {
 
-    public Thread audio;
 
     public WindowApp(String title)  {
 
-        audio = new Thread(new Runnable() {
-            public void run() {
-                try {
-                    Clip sound = AudioManager.GenerateAudioClip("ruletaF_src/audio/musica/MusicaFondo.wav");
-                    sound.start();
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (UnsupportedAudioFileException e) {
-                    e.printStackTrace();
-                } catch (LineUnavailableException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
 
         setTitle(title);
 
@@ -36,7 +20,7 @@ public class WindowApp extends JFrame {
         setLocationRelativeTo(null);
         Home screenHome = new Home(this, getWidth(), getHeight());
         add(screenHome);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setVisible(true);
 
     }

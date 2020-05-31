@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 
+
 public class PopUp extends JPanel {
 
     public static boolean isVisible = false;
@@ -13,6 +14,8 @@ public class PopUp extends JPanel {
     private GButton btnInformacion;
     private GButton btnTarjeta;
     private GButton back;
+
+    public PlayMusic efecto = new PlayMusic();
 
     private JPanel _root;
 
@@ -51,6 +54,7 @@ public class PopUp extends JPanel {
 
         setVisible(false);
 
+
     }
 
     private void init() {
@@ -81,7 +85,8 @@ public class PopUp extends JPanel {
         btnTarjeta.setBounds((int) (getWidth() - btnTarjeta.getWidth()) / 2, (int) (getHeight() - 370), btnTarjeta.getWidth(), btnTarjeta.getHeight());
         btnTarjeta.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                efecto.efectoYeah();
+                efecto.play();
                 int numR = (int) Math.floor(Math.random()*20);
                 Icon icon = new ImageIcon(reto[numR]);
                 JOptionPane.showMessageDialog(_root,"","Reto",JOptionPane.INFORMATION_MESSAGE,icon);
