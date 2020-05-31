@@ -87,7 +87,7 @@ public class Juego extends JFrame{
 
 
         label2=new JLabel();
-        labelImage2P = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Escoge.png");
+        labelImage2P = new ImageIcon(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Escoge.png").getImage().getScaledInstance(950,150,Image.SCALE_SMOOTH));
         label2.setIcon(labelImage2P);
         label2.setAlignmentX(Component.CENTER_ALIGNMENT);
 
