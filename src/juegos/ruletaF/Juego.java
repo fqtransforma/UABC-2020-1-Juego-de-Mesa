@@ -17,32 +17,32 @@ import java.util.*;			// para random
 public class Juego extends JFrame{
 
     private JPanel panelArriba;
-
-    private JPanel panelAbajo;
-
+    private JPanel panelCentral;
     private JPanel panelIzquierdo;
     private JPanel panelIzquierdoarriba;
     private JPanel panelIzquierdoabajo;
     private JPanel panelDerecho;
     private JPanel panelDerechoarriba;
     private JPanel panelDerechoabajo;
-    private JPanel panelCentral;
+
     private JLabel label;
     private JLabel label2;
     private JLabel label3;
+    private JLabel label4;
 
     private ImageIcon labelImageP;
     private ImageIcon labelImage2P;
     private ImageIcon labelImage3P;
+    private ImageIcon labelImage4P;
 
     private JButton Regresar;
+
     public Juego (){
         super("Juego");
         this.getContentPane().setLayout(new BorderLayout());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setUndecorated(true);
         setVisible(true);
-        //setContentPane(new JLabel(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/fondo.jpg")));
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -59,12 +59,10 @@ public class Juego extends JFrame{
 
         panelArriba.setBackground(new Color(114,217,224));
         this.getContentPane().add(panelArriba,BorderLayout.NORTH);
-//////////////////////////////////////////////////////////////////////////////////////////
+/////////
         panelCentral = new JPanel();
         panelCentral.setLayout(new GridLayout(1,2));
-        //setContentPane(new JLabel(new ImageIcon("src/main/resources/fondoCaricaturas.jpg")));
         panelIzquierdo =  new JPanel();
-        //panelIzquierdo.setLayout(new GridLayout(2,1));
         panelIzquierdo.setLayout(new BorderLayout());
 
         panelIzquierdoarriba= new JPanel();
@@ -73,65 +71,76 @@ public class Juego extends JFrame{
         for (int i=0; i < buttons.length; i++) {
             for (int j=0; j < buttons[i].length; j++) {
                 buttons[i][j] = new JButton();
+                buttons[i][j].setBackground(new Color(19,173,173));
                 panelIzquierdoarriba.add(buttons[i][j]);
                 ImageIcon icono1 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Caricaturas.PNG");
                 buttons[i][j].setIcon(icono1);
             }
         }
-        //panelIzquierdo.add(panelIzquierdoarriba);
         panelIzquierdo.add(panelIzquierdoarriba,BorderLayout.CENTER);
-
 
         panelIzquierdoabajo= new JPanel();
         panelIzquierdoabajo.setLayout(new BoxLayout(panelIzquierdoabajo,BoxLayout.X_AXIS));
+        panelIzquierdoabajo.setBackground(new Color(65,65,67));
 
+        label=new JLabel();
+        labelImageP = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Escoje.png");
+        label.setIcon(labelImageP);
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        label2=new JLabel();
-        labelImage2P = new ImageIcon(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Escoge.png").getImage().getScaledInstance(950,150,Image.SCALE_SMOOTH));
-        label2.setIcon(labelImage2P);
-        label2.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        panelIzquierdoabajo.add(label2);
+        panelIzquierdoabajo.add(Box.createHorizontalGlue());
+        panelIzquierdoabajo.add(label);
+        panelIzquierdoabajo.add(Box.createHorizontalGlue());
         panelIzquierdo.add(panelIzquierdoabajo,BorderLayout.SOUTH);
 
         panelCentral.add(panelIzquierdo);
-
 //////////////
         panelDerecho =  new JPanel();
-        //panelDerecho.setLayout(new GridLayout(2,1));
         panelDerecho.setLayout(new BorderLayout());
 
         panelDerechoarriba= new JPanel();
-        panelDerechoarriba.setBackground(new Color(114,217,224));
-
-        label=new JLabel();
-
-        label.setIcon(new ImageIcon(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/fondo.jpg").getImage().getScaledInstance(1000,1100, Image.SCALE_SMOOTH)));
-        panelDerechoarriba.add(label);
-        panelDerecho.add(panelDerechoarriba,BorderLayout.CENTER);
-
-
-        panelDerechoabajo= new JPanel();
-        panelDerechoabajo.setLayout(new BoxLayout(panelDerechoabajo,BoxLayout.X_AXIS));
+        panelDerechoarriba.setLayout(new BoxLayout(panelDerechoarriba,BoxLayout.Y_AXIS));
+        panelDerechoarriba.setBackground(new Color(110,211,223));
 
         label2=new JLabel();
-        labelImage2P = new ImageIcon(new  ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/carretera.png").getImage().getScaledInstance(1000,100,Image.SCALE_SMOOTH));
+        labelImage2P = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/fondoArriba.jpg");
         label2.setIcon(labelImage2P);
         label2.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        panelDerechoabajo.add(label2);
+        label3=new JLabel();
+        labelImage3P = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/fondoAbajo.jpg");
+        label3.setIcon(labelImage3P);
+        label3.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        panelDerechoarriba.add(label2);
+        panelDerechoarriba.add(Box.createVerticalGlue());
+        panelDerechoarriba.add(label3);
+
+        panelDerecho.add(panelDerechoarriba,BorderLayout.CENTER);
+
+        panelDerechoabajo= new JPanel();
+        panelDerechoabajo.setLayout(new BoxLayout(panelDerechoabajo,BoxLayout.X_AXIS));
+        panelDerechoabajo.setBackground(new Color(65,65,67));
+
+        label4=new JLabel();
+        labelImage4P = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/carretera.png");
+        label4.setIcon(labelImage4P);
+        label4.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        panelDerechoabajo.add(Box.createHorizontalGlue());
+        panelDerechoabajo.add(label4);
+        panelDerechoabajo.add(Box.createHorizontalGlue());
         panelDerecho.add(panelDerechoabajo,BorderLayout.SOUTH);
 
         panelCentral.add(panelDerecho);
-
         this.getContentPane().add(panelCentral,BorderLayout.CENTER);
 
         Regresar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 dispose();new RuletaGui();
-
             }
         });
+
         buttons[0][0].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
 
