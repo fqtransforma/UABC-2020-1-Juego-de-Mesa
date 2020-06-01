@@ -7,13 +7,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;			// para random
 import java.lang.*;         //para  java.lang.System.currentTimeMillis
+import java.util.List;
+import java.util.stream.Stream;
 
 public class JuegoBasta extends JFrame implements Runnable{
 
-    private JPanel panelCentral;
     private JPanel panelArriba;
+    private JPanel panelAbajo;
     private JPanel panelIzquierdo;
     private JPanel panelDerecho;
+    private JPanel panelCentral;
 
     private JButton Iniciar;
     private JButton Reiniciar;
@@ -23,30 +26,52 @@ public class JuegoBasta extends JFrame implements Runnable{
     private JButton Sacar;
     private JButton Letra;
 
-    //inicio paneles auxiliares
-    private JPanel auxiliar1;
-    private JPanel auxiliar2;
-    private JPanel auxiliar3;
-    private JPanel auxiliar4;
-    private JPanel auxiliar5;
-    //fin paneles auxiliares
+    private JPanel panelsubDerecho;
+    private JPanel panelsubIzquierda;
+    private JPanel panelsubArriba;
+    private JPanel panelsubAbajo;
+    private JPanel panelsubCentral;
 
     private JLabel label;
     private JLabel label2;
-    private JLabel tiempo; //para reloj
+    private JLabel label3;
+    private JLabel label4;
+    private JLabel label5;
+    private JLabel tiempo;
+    private JLabel labelAciertos;
+    private JLabel probando = new JLabel("");
 
     private ImageIcon labelImageP;
     private ImageIcon labelImage;
     private ImageIcon labelImage2P;
     private ImageIcon labelImage2;
+    private ImageIcon labelImage3P;
 
     private Random r1= new Random(System.currentTimeMillis());
     private PlayMusic musica= new PlayMusic();
+    private JTextArea cajaTexto = new JTextArea(25,60);
+
+    private String [] verduras ={};
+    private String [] frutas ={};
+    private String [] minerales ={};
+    private String [] animales ={};
+    private String [] rNaturales ={};
+    private String [] plantas ={};
+    private String [] rOrganicos ={};
+    private String [] rInorganicos ={};
+    private String [] rRenovables ={};
+    private String [] rNorenovables ={};
+
+    private ArrayList<String> nombres;
+    private List<String> respuestaUsuario;
+    private Stream<String> tokenStream ;
+    private String cadena ="";
 
     private int valor;//valor imagen de letra
     private int aux;//auxiliar imagen letra
     private int valor2;//valor imagen de letra
     private int aux2;//auxiliar imagen letra
+    private boolean reiniciar=false;
     private boolean cronometroActivo;
     private Thread hilo;
 
@@ -59,23 +84,19 @@ public class JuegoBasta extends JFrame implements Runnable{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        auxiliar1=new JPanel();
-        auxiliar2=new JPanel();
-        auxiliar3=new JPanel();
-        auxiliar3.setLayout(new FlowLayout());
-        auxiliar4=new JPanel();
-        auxiliar4.setLayout(new FlowLayout());
-        auxiliar5=new JPanel();
-        // auxiliar5.setLayout(new FlowLayout());
-        //auxiliar5.setLayout(new BoxLayout(auxiliar5,BoxLayout.Y_AXIS));
-        auxiliar5.setLayout(new BoxLayout(auxiliar5,BoxLayout.X_AXIS));
+        panelsubDerecho=new JPanel();
+        panelsubIzquierda=new JPanel();
+        panelsubArriba=new JPanel();
+        panelsubArriba.setLayout(new FlowLayout());
+        panelsubAbajo=new JPanel();
+        panelsubAbajo.setLayout(new FlowLayout());
+        panelsubCentral=new JPanel();
 
-        auxiliar1.setBackground(Color.yellow);//derecha
-        auxiliar2.setBackground(Color.orange.darker());//izquierda
-        auxiliar3.setBackground(Color.white);//arriba
-        auxiliar4.setBackground(Color.CYAN);//abajo
-        auxiliar5.setBackground(Color.black);//centro
-
+        panelsubDerecho.setBackground(Color.CYAN);//derecha
+        panelsubIzquierda.setBackground(Color.CYAN);//izquierda
+        panelsubArriba.setBackground(Color.CYAN);//arriba
+        panelsubAbajo.setBackground(Color.CYAN);//abajo
+        panelsubCentral.setBackground(Color.CYAN);//centro
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// inicio panel Arriba
         panelArriba = new JPanel();
@@ -98,6 +119,29 @@ public class JuegoBasta extends JFrame implements Runnable{
         panelArriba.setBackground(Color.CYAN);
         this.getContentPane().add(panelArriba,BorderLayout.NORTH);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// fin panel Arriba
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// inicio panel Abajo
+        panelAbajo = new JPanel();
+        panelAbajo.setLayout(new BoxLayout(panelAbajo,BoxLayout.X_AXIS));
+
+        Iniciar = new JButton("Iniciar");
+        Iniciar.setFont(new Font("Arial",Font.CENTER_BASELINE,23));
+        Iniciar.setBackground(new Color(249,94,0));
+        Iniciar.setForeground(Color.BLACK);
+
+        Reiniciar = new JButton("Reiniciar");
+        Reiniciar.setFont(new Font("Arial",Font.CENTER_BASELINE,23));
+        Reiniciar.setBackground(new Color(249,94,0));
+        Reiniciar.setForeground(Color.BLACK);
+
+        panelAbajo.add(Box.createHorizontalGlue());
+        panelAbajo.add(Iniciar);
+        panelAbajo.add(Box.createHorizontalGlue());
+        panelAbajo.add(Reiniciar);
+        panelAbajo.add(Box.createHorizontalGlue());
+
+        panelAbajo.setBackground(Color.CYAN);
+        this.getContentPane().add(panelAbajo,BorderLayout.SOUTH);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// fin panel Abajo
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// inicio panel izquierdo
         panelIzquierdo = new JPanel();
         panelIzquierdo.setLayout(new BoxLayout(panelIzquierdo,BoxLayout.Y_AXIS));
@@ -164,43 +208,27 @@ public class JuegoBasta extends JFrame implements Runnable{
         tiempo.setForeground( Color.BLUE );
         tiempo.setBackground( Color.CYAN);
         tiempo.setOpaque( true );
-        auxiliar3.add(tiempo);
-
-        auxiliar3.setBackground(Color.CYAN);//Temporal desde aqui
-
-        Iniciar = new JButton("Iniciar");
-        Iniciar.setFont(new Font("Arial",Font.CENTER_BASELINE,22));
-        Iniciar.setBackground(new Color(249,94,0));
-        Iniciar.setForeground(Color.BLACK);
-
-        Reiniciar = new JButton("Reiniciar");
-        Reiniciar.setFont(new Font("Arial",Font.CENTER_BASELINE,22));
-        Reiniciar.setBackground(new Color(249,94,0));
-        Reiniciar.setForeground(Color.BLACK);
-
-        auxiliar4.add(Iniciar);
-        auxiliar4.add(Reiniciar);
+        panelsubArriba.add(tiempo);
         ///////////////////////////////////////////////////////////////////////////////////////// termina reloj
 
-        JTextArea cajaTexto = new JTextArea();
-        cajaTexto.setSize(new Dimension(100,110));
         cajaTexto.setEnabled(false);
 
         JScrollPane scrollPane = new JScrollPane(cajaTexto,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.setAlignmentX(Component.CENTER_ALIGNMENT);
-        auxiliar5.add(Box.createVerticalGlue());
-        auxiliar5.add(Box.createHorizontalGlue());
-        auxiliar5.add(scrollPane);
-        auxiliar5.add(Box.createHorizontalGlue());
-        auxiliar5.add(Box.createVerticalGlue());
 
-        auxiliar5.setBackground(Color.CYAN);//Temporal desde aqui
+        probando.setFont( new Font( Font.SERIF, Font.BOLD, 80) );
+        probando.setHorizontalAlignment( JLabel.CENTER );
+        probando.setForeground( Color.BLUE );
+        probando.setBackground( Color.CYAN);
+        probando.setOpaque( true );
+        panelsubAbajo.add(probando);
+        panelsubCentral.add(scrollPane);
 
-        // panelCentral.add(auxiliar1,BorderLayout.EAST);
-        // panelCentral.add(auxiliar2,BorderLayout.WEST);
-        panelCentral.add(auxiliar3,BorderLayout.NORTH);
-        panelCentral.add(auxiliar4,BorderLayout.SOUTH);
-        panelCentral.add(auxiliar5,BorderLayout.CENTER);
+        panelCentral.add(panelsubDerecho,BorderLayout.EAST);
+        panelCentral.add(panelsubIzquierda,BorderLayout.WEST);
+        panelCentral.add(panelsubArriba,BorderLayout.NORTH);
+        panelCentral.add(panelsubAbajo,BorderLayout.SOUTH);
+        panelCentral.add(panelsubCentral,BorderLayout.CENTER);
         this.getContentPane().add(panelCentral,BorderLayout.CENTER);
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// fin panel Central
 
@@ -233,27 +261,25 @@ public class JuegoBasta extends JFrame implements Runnable{
                 else
                 if(valor2==0){
                     JOptionPane.showMessageDialog(null,"Necesitas sacar una letra ");
-                }else{
+                }else
+                if(reiniciar){
+                    JOptionPane.showMessageDialog(null,"Necesitas reiniciar");
+                }
+                else
+                if(!cronometroActivo){
+                    reiniciar=true;
+                    JOptionPane.showMessageDialog(null,"Necesitas cambiar este mensaje despues ");
                     cajaTexto.setEnabled(true);
                     while(!cronometroActivo){
                         iniciarCronometro();
                     }
-
                 }
-
             }
         });
+
         Reiniciar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
-                valor=valor2=0;
-                label.setIcon(labelImageP);
-                label.repaint();
-                label.validate();
-                label2.setIcon(labelImage2P);
-                label2.repaint();
-                label2.validate();
-
-                pararCronometro();
+                reiniciarTodo();
             }
         });
 
@@ -287,6 +313,7 @@ public class JuegoBasta extends JFrame implements Runnable{
                 label.validate();
             }
         });
+
         Letra.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
                 if (valor == 0) {
@@ -341,26 +368,19 @@ public class JuegoBasta extends JFrame implements Runnable{
 
     public void run(){
         Integer minutos = 0 , segundos = 0, milesimas = 0;
-        //min es minutos, seg es segundos y mil es milesimas de segundo
         String min="", seg="", mil="";
         try
         {
-            //Mientras cronometroActivo sea verdadero entonces seguira
-            //aumentando el tiempo
             while( cronometroActivo )
             {
                 Thread.sleep( 4 );
                 //Incrementamos 4 milesimas de segundo
                 milesimas += 4;
 
-                //Cuando llega a 1000 osea 1 segundo aumenta 1 segundo
-                //y las milesimas de segundo de nuevo a 0
                 if( milesimas == 1000 )
                 {
                     milesimas = 0;
                     segundos += 1;
-                    //Si los segundos llegan a 60 entonces aumenta 1 los minutos
-                    //y los segundos vuelven a 0
                     if( segundos == 60 )
                     {
                         segundos = 0;
@@ -368,8 +388,7 @@ public class JuegoBasta extends JFrame implements Runnable{
                     }
                 }
 
-                //Esto solamente es estetica para que siempre este en formato
-                //00:00:000
+
                 if( minutos < 10 ) min = "0" + minutos;
                 else min = minutos.toString();
                 if( segundos < 10 ) seg = "0" + segundos;
@@ -379,7 +398,6 @@ public class JuegoBasta extends JFrame implements Runnable{
                 else if( milesimas < 100 ) mil = "0" + milesimas;
                 else mil = milesimas.toString();
 
-                //Colocamos en la etiqueta la informacion
                 tiempo.setText( min + ":" + seg + ":" + mil );
             }
         }catch(Exception e){}
@@ -391,8 +409,24 @@ public class JuegoBasta extends JFrame implements Runnable{
         hilo = new Thread( this );
         hilo.start();
     }
-    public void pararCronometro(){
+    public void pararCronometro() {
         cronometroActivo = false;
+    }
+
+    public void reiniciarTodo(){
+        valor=valor2=0;
+        reiniciar=false;
+        probando.setText("");
+        cajaTexto.setText("");
+        cajaTexto.setEnabled(false);
+        label.setIcon(labelImageP);
+        label.repaint();
+        label.validate();
+        label2.setIcon(labelImage2P);
+        label2.repaint();
+        label2.validate();
+
+        pararCronometro();
     }
 
 }//fin clase

@@ -1,168 +1,308 @@
 package juegos.ruletaF;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-import java.util.Random;
+import java.io.File;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.util.*;			// para random
 
-public class Juego extends JFrame implements ActionListener {
 
-    private JButton escoje,boton1,boton2,boton3,boton4,boton5,boton6,boton7,boton8,boton9;
-    private JPanel panel;
-    public Juego(){
-        super("Caricaturas");
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setContentPane(new JLabel(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/fondo.jpg")));
+public class Juego extends JFrame{
+
+    private JPanel panelArriba;
+    private JPanel panelCentral;
+    private JPanel panelIzquierdo;
+    private JPanel panelIzquierdoarriba;
+    private JPanel panelIzquierdoabajo;
+    private JPanel panelDerecho;
+    private JPanel panelDerechoarriba;
+    private JPanel panelDerechoabajo;
+
+    private JLabel label;
+    private JLabel label2;
+    private JLabel label3;
+    private JLabel label4;
+
+    private ImageIcon labelImageP;
+    private ImageIcon labelImage2P;
+    private ImageIcon labelImage3P;
+    private ImageIcon labelImage4P;
+
+    private JButton Regresar;
+
+    public Juego (){
+        super("Juego");
+        this.getContentPane().setLayout(new BorderLayout());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-
-
-
-       /* panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        panel.setVisible(true);
-        panel.setBounds(800,80,645,800);
-        add(panel);*/
-
-        escoje=new JButton("Escoje");
-        ImageIcon icone = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Escoje.png");
-        escoje.setIcon( icone);
-        escoje.setBorder(null);
-        escoje.setBounds(30,850,638,150);
-        add(escoje);
-
-
-
-        boton1=new JButton("SeresVivos");
-        ImageIcon icono1 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Caricaturas.PNG");
-        boton1.setIcon(icono1);
-        boton1.setBounds(30,80,140,230);
-        add(boton1);
-        boton1.addActionListener(this);
-
-        boton2=new JButton("Animales");
-        ImageIcon icono2 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Caricaturas.PNG");
-        boton2.setIcon(icono2);
-        boton2.setBounds(30,340,140,230);
-        add(boton2);
-        boton2.addActionListener(this);
-
-        boton3=new JButton("Minerales");
-        ImageIcon icono3 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Caricaturas.PNG");
-        boton3.setIcon(icono3);
-        boton3.setBounds(30,600,140,230);
-        add(boton3);
-        boton3.addActionListener(this);
-
-        boton4=new JButton("RecursosNat");
-        ImageIcon icono4 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Caricaturas.PNG");
-        boton4.setIcon(icono4);
-        boton4.setBounds(190,80,140,230);
-        add(boton4);
-        boton4.addActionListener(this);
-
-        boton5=new JButton("Plantas");
-        ImageIcon icono5 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Caricaturas.PNG");
-        boton5.setIcon(icono5);
-        boton5.setBounds(190,340,140,230);
-        add(boton5);
-        boton5.addActionListener(this);
+        setUndecorated(true);
         setVisible(true);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        boton6=new JButton("RecursosOrg");
-        ImageIcon icono6 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Caricaturas.PNG");
-        boton6.setIcon(icono5);
-        boton6.setBounds(190,600,140,230);
-        add(boton6);
-        boton6.addActionListener(this);
-        setVisible(true);
+        panelArriba = new JPanel();
+        panelArriba.setLayout(new BoxLayout(panelArriba,BoxLayout.X_AXIS));
 
-        boton7=new JButton("RecursosReno");
-        ImageIcon icono7 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Caricaturas.PNG");
-        boton7.setIcon(icono7);
-        boton7.setBounds(350,80,140,230);
-        add(boton7);
-        boton7.addActionListener(this);
-        setVisible(true);
+        Regresar = new JButton("Regresar");
+        Regresar.setFont(new Font("Arial",Font.CENTER_BASELINE,15));
+        Regresar.setBackground(new Color(187,179,175));
+        Regresar.setForeground(Color.BLACK);
 
-        boton8=new JButton("RecursosNorenov");
-        ImageIcon icono8 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Caricaturas.PNG");
-        boton8.setIcon(icono8);
-        boton8.setBounds(350,340,140,230);
-        add(boton8);
-        boton8.addActionListener(this);
-        setVisible(true);
+        panelArriba.add(Regresar);
+        panelArriba.add(Box.createHorizontalGlue());
 
-        boton9=new JButton("SeresNoVivo");
-        ImageIcon icono9 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Caricaturas.PNG");
-        boton9.setIcon(icono9);
-        boton9.setBounds(350,600,140,230);
-        add(boton9);
-        boton9.addActionListener(this);
-        setVisible(true);
+        panelArriba.setBackground(new Color(114,217,224));
+        this.getContentPane().add(panelArriba,BorderLayout.NORTH);
+/////////
+        panelCentral = new JPanel();
+        panelCentral.setLayout(new GridLayout(1,2));
+        panelIzquierdo =  new JPanel();
+        panelIzquierdo.setLayout(new BorderLayout());
 
-
-
-    }
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==boton1) {
-
-            SeresVivos seres1=new SeresVivos();
-            seres1.Seres();
-
+        panelIzquierdoarriba= new JPanel();
+        panelIzquierdoarriba.setLayout(new GridLayout(3,3));
+        JButton[][] buttons = new JButton[3][3];
+        for (int i=0; i < buttons.length; i++) {
+            for (int j=0; j < buttons[i].length; j++) {
+                buttons[i][j] = new JButton();
+                buttons[i][j].setBackground(new Color(19,173,173));
+                panelIzquierdoarriba.add(buttons[i][j]);
+                ImageIcon icono1 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Caricaturas.PNG");
+                buttons[i][j].setIcon(icono1);
+            }
         }
-        if (e.getSource()==boton2) {
+        panelIzquierdo.add(panelIzquierdoarriba,BorderLayout.CENTER);
 
-            Animales animal1=new Animales();
-            animal1.Animal();
+        panelIzquierdoabajo= new JPanel();
+        panelIzquierdoabajo.setLayout(new BoxLayout(panelIzquierdoabajo,BoxLayout.X_AXIS));
+        panelIzquierdoabajo.setBackground(new Color(65,65,67));
 
-        }
-        if (e.getSource()==boton3) {
+        label=new JLabel();
+        labelImageP = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Escoje.png");
+        label.setIcon(labelImageP);
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-            Minerales mineral =new Minerales();
-            mineral.Mineral();
+        panelIzquierdoabajo.add(Box.createHorizontalGlue());
+        panelIzquierdoabajo.add(label);
+        panelIzquierdoabajo.add(Box.createHorizontalGlue());
+        panelIzquierdo.add(panelIzquierdoabajo,BorderLayout.SOUTH);
 
+        panelCentral.add(panelIzquierdo);
+//////////////
+        panelDerecho =  new JPanel();
+        panelDerecho.setLayout(new BorderLayout());
 
-        }
-        if (e.getSource()==boton4) {
+        panelDerechoarriba= new JPanel();
+        panelDerechoarriba.setLayout(new BoxLayout(panelDerechoarriba,BoxLayout.Y_AXIS));
+        panelDerechoarriba.setBackground(new Color(110,211,223));
 
-            RecursosNat recurso =new RecursosNat();
-            recurso.Recursos();
-        }
-        if (e.getSource()==boton5) {
+        label2=new JLabel();
+        labelImage2P = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/fondoArriba.jpg");
+        label2.setIcon(labelImage2P);
+        label2.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-            Plantas planta =new Plantas();
-            planta.Planta();
+        label3=new JLabel();
+        labelImage3P = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/fondoAbajo.jpg");
+        label3.setIcon(labelImage3P);
+        label3.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        }
-        if (e.getSource()==boton6) {
+        panelDerechoarriba.add(label2);
+        panelDerechoarriba.add(Box.createVerticalGlue());
+        panelDerechoarriba.add(label3);
 
-            RecursosOrg recurso =new RecursosOrg();
-            recurso.Organico();
+        panelDerecho.add(panelDerechoarriba,BorderLayout.CENTER);
 
+        panelDerechoabajo= new JPanel();
+        panelDerechoabajo.setLayout(new BoxLayout(panelDerechoabajo,BoxLayout.X_AXIS));
+        panelDerechoabajo.setBackground(new Color(65,65,67));
 
-        }
-        if (e.getSource()==boton7) {
+        label4=new JLabel();
+        labelImage4P = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/carretera.png");
+        label4.setIcon(labelImage4P);
+        label4.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        panelDerechoabajo.add(Box.createHorizontalGlue());
+        panelDerechoabajo.add(label4);
+        panelDerechoabajo.add(Box.createHorizontalGlue());
+        panelDerecho.add(panelDerechoabajo,BorderLayout.SOUTH);
 
-            RecursosRenov recurso =new RecursosRenov();
-            recurso.Renovable();
+        panelCentral.add(panelDerecho);
+        this.getContentPane().add(panelCentral,BorderLayout.CENTER);
 
-        }
-        if (e.getSource()==boton8) {
+        Regresar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                dispose();new RuletaGui();
+            }
+        });
 
-            RecursosNoRenov recurso =new RecursosNoRenov();
-            recurso.NoRenovable();
+        buttons[0][0].addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent){
 
+                try {
+                    Clip sonido = AudioSystem.getClip();
+                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
+                    sonido.open(AudioSystem.getAudioInputStream(a));
+                    SeresVivos seres1 = new SeresVivos();
+                    sonido.start();
+                    seres1.Seres();
+                    Thread.sleep(1000);
+                    sonido.close();
+                } catch (Exception tipoError) {
+                    System.out.println("" + tipoError);
+                }
+            }
+        });
+        ////
+        buttons[0][1].addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent){
 
-        }
-        if (e.getSource()==boton9) {
+                try {
+                    Clip sonido = AudioSystem.getClip();
+                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
+                    sonido.open(AudioSystem.getAudioInputStream(a));
+                    sonido.start();
+                    Animales animal1 = new Animales();
+                    animal1.Animal();
+                    Thread.sleep(1000);
+                    sonido.close();
+                } catch (Exception tipoError) {
+                    System.out.println("" + tipoError);
+                }
+            }
+        });
+        ////
+        buttons[0][2].addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent){
 
-            SeresNoVivos seres1=new SeresNoVivos();
-            seres1.NoVivo();
+                try {
+                    Clip sonido = AudioSystem.getClip();
+                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
+                    sonido.open(AudioSystem.getAudioInputStream(a));
+                    Minerales mineral = new Minerales();
+                    sonido.start();
+                    mineral.Mineral();
+                    Thread.sleep(1000);
+                    sonido.close();
+                } catch (Exception tipoError) {
+                    System.out.println("" + tipoError);
+                }
+            }
+        });
+        ////
+        buttons[1][0].addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent){
 
-        }
-    }
+                try {
+                    Clip sonido = AudioSystem.getClip();
+                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
+                    sonido.open(AudioSystem.getAudioInputStream(a));
+                    RecursosNat recurso = new RecursosNat();
+                    sonido.start();
+                    recurso.Recursos();
+                    Thread.sleep(1000);
+                    sonido.close();
+                } catch (Exception tipoError) {
+                    System.out.println("" + tipoError);
+                }
+            }
+        });
+        ////
+        buttons[1][1].addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent){
 
-}
+                try {
+                    Clip sonido = AudioSystem.getClip();
+                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
+                    sonido.open(AudioSystem.getAudioInputStream(a));
+                    RecursosNoRenov recurso = new RecursosNoRenov();
+                    sonido.start();
+                    recurso.NoRenovable();
+                    Thread.sleep(1000);
+                    sonido.close();
+                } catch (Exception tipoError) {
+                    System.out.println("" + tipoError);
+                }
+            }
+        });
+        ////
+        buttons[1][2].addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent){
+
+                try {
+                    Clip sonido = AudioSystem.getClip();
+                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
+                    sonido.open(AudioSystem.getAudioInputStream(a));
+                    RecursosOrg recurso=new RecursosOrg();
+                    sonido.start();
+                    recurso.Organico();
+                    Thread.sleep(1000);
+                    sonido.close();
+                } catch (Exception tipoError) {
+                    System.out.println("" + tipoError);
+                }
+            }
+        });
+        ////
+        buttons[2][0].addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent){
+
+                try {
+                    Clip sonido = AudioSystem.getClip();
+                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
+                    sonido.open(AudioSystem.getAudioInputStream(a));
+                    RecursosRenov recurso=new RecursosRenov();
+                    sonido.start();
+                    recurso.Renovable();
+                    Thread.sleep(1000);
+                    sonido.close();
+                } catch (Exception tipoError) {
+                    System.out.println("" + tipoError);
+                }
+            }
+        });
+        ////
+        buttons[2][1].addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent){
+
+                try {
+                    Clip sonido = AudioSystem.getClip();
+                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
+                    sonido.open(AudioSystem.getAudioInputStream(a));
+                    SeresNoVivos seres =new SeresNoVivos();
+                    sonido.start();
+                    seres.NoVivo();
+                    Thread.sleep(1000);
+                    sonido.close();
+                } catch (Exception tipoError) {
+                    System.out.println("" + tipoError);
+                }
+            }
+        });
+        ////
+        buttons[2][2].addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent actionEvent){
+
+                try {
+                    Clip sonido = AudioSystem.getClip();
+                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
+                    sonido.open(AudioSystem.getAudioInputStream(a));
+                    Plantas planta = new Plantas();
+                    sonido.start();
+                    planta.Planta();
+                    Thread.sleep(1000);
+                    sonido.close();
+                } catch (Exception tipoError) {
+                    System.out.println("" + tipoError);
+                }
+            }
+        });
+
+    }//fin constructor
+
+}//fin clase

@@ -6,13 +6,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-import java.io.IOException;
+
 
 public class Home extends JPanel {
     private WindowApp app;
+    private PopUp popUp;
+
+    public PlayMusic musicaFondoreto = new PlayMusic();
+    public PlayMusic boton = new PlayMusic();
 
     private JLabel centerIcon;
-    private PopUp popUp;
 
     private GButton btnInicio;
     private GButton btnRedesSociales;
@@ -23,11 +26,15 @@ public class Home extends JPanel {
     public Home(final WindowApp app, int width, int height)  {
         final Home root = this;
         this.app = app;
-        //app.audio.run();
+
 
         setLayout(null);
         setSize(width, height);
+
         popUp = new PopUp(root);
+
+        musicaFondoreto.musicaFondoreto();
+        musicaFondoreto.play();
 
         centerIcon = new JLabel();
         centerIcon.setSize((int) (width * 0.75), (int) (height * 0.70));
@@ -36,9 +43,12 @@ public class Home extends JPanel {
 
         btnInicio = new GButton(new Vector2(150, 150), "resources/ruletaF_src/graficos/ecoReto/Inicio.png");
         btnInicio.setBounds((int) (getWidth() - btnInicio.getWidth()) / 2, (int) (getHeight() - 200), btnInicio.getWidth(), btnInicio.getHeight());
+        btnInicio.setToolTipText("Iniciar juego");
         btnInicio.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (!popUp.isVisible()) {
+                    boton.efectoBoton();
+                    boton.play();
                     popUp.setVisible(true);
                     PopUp.isVisible = true;
                     popUp.repaint();
@@ -57,7 +67,7 @@ public class Home extends JPanel {
         btnRedesSociales.setBounds(30, (int) (getHeight() - 30 - btnRedesSociales.getHeight()), btnRedesSociales.getWidth(),btnRedesSociales.getHeight());
         btnRedesSociales.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (!PopUp.isVisible) JOptionPane.showMessageDialog(root, "Siguenos en nuestras redes sociales \n\n Facebook: Fundacion Que Transforma \n Instagram:@ fqtransforma \nSitio Web: www.fqt.org.mx");
+                if (!PopUp.isVisible) boton.efectoBoton();boton.play(); JOptionPane.showMessageDialog(root, "Siguenos en nuestras redes sociales \n\n Facebook: Fundacion Que Transforma \n Instagram:@ fqtransforma \nSitio Web: www.fqt.org.mx");
             }
         });
 
@@ -66,7 +76,7 @@ public class Home extends JPanel {
         btnAyuda.setBounds(getWidth() - btnInicio.getWidth() - 30, (int) (getHeight() - 30 - btnAyuda.getHeight()), btnAyuda.getWidth(), btnAyuda.getHeight());
         btnAyuda.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (!PopUp.isVisible) JOptionPane.showMessageDialog(root, "Ayuda \n\n Como se juega \n Cumple con los retos que se te mostrara en la pantalla");
+                if (!PopUp.isVisible)boton.efectoBoton();boton.play(); JOptionPane.showMessageDialog(root, "Ayuda \n\n-Iniciar el juego\nPara iniciar a jugar solo dale click al boton de PLAY\ny depues a la tarjeta reto.\n\n-Como se juega \n Cumple de manera exitosa con todos los retos\n que se te apareceran en pantalla.");
             }
         });
 
@@ -77,13 +87,13 @@ public class Home extends JPanel {
         btnClose.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (!PopUp.isVisible) {
-                   // app.audio.stop();
+                    musicaFondoreto.cerrar();
                     app.setVisible(false);
                     app.dispose();
+                    app.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                 }
             }
         });
-
 
         add(btnClose);
         add(btnAyuda);
@@ -125,4 +135,5 @@ public class Home extends JPanel {
         popUp.repaint();
         super.paint(g);
     }
+
 }

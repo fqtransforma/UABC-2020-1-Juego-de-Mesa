@@ -21,14 +21,15 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
     private BufferedImage image= new BufferedImage(WIDTH,HEIGHT,BufferedImage.TYPE_INT_RGB);
     private BufferedImage spriteSheet = null;
+    private BufferedImage spriteSheet2 = null;
     private BufferedImage fondo = null;
 
-    //temp
-    private BufferedImage player;
-    private static Player p;
+    private static Player p1;
+    private static Player p2;
 
     private static JTextArea mensajes = new JTextArea();
     private static JScrollPane logs = new JScrollPane(mensajes);
+    private static JPanel panel = new JPanel();
 
     public void init()
     {
@@ -36,8 +37,10 @@ public class Game extends Canvas implements Runnable, ActionListener {
         BufferedImageLoader loader=new BufferedImageLoader();
 
         try{
-            fondo = loader.loadImage("/serpientesyescaleras_src/tapete.png");
-            spriteSheet=loader.loadImage("/serpientesyescaleras_src/player.png");
+            fondo = loader.loadImage("/serpientesyescaleras_src/graficos/tapete.png");
+            spriteSheet=loader.loadImage("/serpientesyescaleras_src/graficos/player.png");
+            spriteSheet2=loader.loadImage("/serpientesyescaleras_src/graficos/player.png");
+
         }catch (IOException e)
         {
             e.printStackTrace();
@@ -45,8 +48,10 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
         addKeyListener(new KeyInput(this));
 
-        p =new Player(700,420,this);
-        SpriteSheet ss=new SpriteSheet(spriteSheet);
+        p1 =new Player(700,420,this);
+        p2 =new Player(700,450,this);
+
+
     }
 
 
@@ -113,7 +118,8 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
     private void tick()
     {
-       p.tick();
+        p1.tick();
+        p2.tick();
 
     }
 
@@ -133,11 +139,11 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
         g.drawImage(image,0,0,getWidth(),getHeight(),this);
         g.drawImage(fondo,0,0,getWidth(),getHeight(), this);
-        p.render(g); //Jugador 1
+        p1.render(g); //Jugador 1
+        p2.render(g);
         //dibujar
         g.dispose();
         bs.show();
-
     }
 
     public void keyPressed(KeyEvent e) {
@@ -146,16 +152,32 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
         if(key == KeyEvent.VK_RIGHT)
         {
-            p.setVelX(5);
+            p1.setVelX(5);
         }else if(key == KeyEvent.VK_LEFT)
         {
-            p.setVelX(-5);
+            p1.setVelX(-5);
         }else if(key == KeyEvent.VK_DOWN)
         {
-            p.setVelY(5);
+            p1.setVelY(5);
         }else if(key == KeyEvent.VK_UP)
         {
-            p.setVelY(-5);
+            p1.setVelY(-5);
+        }
+
+        //Player 2
+
+        if(key == KeyEvent.VK_D)
+        {
+            p2.setVelX(5);
+        }else if(key == KeyEvent.VK_A)
+        {
+            p2.setVelX(-5);
+        }else if(key == KeyEvent.VK_S)
+        {
+            p2.setVelY(5);
+        }else if(key == KeyEvent.VK_W)
+        {
+            p2.setVelY(-5);
         }
     }
 
@@ -166,107 +188,42 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
         if(key == KeyEvent.VK_RIGHT)
         {
-            p.setVelX(0);
+            p1.setVelX(0);
         }else if(key == KeyEvent.VK_LEFT)
         {
-            p.setVelX(0);
+            p1.setVelX(0);
         }else if(key == KeyEvent.VK_DOWN)
         {
-            p.setVelY(0);
+            p1.setVelY(0);
         }else if(key == KeyEvent.VK_UP)
         {
-            p.setVelY(0);
+            p1.setVelY(0);
         }
+
+        //Player 2
+
+        if(key == KeyEvent.VK_D)
+        {
+            p2.setVelX(0);
+        }else if(key == KeyEvent.VK_A)
+        {
+            p2.setVelX(0);
+        }else if(key == KeyEvent.VK_S)
+        {
+            p2.setVelY(0);
+        }else if(key == KeyEvent.VK_W)
+        {
+            p2.setVelY(0);
+        }
+
 
     }
 
     public BufferedImage getSpriteSheet(){
-    return spriteSheet;
+        return spriteSheet;
 
     }
 
-    public static void StartSerpientesYEscaleras(){
-        final int WIDTH = 320;
-        final int HEIGHT= 240; //240
-        final int SCALE=2;
-
-        String filepath= "resources/serpientesyescaleras_src/game.wav";
-
-        MusicStaff music=new MusicStaff();
-        music.PlayMusic(filepath);
-
-        Game game=new Game();
-
-        //creando dimensiones
-        game.setPreferredSize(new Dimension(WIDTH*SCALE,HEIGHT*SCALE));
-        game.setMaximumSize(new Dimension(WIDTH*SCALE,HEIGHT*SCALE));
-        game.setMinimumSize(new Dimension(WIDTH*SCALE,HEIGHT*SCALE));
-
-
-        JFrame frame =new JFrame(game.TITLE);
-        frame.add(game,BorderLayout.NORTH);
-        frame.pack();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(true);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-
-
-        //JButtons
-
-        JButton boton1= new JButton();
-        JButton boton2= new JButton();
-        //
-        //JTextArea
-        mensajes.setEditable(false);
-        mensajes.setAutoscrolls(true);
-
-
-        //Boton 1 //Jugador 1
-        boton1.repaint();
-        boton1.setText("[PLAYER1]");
-        boton1.setPreferredSize(new Dimension(100,100));
-        boton1.setBounds(66,20,150,50);
-        boton1.setVisible(true);
-
-        boton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource()==boton1) {
-                    int numero1 = (int)(Math.random()*6+1);
-                    mensajes.append("JUGADOR 1 MUEVES: "+numero1+"\n");
-                    msg(numero1);
-                }
-            }
-        });
-
-        //Boton 2 //Jugador 2
-
-        boton2.repaint();
-        boton2.setText("[PLAYER2]");
-        boton2.setPreferredSize(new Dimension(100,100));
-        boton2.setBounds(66,20,150,50);
-        boton2.setVisible(true);
-
-        boton2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource()==boton2) {
-                    int numero2 = (int)(Math.random()*6+1);
-                    mensajes.append("JUGADOR 2 MUEVES: "+numero2+"\n");
-                    msg(numero2);
-                }
-            }
-        });
-
-        //Botones Player 1,player 2 && stargame
-        frame.add(boton1,BorderLayout.WEST);
-        frame.add(boton2,BorderLayout.EAST);
-        frame.add(logs,BorderLayout.CENTER);
-        frame.setSize(800,600);
-
-        game.start();
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -274,73 +231,73 @@ public class Game extends Canvas implements Runnable, ActionListener {
     }
 
     public static void msg(int valor){
-        p.avanzar(valor);
-        if(p.getPosicion()==3){
-            p.setPosicion(17);
+        p1.avanzar(valor);
+        if(p1.getPosicion()==3){
+            p1.setPosicion(17);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==6){
-            p.setPosicion(20);
+        if(p1.getPosicion()==6){
+            p1.setPosicion(20);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==10){
-            p.setPosicion(19);
+        if(p1.getPosicion()==10){
+            p1.setPosicion(19);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==11){
-            p.setPosicion(4);
+        if(p1.getPosicion()==11){
+            p1.setPosicion(4);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==16){
-            p.setPosicion(2);
+        if(p1.getPosicion()==16){
+            p1.setPosicion(2);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==18){
-            p.setPosicion(30);
+        if(p1.getPosicion()==18){
+            p1.setPosicion(30);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==21){
-            p.setPosicion(8);
+        if(p1.getPosicion()==21){
+            p1.setPosicion(8);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==22){
-            p.setPosicion(36);
+        if(p1.getPosicion()==22){
+            p1.setPosicion(36);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==23){
-            p.setPosicion(9);
+        if(p1.getPosicion()==23){
+            p1.setPosicion(9);
             mensajes.append("Desperdiciaste agua, Bajas al 9"+"\n");
         }
-        if(p.getPosicion()==28){
-            p.setPosicion(43);
+        if(p1.getPosicion()==28){
+            p1.setPosicion(43);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==31){
-            p.setPosicion(40);
+        if(p1.getPosicion()==31){
+            p1.setPosicion(40);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==33){
-            p.setPosicion(25);
+        if(p1.getPosicion()==33){
+            p1.setPosicion(25);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==38){
-            p.setPosicion(32);
+        if(p1.getPosicion()==38){
+            p1.setPosicion(32);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==39){
-            p.setPosicion(45);
+        if(p1.getPosicion()==39){
+            p1.setPosicion(45);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==41){
-            p.setPosicion(27);
+        if(p1.getPosicion()==41){
+            p1.setPosicion(27);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==44){
-            p.setPosicion(42);
+        if(p1.getPosicion()==44){
+            p1.setPosicion(42);
             mensajes.append(""+"\n");
         }
-        if(p.getPosicion()==47){
-            p.setPosicion(37);
+        if(p1.getPosicion()==47){
+            p1.setPosicion(37);
             mensajes.append(""+"\n");
         }
     }
