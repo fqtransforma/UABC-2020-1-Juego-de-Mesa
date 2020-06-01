@@ -7,7 +7,10 @@ import java.awt.event.ActionListener;
 
 public class SwingPaint {
 
-    JButton clearBtn,blackBtn,blueBtn,greenBtn,redBtn,magentaBtn;
+    JButton clearBtn,blackBtn,blueBtn,greenBtn,redBtn,magentaBtn,jugarBtn;
+    JFrame panel = new JFrame();
+
+    static int num;
     DGame dGame;
     ActionListener actionListener =  new ActionListener() {
         @Override
@@ -58,6 +61,17 @@ public class SwingPaint {
         redBtn.addActionListener(actionListener);
         magentaBtn = new JButton("Magenta");
         magentaBtn.addActionListener(actionListener);
+        jugarBtn = new JButton("Jugar");
+        jugarBtn.setFont(new Font("cooper black",0,30 ));
+        jugarBtn.setBounds(450,100, 200,40);
+        //evento para que cuando presione Jugar aparezaca lo que dibujara
+        ActionListener act = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                juego();
+            }
+        };
+        jugarBtn.addActionListener(act);
 
         //Agregar Panel
         controls.add(greenBtn);
@@ -66,16 +80,23 @@ public class SwingPaint {
         controls.add(redBtn);
         controls.add(magentaBtn);
         controls.add(clearBtn);
+        controls.add(jugarBtn);
 
         //Agregar al contenido
         content.add(controls, BorderLayout.NORTH);
 
         frame.setSize(600, 600);
         //Puede cerrar el Frame
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //Mostrar el panel a pintar
         frame.setVisible(true);
     }
+    public void juego(){
+        Carta c = new Carta();
+        c.setVisible(true);
+    }
+
+
 }
 
 
