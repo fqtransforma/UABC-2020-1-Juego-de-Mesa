@@ -37,7 +37,12 @@ public class Juego extends JFrame{
 
     private JButton Regresar;
 
+    public PlayMusic MCaricaturas = new PlayMusic();
+
+
+
     public Juego (){
+
         super("Juego");
         this.getContentPane().setLayout(new BorderLayout());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -46,6 +51,13 @@ public class Juego extends JFrame{
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        //////
+        MCaricaturas.MFCaricaturas();
+        MCaricaturas.play();
+
+
+
+        /////
         panelArriba = new JPanel();
         panelArriba.setLayout(new BoxLayout(panelArriba,BoxLayout.X_AXIS));
 
@@ -137,169 +149,81 @@ public class Juego extends JFrame{
 
         Regresar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
+
                 dispose();new RuletaGui();
+                MCaricaturas.cerrar();
             }
         });
 
         buttons[0][0].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
 
-                try {
-                    Clip sonido = AudioSystem.getClip();
-                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
-                    sonido.open(AudioSystem.getAudioInputStream(a));
-                    SeresVivos seres1 = new SeresVivos();
-                    sonido.start();
-                    seres1.Seres();
-                    Thread.sleep(1000);
-                    sonido.close();
-                } catch (Exception tipoError) {
-                    System.out.println("" + tipoError);
-                }
+                SeresVivos seres1 = new SeresVivos();
+                seres1.Seres();
+
             }
         });
         ////
         buttons[0][1].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-
-                try {
-                    Clip sonido = AudioSystem.getClip();
-                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
-                    sonido.open(AudioSystem.getAudioInputStream(a));
-                    sonido.start();
-                    Animales animal1 = new Animales();
-                    animal1.Animal();
-                    Thread.sleep(1000);
-                    sonido.close();
-                } catch (Exception tipoError) {
-                    System.out.println("" + tipoError);
-                }
+                Animales animal1 = new Animales();
+                animal1.Animal();
             }
         });
         ////
         buttons[0][2].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
+                Minerales mineral = new Minerales();
+                mineral.Mineral();
 
-                try {
-                    Clip sonido = AudioSystem.getClip();
-                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
-                    sonido.open(AudioSystem.getAudioInputStream(a));
-                    Minerales mineral = new Minerales();
-                    sonido.start();
-                    mineral.Mineral();
-                    Thread.sleep(1000);
-                    sonido.close();
-                } catch (Exception tipoError) {
-                    System.out.println("" + tipoError);
-                }
             }
         });
         ////
         buttons[1][0].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
+                RecursosNat recurso = new RecursosNat();
+                recurso.Recursos();
 
-                try {
-                    Clip sonido = AudioSystem.getClip();
-                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
-                    sonido.open(AudioSystem.getAudioInputStream(a));
-                    RecursosNat recurso = new RecursosNat();
-                    sonido.start();
-                    recurso.Recursos();
-                    Thread.sleep(1000);
-                    sonido.close();
-                } catch (Exception tipoError) {
-                    System.out.println("" + tipoError);
-                }
             }
         });
         ////
         buttons[1][1].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
+                RecursosNoRenov recurso = new RecursosNoRenov();
+                recurso.NoRenovable();
 
-                try {
-                    Clip sonido = AudioSystem.getClip();
-                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
-                    sonido.open(AudioSystem.getAudioInputStream(a));
-                    RecursosNoRenov recurso = new RecursosNoRenov();
-                    sonido.start();
-                    recurso.NoRenovable();
-                    Thread.sleep(1000);
-                    sonido.close();
-                } catch (Exception tipoError) {
-                    System.out.println("" + tipoError);
-                }
             }
         });
         ////
         buttons[1][2].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
+                RecursosOrg recurso=new RecursosOrg();
+                recurso.Organico();
 
-                try {
-                    Clip sonido = AudioSystem.getClip();
-                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
-                    sonido.open(AudioSystem.getAudioInputStream(a));
-                    RecursosOrg recurso=new RecursosOrg();
-                    sonido.start();
-                    recurso.Organico();
-                    Thread.sleep(1000);
-                    sonido.close();
-                } catch (Exception tipoError) {
-                    System.out.println("" + tipoError);
-                }
             }
         });
         ////
         buttons[2][0].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
+                RecursosRenov recurso=new RecursosRenov();
+                recurso.Renovable();
 
-                try {
-                    Clip sonido = AudioSystem.getClip();
-                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
-                    sonido.open(AudioSystem.getAudioInputStream(a));
-                    RecursosRenov recurso=new RecursosRenov();
-                    sonido.start();
-                    recurso.Renovable();
-                    Thread.sleep(1000);
-                    sonido.close();
-                } catch (Exception tipoError) {
-                    System.out.println("" + tipoError);
-                }
             }
         });
         ////
         buttons[2][1].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
+                SeresNoVivos seres =new SeresNoVivos();
+                seres.NoVivo();
 
-                try {
-                    Clip sonido = AudioSystem.getClip();
-                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
-                    sonido.open(AudioSystem.getAudioInputStream(a));
-                    SeresNoVivos seres =new SeresNoVivos();
-                    sonido.start();
-                    seres.NoVivo();
-                    Thread.sleep(1000);
-                    sonido.close();
-                } catch (Exception tipoError) {
-                    System.out.println("" + tipoError);
-                }
             }
         });
         ////
         buttons[2][2].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
+                Plantas planta = new Plantas();
+                planta.Planta();
 
-                try {
-                    Clip sonido = AudioSystem.getClip();
-                    File a = new File("src/resources/ruletaF_src/audio/musica/Escojer.wav");
-                    sonido.open(AudioSystem.getAudioInputStream(a));
-                    Plantas planta = new Plantas();
-                    sonido.start();
-                    planta.Planta();
-                    Thread.sleep(1000);
-                    sonido.close();
-                } catch (Exception tipoError) {
-                    System.out.println("" + tipoError);
-                }
             }
         });
 

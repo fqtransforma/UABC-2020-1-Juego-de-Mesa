@@ -46,9 +46,10 @@ public class RuletaGui extends JFrame {
 
         Salir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
-                dispose();
-                //musica.cerrar();
-                System.exit(0);
+              dispose();
+              musica.cerrar();
+              System.exit(0);
+
             }
         });
 

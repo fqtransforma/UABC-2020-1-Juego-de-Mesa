@@ -230,7 +230,7 @@ public class Actuacion extends JFrame{
     }
     public void iniciartiempo() {
         cronometro = true;
-        hilo = new Thread( this );
+       // hilo = new Thread( this );
         hilo.start();
     }
     public void pararCronometro(){

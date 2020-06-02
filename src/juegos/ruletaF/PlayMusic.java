@@ -27,16 +27,34 @@ public class PlayMusic{
             System.out.println("" + tipoError);
         }
 
+
     }
+    /////// Inicio sonidos Caricaturas
+    public void MFCaricaturas(){
+        try{
+            clip = AudioSystem.getClip();
+            File a = new File("src/resources/ruletaF_src/audio/musica/Mfondo.wav");
+            clip.open(AudioSystem.getAudioInputStream(a));
+            clip.loop(5);
+        }catch (Exception tipoError) {
+            System.out.println("" + tipoError);
+        }
+
+    }
+
+
+    ////////////Fin onidos Caricaturas
 
     public void efectoYeah(){
         try{
             clip = AudioSystem.getClip();
             File a = new File("src/resources/ruletaF_src/audio/musica/yeahEcoreto.wav");
             clip.open(AudioSystem.getAudioInputStream(a));
+
         }catch (Exception tipoError) {
             System.out.println("" + tipoError);
         }
+
 
     }
 
@@ -59,6 +77,7 @@ public class PlayMusic{
     public void cerrar(){
         clip.close();
     }
-
-
 }
+
+
+

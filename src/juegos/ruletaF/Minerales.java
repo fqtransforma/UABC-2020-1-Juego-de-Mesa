@@ -19,13 +19,13 @@ public class Minerales extends JFrame implements ActionListener {
 
 
         setContentPane(new JLabel(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Minerales.png")));
-        setBounds(900,80,645,800);
+        setBounds(750,80,600,800);
 
         boton1=new JButton("Ayuda");
         ImageIcon icono1 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Help.png");
         boton1.setIcon(icono1);
         boton1.setBorder(null);
-        boton1.setBounds(600,750,35,25);
+        boton1.setBounds(550,750,35,25);
         add(boton1);
         boton1.addActionListener(this);
 
@@ -33,7 +33,7 @@ public class Minerales extends JFrame implements ActionListener {
         ImageIcon icono5 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Cerrar.png");
         boton2.setIcon(icono5);
         boton2.setBorder(null);
-        boton2.setBounds(600,10,35,35);
+        boton2.setBounds(550,10,35,35);
         add(boton2);
         boton2.addActionListener(this);
     }
