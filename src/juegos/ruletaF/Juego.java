@@ -37,7 +37,7 @@ public class Juego extends JFrame{
 
     private JButton Regresar;
 
-    public PlayMusic MCaricaturas = new PlayMusic();
+    public PlayMusic musicaFondo = new PlayMusic();
 
 
 
@@ -52,8 +52,8 @@ public class Juego extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //////
-        MCaricaturas.MFCaricaturas();
-        MCaricaturas.play();
+        musicaFondo.musicaFondocaricaturas();
+        musicaFondo.play();
 
 
 
@@ -149,15 +149,14 @@ public class Juego extends JFrame{
 
         Regresar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
-
+                musicaFondo.cerrar();
                 dispose();new RuletaGui();
-                MCaricaturas.cerrar();
+
             }
         });
 
         buttons[0][0].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-
                 SeresVivos seres1 = new SeresVivos();
                 seres1.Seres();
 
@@ -183,7 +182,6 @@ public class Juego extends JFrame{
             public void actionPerformed(ActionEvent actionEvent){
                 RecursosNat recurso = new RecursosNat();
                 recurso.Recursos();
-
             }
         });
         ////

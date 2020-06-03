@@ -22,7 +22,7 @@ public class RuletaGui extends JFrame {
     private JLabel label2;
     private Random r1= new Random(System.currentTimeMillis());
     private ImageIcon labelImage;
-    private PlayMusic musica= new PlayMusic();
+   // private PlayMusic musica= new PlayMusic();
     private int valor;
     private int aux;
 
@@ -47,7 +47,7 @@ public class RuletaGui extends JFrame {
         Salir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent) {
               dispose();
-              musica.cerrar();
+              //musica.cerrar();
               System.exit(0);
 
             }

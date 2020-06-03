@@ -147,6 +147,7 @@ public class JuegoBasta extends JFrame implements Runnable{
         panelIzquierdo.setLayout(new BoxLayout(panelIzquierdo,BoxLayout.Y_AXIS));
 
         label= new JLabel();
+
         labelImageP = new ImageIcon("src/resources/ruletaF_src/graficos/juegaBasta/logoBasta.png");
         label.setIcon(labelImageP);
         label.setAlignmentX(Component.CENTER_ALIGNMENT);

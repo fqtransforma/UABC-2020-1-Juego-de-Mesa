@@ -30,7 +30,7 @@ public class PlayMusic{
 
     }
     /////// Inicio sonidos Caricaturas
-    public void MFCaricaturas(){
+    public void musicaFondocaricaturas(){
         try{
             clip = AudioSystem.getClip();
             File a = new File("src/resources/ruletaF_src/audio/musica/Mfondo.wav");
