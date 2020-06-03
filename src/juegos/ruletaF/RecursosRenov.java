@@ -23,7 +23,7 @@ public class RecursosRenov extends JFrame implements ActionListener {
         ImageIcon icono1 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Help.png");
         boton1.setIcon(icono1);
         boton1.setBorder(null);
-        boton1.setBounds(550,750,35,25);
+        boton1.setBounds(10,10,35,25);
         add(boton1);
         boton1.addActionListener(this);
 

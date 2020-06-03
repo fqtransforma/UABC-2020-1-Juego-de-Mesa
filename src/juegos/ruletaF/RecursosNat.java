@@ -20,12 +20,11 @@ public class RecursosNat extends JFrame implements ActionListener {
 
         setContentPane(new JLabel(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Naturales.png")));
         setBounds(750,80,600,800);
-
         boton1=new JButton("Ayuda");
         ImageIcon icono1 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Help.png");
         boton1.setIcon(icono1);
         boton1.setBorder(null);
-        boton1.setBounds(550,750,35,25);
+        boton1.setBounds(10,10,35,25);
         add(boton1);
         boton1.addActionListener(this);
 

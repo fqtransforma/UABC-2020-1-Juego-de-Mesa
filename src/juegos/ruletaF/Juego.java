@@ -38,7 +38,7 @@ public class Juego extends JFrame{
     private JButton Regresar;
 
     public PlayMusic musicaFondo = new PlayMusic();
-
+    private boolean tarjetaActiva;
 
 
     public Juego (){
