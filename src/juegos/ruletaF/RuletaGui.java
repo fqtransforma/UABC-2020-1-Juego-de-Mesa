@@ -65,14 +65,14 @@ public class RuletaGui extends JFrame {
                         case 3:dispose();new JuegoBasta();break;*/
 
                       //para pruebas caricaturas
-                      /*  case 1:dispose();new Juego();break;
+                        case 1:dispose();new Juego();break;
                         case 2:dispose();new Juego();break;
-                        case 3:dispose();new Juego();break;*/
+                        case 3:dispose();new Juego();break;
 
                         //para pruebas ecoreto
-                        case 1:dispose();new WindowApp("EcoReto");break;
+                       /* case 1:dispose();new WindowApp("EcoReto");break;
                         case 2:dispose();new WindowApp("EcoReto");break;
-                        case 3:dispose();new WindowApp("EcoReto");break;
+                        case 3:dispose();new WindowApp("EcoReto");break;*/
 
                         //para pruebas de los 3
                        /*case 1:dispose();new JuegoBasta();break;

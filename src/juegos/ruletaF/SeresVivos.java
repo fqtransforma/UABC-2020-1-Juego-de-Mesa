@@ -11,17 +11,18 @@ import java.io.File;
 
 import static java.lang.Thread.sleep;
 
-public class SeresVivos extends JFrame implements ActionListener {
+public class SeresVivos extends JFrame  implements ActionListener {
 
     private JButton boton1,boton2;
 
     public void Seres(){
+
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
         setVisible(true);
         setContentPane(new JLabel(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/SeresV.png")));
-
+        setEnabled(true);
         setBounds(750,80,600,800);
 
         boton1=new JButton("Ayuda");
@@ -66,7 +67,7 @@ public class SeresVivos extends JFrame implements ActionListener {
                 sonido.open(AudioSystem.getAudioInputStream(a));
                 sonido.start();
                 Thread.sleep(100);
-                this.toBack();
+                dispose();
                 setVisible(false);
                 sonido.close();
 
