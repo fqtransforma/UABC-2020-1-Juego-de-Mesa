@@ -91,6 +91,7 @@ public class Home extends JPanel {
                     app.setVisible(false);
                     app.dispose();
                     app.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                    new RuletaGui();
                 }
             }
         });
