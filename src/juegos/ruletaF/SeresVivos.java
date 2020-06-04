@@ -18,11 +18,12 @@ public class SeresVivos extends JFrame  implements ActionListener {
     public void Seres(){
 
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setUndecorated(true);
         setVisible(true);
         setContentPane(new JLabel(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/SeresV.png")));
         setEnabled(true);
+        setAlwaysOnTop(true);
         setBounds(750,80,600,800);
 
         boton1=new JButton("Ayuda");

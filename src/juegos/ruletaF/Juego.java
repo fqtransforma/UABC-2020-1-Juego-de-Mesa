@@ -157,12 +157,12 @@ public class Juego extends JFrame{
 
         buttons[0][0].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                Random r = new Random();
-                int random = r.nextInt(9);
-                Tarjetas tarjeta=new Tarjetas();
-                tarjeta.seleccion(random);
-                //SeresVivos seres1 = new SeresVivos();
-                //seres1.Seres();
+               // Random r = new Random();
+                //int random = r.nextInt(9);
+                //Tarjetas tarjeta=new Tarjetas();
+                //tarjeta.seleccion(random);
+                SeresVivos seres1 = new SeresVivos();
+                seres1.Seres();
 
             }
         });
