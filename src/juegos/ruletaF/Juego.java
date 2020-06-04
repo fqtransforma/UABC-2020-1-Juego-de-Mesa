@@ -155,105 +155,106 @@ public class Juego extends JFrame{
             }
         });
 
-        buttons[0][0].addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent actionEvent){
-               // Random r = new Random();
-                //int random = r.nextInt(9);
-                //Tarjetas tarjeta=new Tarjetas();
-                //tarjeta.seleccion(random);
-                SeresVivos seres1 = new SeresVivos();
-                seres1.Seres();
 
-            }
-        });
-        ////
-        buttons[0][1].addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent actionEvent){
-                Random r = new Random();
-                int random = r.nextInt(9);
-                Tarjetas tarjeta=new Tarjetas();
-                tarjeta.seleccion(random);
-                //Animales animal1 = new Animales();
-                //animal1.Animal();
-            }
-        });
-        ////
-        buttons[0][2].addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent actionEvent){
-                Random r = new Random();
-                int random = r.nextInt(9);
-                Tarjetas tarjeta=new Tarjetas();
-                tarjeta.seleccion(random);
-                // Minerales mineral = new Minerales();
-                //mineral.Mineral();
-            }
-        });
-        ////
-        buttons[1][0].addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent actionEvent){
-                Random r = new Random();
-                int random = r.nextInt(9);
-                Tarjetas tarjeta=new Tarjetas();
-                tarjeta.seleccion(random);
-                //RecursosNat recurso = new RecursosNat();
-                //recurso.Recursos();
-            }
-        });
-        ////
-        buttons[1][1].addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent actionEvent){
-                Random r = new Random();
-                int random = r.nextInt(9);
-                Tarjetas tarjeta=new Tarjetas();
-                tarjeta.seleccion(random);
-                // RecursosNoRenov recurso = new RecursosNoRenov();
-               // recurso.NoRenovable();
-            }
-        });
-        ////
-        buttons[1][2].addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent actionEvent){
-                Random r = new Random();
-                int random = r.nextInt(9);
-                Tarjetas tarjeta=new Tarjetas();
-                tarjeta.seleccion(random);
-               // RecursosOrg recurso=new RecursosOrg();
-               // recurso.Organico();
-            }
-        });
-        ////
-        buttons[2][0].addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent actionEvent){
-                Random r = new Random();
-                int random = r.nextInt(9);
-                Tarjetas tarjeta=new Tarjetas();
-                tarjeta.seleccion(random);
-                //RecursosRenov recurso=new RecursosRenov();
-                //recurso.Renovable();
-            }
-        });
-        ////
-        buttons[2][1].addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent actionEvent){
-                Random r = new Random();
-                int random = r.nextInt(9);
-                Tarjetas tarjeta=new Tarjetas();
-                tarjeta.seleccion(random);
-                // SeresNoVivos seres =new SeresNoVivos();
-               // seres.NoVivo();
-            }
-        });
-        ////
-        buttons[2][2].addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent actionEvent){
-                Random r = new Random();
-                int random = r.nextInt(9);
-                Tarjetas tarjeta=new Tarjetas();
-                tarjeta.seleccion(random);
-                //Plantas planta = new Plantas();
-                //planta.Planta();
-            }
-        });
+            buttons[0][0].addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent) {
+                    Random r = new Random();
+                    int random = r.nextInt(9);
+                    Tarjetas tarjeta = new Tarjetas();
+                    tarjeta.seleccion(random);
+                    //SeresVivos seres1 = new SeresVivos();
+                    //seres1.Seres();
+
+                }
+            });
+            ////
+            buttons[0][1].addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent) {
+                    Random r = new Random();
+                    int random = r.nextInt(9);
+                    Tarjetas tarjeta = new Tarjetas();
+                    tarjeta.seleccion(random);
+                    //Animales animal1 = new Animales();
+                    //animal1.Animal();
+                }
+            });
+            ////
+            buttons[0][2].addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent) {
+                    Random r = new Random();
+                    int random = r.nextInt(9);
+                    Tarjetas tarjeta = new Tarjetas();
+                    tarjeta.seleccion(random);
+                    // Minerales mineral = new Minerales();
+                    //mineral.Mineral();
+                }
+            });
+            ////
+            buttons[1][0].addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent) {
+                    Random r = new Random();
+                    int random = r.nextInt(9);
+                    Tarjetas tarjeta = new Tarjetas();
+                    tarjeta.seleccion(random);
+                    //RecursosNat recurso = new RecursosNat();
+                    //recurso.Recursos();
+                }
+            });
+            ////
+            buttons[1][1].addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent) {
+                    Random r = new Random();
+                    int random = r.nextInt(9);
+                    Tarjetas tarjeta = new Tarjetas();
+                    tarjeta.seleccion(random);
+                    // RecursosNoRenov recurso = new RecursosNoRenov();
+                    // recurso.NoRenovable();
+                }
+            });
+            ////
+            buttons[1][2].addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent) {
+                    Random r = new Random();
+                    int random = r.nextInt(9);
+                    Tarjetas tarjeta = new Tarjetas();
+                    tarjeta.seleccion(random);
+                    // RecursosOrg recurso=new RecursosOrg();
+                    // recurso.Organico();
+                }
+            });
+            ////
+            buttons[2][0].addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent) {
+                    Random r = new Random();
+                    int random = r.nextInt(9);
+                    Tarjetas tarjeta = new Tarjetas();
+                    tarjeta.seleccion(random);
+                    //RecursosRenov recurso=new RecursosRenov();
+                    //recurso.Renovable();
+                }
+            });
+            ////
+            buttons[2][1].addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent) {
+                    Random r = new Random();
+                    int random = r.nextInt(9);
+                    Tarjetas tarjeta = new Tarjetas();
+                    tarjeta.seleccion(random);
+                    // SeresNoVivos seres =new SeresNoVivos();
+                    // seres.NoVivo();
+                }
+            });
+            ////
+            buttons[2][2].addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent) {
+                    Random r = new Random();
+                    int random = r.nextInt(9);
+                    Tarjetas tarjeta = new Tarjetas();
+                    tarjeta.seleccion(random);
+                    //Plantas planta = new Plantas();
+                    //planta.Planta();
+                }
+            });
 
     }//fin constructor
 

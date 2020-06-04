@@ -14,9 +14,8 @@ public class RecursosRenov extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setUndecorated(true);
-
         setVisible(true);
-
+       //setAlwaysOnTop(true);
         setContentPane(new JLabel(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Renovables.png")));
         setBounds(750,80,600,800);
         boton1=new JButton("Ayuda");
@@ -57,7 +56,8 @@ public class RecursosRenov extends JFrame implements ActionListener {
                 sonido.open(AudioSystem.getAudioInputStream(a));
                 sonido.start();
                 Thread.sleep(100);
-                this.toBack();
+                dispose();
+                //this.toBack();
                 setVisible(false);
                 sonido.close();
 

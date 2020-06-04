@@ -13,9 +13,8 @@ public class Animales extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setUndecorated(true);
-
         setVisible(true);
-
+        //setAlwaysOnTop(true);
         setContentPane(new JLabel(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Animales.png")));
         setBounds(750,80,600,800);
 
@@ -23,7 +22,7 @@ public class Animales extends JFrame implements ActionListener {
         ImageIcon icono1 = new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/Help.png");
         boton1.setIcon(icono1);
         boton1.setBorder(null);
-        boton1.setBounds(550,750,35,25);
+        boton1.setBounds(10,10,35,25);
         add(boton1);
         boton1.addActionListener(this);
 
@@ -61,7 +60,8 @@ public class Animales extends JFrame implements ActionListener {
                 sonido.open(AudioSystem.getAudioInputStream(a));
                 sonido.start();
                 Thread.sleep(100);
-                this.toBack();
+                dispose();
+                // this.toBack();
                 setVisible(false);
                 sonido.close();
 

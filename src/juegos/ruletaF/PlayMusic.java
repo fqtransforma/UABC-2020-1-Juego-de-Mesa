@@ -35,7 +35,7 @@ public class PlayMusic{
             clip = AudioSystem.getClip();
             File a = new File("src/resources/ruletaF_src/audio/musica/Mfondo.wav");
             clip.open(AudioSystem.getAudioInputStream(a));
-            clip.loop(5);
+            clip.loop(10);
         }catch (Exception tipoError) {
             System.out.println("" + tipoError);
         }

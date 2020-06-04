@@ -23,7 +23,7 @@ public class SeresVivos extends JFrame  implements ActionListener {
         setVisible(true);
         setContentPane(new JLabel(new ImageIcon("src/resources/ruletaF_src/graficos/caricaturas/SeresV.png")));
         setEnabled(true);
-        setAlwaysOnTop(true);
+        //setAlwaysOnTop(true);
         setBounds(750,80,600,800);
 
         boton1=new JButton("Ayuda");
