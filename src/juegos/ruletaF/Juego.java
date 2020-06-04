@@ -157,70 +157,107 @@ public class Juego extends JFrame{
 
         buttons[0][0].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                SeresVivos seres1 = new SeresVivos();
-                seres1.Seres();
+
+                Random r = new Random();
+                int random = r.nextInt(9);
+                Caricaturas cara=new Caricaturas();
+                cara.Tarjetas(random);
+               // SeresVivos seres1 = new SeresVivos();
+                //seres1.Seres();
 
             }
         });
         ////
         buttons[0][1].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                Animales animal1 = new Animales();
-                animal1.Animal();
+                Random r = new Random();
+                int random = r.nextInt(9);
+                Caricaturas cara=new Caricaturas();
+                cara.Tarjetas(random);
+               // Animales animal1 = new Animales();
+                //animal1.Animal();
             }
         });
         ////
         buttons[0][2].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                Minerales mineral = new Minerales();
-                mineral.Mineral();
+                Random r = new Random();
+                int random = r.nextInt(9);
+                Caricaturas cara=new Caricaturas();
+                cara.Tarjetas(random);
+                //Minerales mineral = new Minerales();
+                //mineral.Mineral();
 
             }
         });
         ////
         buttons[1][0].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                RecursosNat recurso = new RecursosNat();
-                recurso.Recursos();
+                Random r = new Random();
+                int random = r.nextInt(9);
+                Caricaturas cara=new Caricaturas();
+                cara.Tarjetas(random);
+                //RecursosNat recurso = new RecursosNat();
+                //recurso.Recursos();
             }
         });
         ////
         buttons[1][1].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                RecursosNoRenov recurso = new RecursosNoRenov();
-                recurso.NoRenovable();
+                Random r = new Random();
+                int random = r.nextInt(9);
+                Caricaturas cara=new Caricaturas();
+                cara.Tarjetas(random);
+                //RecursosNoRenov recurso = new RecursosNoRenov();
+                //recurso.NoRenovable();
 
             }
         });
         ////
         buttons[1][2].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                RecursosOrg recurso=new RecursosOrg();
-                recurso.Organico();
+                Random r = new Random();
+                int random = r.nextInt(9);
+                Caricaturas cara=new Caricaturas();
+                cara.Tarjetas(random);
+                //RecursosOrg recurso=new RecursosOrg();
+                //recurso.Organico();
 
             }
         });
         ////
         buttons[2][0].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                RecursosRenov recurso=new RecursosRenov();
-                recurso.Renovable();
+                Random r = new Random();
+                int random = r.nextInt(9);
+                Caricaturas cara=new Caricaturas();
+                cara.Tarjetas(random);
+                //RecursosRenov recurso=new RecursosRenov();
+                //recurso.Renovable();
 
             }
         });
         ////
         buttons[2][1].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                SeresNoVivos seres =new SeresNoVivos();
-                seres.NoVivo();
+                Random r = new Random();
+                int random = r.nextInt(9);
+                Caricaturas cara=new Caricaturas();
+                cara.Tarjetas(random);
+                //SeresNoVivos seres =new SeresNoVivos();
+                //seres.NoVivo();
 
             }
         });
         ////
         buttons[2][2].addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent actionEvent){
-                Plantas planta = new Plantas();
-                planta.Planta();
+                Random r = new Random();
+                int random = r.nextInt(9);
+                Caricaturas cara=new Caricaturas();
+                cara.Tarjetas(random);
+                //Plantas planta = new Plantas();
+                //planta.Planta();
 
             }
         });
