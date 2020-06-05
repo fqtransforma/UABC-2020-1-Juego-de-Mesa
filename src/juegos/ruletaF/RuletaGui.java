@@ -1,5 +1,7 @@
 package juegos.ruletaF;
 
+import juegos.ruleta.WindowPista;
+
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -65,9 +67,9 @@ public class RuletaGui extends JFrame {
                         case 3:dispose();new JuegoBasta();break;*/
 
                       //para pruebas caricaturas
-                        case 1:dispose();new Juego();break;
-                        case 2:dispose();new Juego();break;
-                        case 3:dispose();new Juego();break;
+                        case 1:dispose();new WindowPista();break;
+                        case 2:dispose();new WindowPista();break;
+                        case 3:dispose();new WindowPista();break;
 
                         //para pruebas ecoreto
                        /* case 1:dispose();new WindowApp("EcoReto");break;
