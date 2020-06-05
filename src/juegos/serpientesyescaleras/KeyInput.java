@@ -21,5 +21,4 @@ public class KeyInput extends KeyAdapter {
         game.keyReleased(e);
     }
 
-
 }
