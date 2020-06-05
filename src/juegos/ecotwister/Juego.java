@@ -3,8 +3,6 @@ package juegos.ecotwister;
 import javax.swing.*;
 import java.awt.*;
 
-
-
 public class Juego extends JPanel{
     JFrame marco = new JFrame("EcoTwister");
     VisualManager vim;
@@ -19,6 +17,7 @@ public class Juego extends JPanel{
     JLabel etiqueta4 = new JLabel();
     JLabel etiqueta5 = new JLabel();
     JLabel etiqueta6 = new JLabel();
+    public final static double DIVICION = 2*Math.PI/16;
 
 
     public Juego()
@@ -27,7 +26,6 @@ public class Juego extends JPanel{
 
         Audio musica = new Audio();
         musica.Play(filepath);
-
         vim = new VisualManager();
         marco.getContentPane().setLayout(null);
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
