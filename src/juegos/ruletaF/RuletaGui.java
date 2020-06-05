@@ -1,5 +1,7 @@
 package juegos.ruletaF;
 
+import juegos.ruleta.EcoPregunta;
+import juegos.ruleta.SwingPaint;
 import juegos.ruleta.WindowPista;
 
 import javax.swing.*;
@@ -67,9 +69,14 @@ public class RuletaGui extends JFrame {
                         case 3:dispose();new JuegoBasta();break;*/
 
                       //para pruebas caricaturas
-                        case 1:dispose();new WindowPista();break;
-                        case 2:dispose();new WindowPista();break;
-                        case 3:dispose();new WindowPista();break;
+                        case 1:dispose();new Juego();break;
+                        case 2:dispose();new WindowApp("EcoReto");break;
+                        case 3:dispose();new Juego();break;
+                        case 4:dispose();new WindowPista();break;
+                        case 5:dispose();new SwingPaint().juego();break;
+                        case 6:dispose();new JuegoBasta();break;
+                        //case 7:dispose();new WindowPista();break;
+
 
                         //para pruebas ecoreto
                        /* case 1:dispose();new WindowApp("EcoReto");break;
