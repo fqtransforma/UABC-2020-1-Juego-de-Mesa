@@ -17,6 +17,7 @@ public class Juego extends JPanel{
     JLabel etiqueta4 = new JLabel();
     JLabel etiqueta5 = new JLabel();
     JLabel etiqueta6 = new JLabel();
+    public final static double DIVICION = 2*Math.PI/16;
 
 
     public Juego()
@@ -74,9 +75,16 @@ public class Juego extends JPanel{
                 vim.graphicList.add(GameTablero);
                 vim.repaint();
                 ButtonGirar.addActionListener(ev -> {
-                    GameTablero.updateFlecha();
-                    vim.graphicList.add(GameTablero);
-                    vim.repaint();
+                    int numero = (int)((Math.random() * 23) + 1);
+                    if(((numero % 4) == 0) || (numero == 0)){
+                        numero++;
+                    }
+                    for(int i = 0; i < numero ; i++){
+                        GameTablero.updateFlecha(i * DIVICION);
+                        vim.graphicList.add(GameTablero);
+                        vim.repaint();
+                        repaint();
+                    }
                 });
             });
             ButtonTablero.addActionListener(event -> {
@@ -84,19 +92,11 @@ public class Juego extends JPanel{
                 //vim.graphicList.add(new Tapete(0, 0));
                 //vim.repaint();
             });
-
         });
 
         ButtonSalir.addActionListener(e -> System.exit(1));
         repaint();
     }
-
-    /*public static void main(String [] args)
-    {
-
-        Juego m = new Juego();
-
-    }*/
 
     public static void run(){
         Juego m = new Juego();
