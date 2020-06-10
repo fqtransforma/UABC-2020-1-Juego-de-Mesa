@@ -9,6 +9,7 @@ import java.io.IOException;
 public class Tablero extends Graficos{
     Flecha aguja = new Flecha();
     private BufferedImage img2;
+    public final static double DIVICION = 2*Math.PI/16;
 
     public Tablero(int x, int y) {
         super(x, y);
@@ -29,5 +30,10 @@ public class Tablero extends Graficos{
             g.drawImage(img, 0, 0, 1000,700, null);
             //g.drawImage(img2, 503, 312, 100,80, null);
             aguja.paint(g);
+    }
+
+    public void updateFlecha(){
+        int numero = (int) ((Math.random() * 16) + 1);
+        aguja.setAngulo(numero * DIVICION);
     }
 }
