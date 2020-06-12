@@ -12,6 +12,7 @@
 package juegos.mainmenu;
 
 import general.Objeto2D;
+import general.Sonido;
 import general.Teclado;
 import juegos.ecotwister.Juego;
 import juegos.ruleta.EcoPregunta;
@@ -31,8 +32,10 @@ public class MenuRun extends  JPanel implements Runnable{
     Objeto2D personaje = new Objeto2D("src/resources/mainmenu_src/graficos/EcoMono.png", 640, 360);
     Objeto2D fondo1 = new Objeto2D("src/resources/mainmenu_src/graficos/primeraPantalla.png",0 ,0, 1280, 720);
 
+    public static Sonido OST = new Sonido("src/resources/mainmenu_src/audio/musica/TownTheme.wav",true);
+    public static Sonido selectSound = new Sonido("src/resources/mainmenu_src/audio/efectos/gmae.wav",false);
+
     boolean sesion=false;
-    Menu menu;
 
     private static volatile boolean onOff;
     private double fps = 0;
@@ -56,8 +59,9 @@ public class MenuRun extends  JPanel implements Runnable{
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setTitle("Juego de Mesa -");
-        boolean salir = false;
-        /*JOptionPane jp = new JOptionPane();
+        OST.play();
+        /*
+        JOptionPane jp = new JOptionPane();
         String name;
         do{
             name = jp.showInputDialog(frame, "¿Cual es un nombre?");
@@ -100,6 +104,9 @@ public class MenuRun extends  JPanel implements Runnable{
 
                 contador = System.nanoTime();
             }
+            if(this.isFocusOwner()){
+                OST.play();
+            }
         }
     }
 
@@ -136,17 +143,31 @@ public class MenuRun extends  JPanel implements Runnable{
 
     private void menu(int coorX, int coorY){
         if(coorY >= 530 && coorY <= 550){
-            if(coorX > 345 && coorX < 600)
+            if(coorX > 345 && coorX < 600) {
+                selectSound.restart();
                 Juego.run();
-            else if(coorX > 760 && coorX < 1020)
+                OST.pause();
+            }
+            else if(coorX > 760 && coorX < 1020) {
+                selectSound.restart();
                 EcoPregunta.run();
-            else if(coorX > -1170 && coorX < 1420)
+                OST.pause();
+            }
+            else if(coorX > 1170 && coorX < 1420) {
+                selectSound.restart();
                 RuletaGui.run();
-            else if(coorX > 1570 && coorX < 1815)
+                OST.pause();
+            }
+            else if(coorX > 1570 && coorX < 1815){
+                selectSound.restart();
                 System.out.println("Aqui va lo de clasificacion");
-            else if(coorX > 2035 && coorX < 2250)
+                OST.pause();
+            }
+            else if(coorX > 2035 && coorX < 2250) {
+                selectSound.restart();
                 Ventana.Start();
-
+                OST.pause();
+            }
         }
         teclado.enter = false;
 

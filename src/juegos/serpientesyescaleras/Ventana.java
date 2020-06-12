@@ -1,20 +1,27 @@
 package juegos.serpientesyescaleras;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Ventana {
 
     public static void Start(){
-        Game game=new Game();
+        Player p1 = new Player(700,420,"Jugador1");
+        Player p2 = new Player(700,450,"Jugador2");
+
+        Game game=new Game(p1,p2);
         game.setBounds(0,0,800,500);
 
         JTextArea mensajes = new JTextArea();
         JScrollPane logs = new JScrollPane(mensajes);
+        mensajes.append("Serpientes y Escaleras\n\n");
+        mensajes.append("Turno 1: "+p1.getName()+"\n");
+
         JPanel panel = new JPanel();
         JFrame frame =new JFrame(game.TITLE);
+        frame.setResizable(false);
+
         panel.setLayout(null);
         panel.setSize(800,500);
 
@@ -34,42 +41,47 @@ public class Ventana {
         mensajes.setEditable(false);
         mensajes.setAutoscrolls(true);
 
-
-
         //Boton 1 //Jugador 1
         boton1.setText("[PLAYER1]");
-        boton1.setSize(200,200);
         boton1.setBounds(0,500,100,100);
         boton1.setVisible(true);
+
+        //Boton 2 //Jugador 2
+        boton2.setText("[PLAYER2]");
+        boton2.setBounds(700, 500, 100, 100);
+        boton2.setVisible(true);
 
         boton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource()==boton1) {
-                    int numero1 = (int)(Math.random()*6+1);
-                    mensajes.append("JUGADOR 1 MUEVES: "+numero1+"\n");
-                    game.msg(numero1);
+                if (e.getSource() == boton1 && game.getTurno()==1) {
+                    int numero1 = (int) (Math.random() * 6 + 1);
+                    mensajes.append(p1.getName() + " MUEVES: " + numero1 + "\n\n");
+                    mensajes.append(game.msg(p1,numero1));
+                    //mensajes.append("Turno " + game.getTurnoCont() + ":" + p2.getName() + "\n");
+                    game.setTurno(0);
+                    game.turno_sig();
+                    game.setTurn(numero1);
+
+
                 }
             }
         });
-
-        //Boton 2 //Jugador 2
-
-        boton2.setText("[PLAYER2]");
-        boton2.setBounds(700,500,100,100);
-        boton2.setVisible(true);
 
         boton2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource()==boton2) {
-                    int numero2 = (int)(Math.random()*6+1);
-                    mensajes.append("JUGADOR 2 MUEVES: "+numero2+"\n");
-                    game.msg(numero2);
+                if (e.getSource() == boton2 && game.getTurno()==0) {
+                    int numero2 = (int) (Math.random() * 6 + 1);
+                    mensajes.append(p2.getName()+" MUEVES: " + numero2 + "\n\n");
+                    mensajes.append(game.msg(p2,numero2));
+                    //mensajes.append("Turno "+game.getTurnoCont()+":"+p1.getName()+"\n");
+                    game.setTurno(1);
+                    game.turno_sig();
+                    game.setTurn(numero2);
                 }
             }
         });
-
 
         //Boton Controles
         boton3.setText("CONTROLES");
@@ -101,7 +113,6 @@ public class Ventana {
                         "5. Se debe llegar al casilla final con el puntaje justo, si no es el caso, retrocede la cantidad que sobrepasó la meta.\n");
             }
         });
-
 
 
         //Botones Player 1,player 2 && stargame

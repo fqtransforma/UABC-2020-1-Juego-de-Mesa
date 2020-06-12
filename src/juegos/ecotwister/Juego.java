@@ -3,49 +3,47 @@ package juegos.ecotwister;
 import javax.swing.*;
 import java.awt.*;
 
-
-
 public class Juego extends JPanel{
     JFrame marco = new JFrame("EcoTwister");
     VisualManager vim;
-    JButton b1 = new JButton("Jugar");
-    JButton b2 = new JButton("Salir");
-    JButton b3 = new JButton("Comenzar");
-    JButton b4 = new JButton("Girar");
-    JButton b5 = new JButton("Tablero");
+    JButton ButtonJugar = new JButton("Jugar");
+    JButton ButtonSalir = new JButton("Salir");
+    JButton ButtonComenzar = new JButton("Comenzar");
+    JButton ButtonGirar = new JButton("Girar");
+    JButton ButtonTablero = new JButton("Tablero");
     JLabel etiqueta1 = new JLabel();
     JLabel etiqueta2 = new JLabel();
     JLabel etiqueta3 = new JLabel();
     JLabel etiqueta4 = new JLabel();
     JLabel etiqueta5 = new JLabel();
     JLabel etiqueta6 = new JLabel();
+    public final static double DIVICION = 2*Math.PI/16;
 
 
     public Juego()
     {
        String filepath = "resources/ecotwister_src/audio/musica/musiquita.wav";
-
+        Tablero GameTablero = new Tablero(0,0);
         Audio musica = new Audio();
         musica.Play(filepath);
-
         vim = new VisualManager();
         marco.getContentPane().setLayout(null);
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         marco.setSize(1200, 720);
         marco.getContentPane().setBackground(new Color(52, 185, 255));
-        b2.setBounds(1025, 550, 100, 40);
-        b1.setBounds(1025, 450, 100, 40);
+        ButtonSalir.setBounds(1025, 550, 100, 40);
+        ButtonJugar.setBounds(1025, 450, 100, 40);
         marco.add(vim);
-        marco.add(b2);
-        marco.add(b1);
-        b1.setVisible(true);
+        marco.add(ButtonSalir);
+        marco.add(ButtonJugar);
+        ButtonJugar.setVisible(true);
         marco.setVisible(true);
-        b1.addActionListener(e -> {
-            b3.setBounds(1025, 350, 100, 40);
-            b5.setBounds(1025, 450, 100, 40);
-            b1.setVisible(false);
-            marco.add(b3);
-            marco.add(b5);
+        ButtonJugar.addActionListener(e -> {
+            ButtonComenzar.setBounds(1025, 350, 100, 40);
+            ButtonTablero.setBounds(1025, 450, 100, 40);
+            ButtonJugar.setVisible(false);
+            marco.add(ButtonComenzar);
+            marco.add(ButtonTablero);
             vim.setVisible(false);
             etiqueta1.setText("Reglas del juego: ");
             etiqueta1.setBounds(20,30,100,30);
@@ -68,36 +66,37 @@ public class Juego extends JPanel{
                     " y deben colocar sus pies en la parte lateral de en medio.");
             etiqueta6.setBounds(20,30,1100,300); //height=separacion de los labels
             marco.add(etiqueta6);
-            b3.addActionListener(event -> {
-                b4.setBounds(1025, 450, 100, 40);
-                b3.setVisible(false);
-                b5.setVisible(false);
-                marco.add(b4);
+            ButtonComenzar.addActionListener(event -> {
+                ButtonGirar.setBounds(1025, 450, 100, 40);
+                ButtonComenzar.setVisible(false);
+                ButtonTablero.setVisible(false);
+                marco.add(ButtonGirar);
                 vim.setVisible(true);
-                vim.graphicList.add(new Tablero(0, 0));
+                vim.graphicList.add(GameTablero);
                 vim.repaint();
-                b4.addActionListener(ev -> {
-                    // Acciones de la ruleta aqui
+                ButtonGirar.addActionListener(ev -> {
+                    int numero = (int)((Math.random() * 23) + 1);
+                    if(((numero % 4) == 0) || (numero == 0)){
+                        numero++;
+                    }
+                    for(int i = 0; i < numero ; i++){
+                        GameTablero.updateFlecha(i * DIVICION);
+                        vim.graphicList.add(GameTablero);
+                        vim.repaint();
+                        repaint();
+                    }
                 });
             });
-            b5.addActionListener(event -> {
+            ButtonTablero.addActionListener(event -> {
                 //vim.setVisible(true);
                 //vim.graphicList.add(new Tapete(0, 0));
                 //vim.repaint();
             });
-
         });
 
-        b2.addActionListener(e -> System.exit(1));
+        ButtonSalir.addActionListener(e -> System.exit(1));
         repaint();
     }
-
-    /*public static void main(String [] args)
-    {
-
-        Juego m = new Juego();
-
-    }*/
 
     public static void run(){
         Juego m = new Juego();
