@@ -11,8 +11,8 @@ import javax.swing.ImageIcon;
 public class Ventana {
 
     public static void Start(){
-        Player p1 = new Player(700,420,"Jugador1");
-        Player p2 = new Player(700,450,"Jugador2");
+        Player p1 = new Player(700,430,"Naranja");
+        Player p2 = new Player(700,450,"Morado");
         Game game=new Game(p1,p2);
         game.setBounds(0,0,800,500);
 
