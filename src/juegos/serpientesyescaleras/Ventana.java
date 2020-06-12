@@ -1,17 +1,29 @@
 package juegos.serpientesyescaleras;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ImageIcon;
 
 public class Ventana {
 
     public static void Start(){
-        Player p1 = new Player(700,420,"Jugador1");
-        Player p2 = new Player(700,450,"Jugador2");
-
+        Player p1 = new Player(700,430,"Naranja");
+        Player p2 = new Player(700,450,"Morado");
         Game game=new Game(p1,p2);
         game.setBounds(0,0,800,500);
+
+        List<Icon> dados = new ArrayList<Icon>();
+        dados.add(null);
+        dados.add(new ImageIcon((Ventana.class.getResource("/resources/serpientesyescaleras_src/graficos/1.png"))));
+        dados.add(new ImageIcon((Ventana.class.getResource("/resources/serpientesyescaleras_src/graficos/2.png"))));
+        dados.add(new ImageIcon((Ventana.class.getResource("/resources/serpientesyescaleras_src/graficos/3.png"))));
+        dados.add(new ImageIcon((Ventana.class.getResource("/resources/serpientesyescaleras_src/graficos/4.png"))));
+        dados.add(new ImageIcon((Ventana.class.getResource("/resources/serpientesyescaleras_src/graficos/5.png"))));
+        dados.add(new ImageIcon((Ventana.class.getResource("/resources/serpientesyescaleras_src/graficos/6.png"))));
 
         JTextArea mensajes = new JTextArea();
         JScrollPane logs = new JScrollPane(mensajes);
@@ -20,7 +32,6 @@ public class Ventana {
 
         JPanel panel = new JPanel();
         JFrame frame =new JFrame(game.TITLE);
-        frame.setResizable(false);
 
         panel.setLayout(null);
         panel.setSize(800,500);
@@ -29,9 +40,11 @@ public class Ventana {
         MusicStaff music=new MusicStaff();
         music.PlayMusic(filepath);
 
+        ImageIcon dado = new ImageIcon(Ventana.class.getResource("/resources/serpientesyescaleras_src/graficos/dado.gif"));
+
         //JButtons
 
-        JButton boton1= new JButton();
+        JButton boton1;
         JButton boton2= new JButton();
         JButton boton3= new JButton();
         JButton boton4= new JButton();
@@ -42,9 +55,9 @@ public class Ventana {
         mensajes.setAutoscrolls(true);
 
         //Boton 1 //Jugador 1
-        boton1.setText("[PLAYER1]");
+        boton1 = new JButton();
         boton1.setBounds(0,500,100,100);
-        boton1.setVisible(true);
+        boton1.setIcon(dado);
 
         //Boton 2 //Jugador 2
         boton2.setText("[PLAYER2]");
@@ -56,13 +69,20 @@ public class Ventana {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == boton1 && game.getTurno()==1) {
                     int numero1 = (int) (Math.random() * 6 + 1);
-                    mensajes.append(p1.getName() + " MUEVES: " + numero1 + "\n\n");
+                    mensajes.append("Jugador [Naranja]" + " MUEVES: " + numero1 + "\n\n");
                     mensajes.append(game.msg(p1,numero1));
-                    //mensajes.append("Turno " + game.getTurnoCont() + ":" + p2.getName() + "\n");
+                    mensajes.append("Turno " + game.getTurnoCont() + ":" + p2.getName() + "\n");
                     game.setTurno(0);
                     game.turno_sig();
-                    game.setTurn(numero1);
-
+                    boton1.setIcon(dados.get(numero1));
+                    try {
+                        Thread.sleep(1500);
+                    } catch (InterruptedException interruptedException) {
+                        interruptedException.printStackTrace();
+                    }
+                    boton1.setIcon(null);
+                    boton1.setText("[Player1]");
+                    boton2.setIcon(dado);
 
                 }
             }
@@ -73,12 +93,22 @@ public class Ventana {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == boton2 && game.getTurno()==0) {
                     int numero2 = (int) (Math.random() * 6 + 1);
-                    mensajes.append(p2.getName()+" MUEVES: " + numero2 + "\n\n");
+                    mensajes.append("Jugador [MORADO]" +" MUEVES: " + numero2 + "\n\n");
                     mensajes.append(game.msg(p2,numero2));
-                    //mensajes.append("Turno "+game.getTurnoCont()+":"+p1.getName()+"\n");
+                    mensajes.append("Turno "+game.getTurnoCont()+":"+p1.getName()+"\n");
                     game.setTurno(1);
                     game.turno_sig();
-                    game.setTurn(numero2);
+                    boton2.setIcon(dados.get(numero2));
+
+                    try {
+                        Thread.sleep(1500);
+                    } catch (InterruptedException interruptedException) {
+                        interruptedException.printStackTrace();
+                    }
+                    boton2.setIcon(null);
+                    boton2.setText("[Player2]");
+                    boton1.setIcon(dado);
+
                 }
             }
         });
@@ -114,8 +144,6 @@ public class Ventana {
             }
         });
 
-
-        //Botones Player 1,player 2 && stargame
         panel.add(game);
         panel.add(boton1);
         panel.add(boton2);

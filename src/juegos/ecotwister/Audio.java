@@ -6,7 +6,7 @@ import javax.sound.sampled.Clip;
 import java.io.File;
 
 public class Audio {
-
+    public Clip c;
     public void Play(String filepath){
 
         try{
@@ -14,7 +14,7 @@ public class Audio {
             if(musicPath.exists()){
 
                 AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
-                Clip c = AudioSystem.getClip();
+                c = AudioSystem.getClip();
                 c.open(audioInput);
                 c.start();
                 c.loop(Clip.LOOP_CONTINUOUSLY);
