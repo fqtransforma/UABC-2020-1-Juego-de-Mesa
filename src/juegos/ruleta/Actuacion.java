@@ -14,19 +14,23 @@ public class Actuacion extends JFrame{
     public JPanel panel = new JPanel();
     public JButton botonCorrecto = new JButton("Correcto");
     public JButton botonIncorrecto = new JButton("Incorrecto");
-    public JButton iniciarTime = new JButton("Iniciar");
-    public JLabel time = new JLabel("00");
-    private Random r1= new Random(System.currentTimeMillis());
-    private boolean cronometro;
+   // public JButton iniciarTime = new JButton("Iniciar");
+   // public JLabel time = new JLabel("00");
+    //private Random r1= new Random(System.currentTimeMillis());
+   // private boolean cronometro;
     static int numero;
-    private Thread hilo;
+    //private Thread hilo;
+
+
     public Actuacion(){
         this.setSize(500,640);
+        this.setLocationRelativeTo(null);
         setTitle("Actuacion");//titulo del juego
 
         IniciarComponentes();
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
+
     private void IniciarComponentes(){
         this.getContentPane().add(panel);
         //poner la imagen en el panel
@@ -167,74 +171,31 @@ public class Actuacion extends JFrame{
         botonCorrecto.setFont(new Font("comic san",Font.BOLD,16));
         botonIncorrecto.setBounds(400,400,100,40);
         botonIncorrecto.setFont(new Font("comic san",Font.BOLD,16));
-        iniciarTime.setBounds(0,0,200,40);
-        iniciarTime.setFont(new Font("cooper black",0,20));
-        time.setFont( new Font( "cooper black", Font.BOLD, 40) );
-        time.setHorizontalAlignment( JLabel.CENTER );
-        time.setBackground( Color.CYAN);
-        panel.add(time);
-        panel.add(iniciarTime);
+       // iniciarTime.setBounds(0,0,200,40);
+        //iniciarTime.setFont(new Font("cooper black",0,20));
+       // time.setFont( new Font( "cooper black", Font.BOLD, 40) );
+       // time.setHorizontalAlignment( JLabel.CENTER );
+      //  time.setBackground( Color.CYAN);
+      //  panel.add(time);
+       // panel.add(iniciarTime);
         panel.add(botonCorrecto);
         panel.add(botonIncorrecto);
 
-        iniciarTime.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                while(!cronometro){
-                    iniciartiempo();
-                }
-            }
-        });
 
     }
-    public void run(){
-        Integer minutos = 0 , segundos = 0, milesimas = 0;
-        //min es minutos, seg es segundos y mil es milesimas de segundo
-        String seg="";
-        try
-        {
-            //Mientras cronometroActivo sea verdadero entonces seguira
-            //aumentando el tiempo
-            while( cronometro )
-            {
-                Thread.sleep( 4 );
-                //Incrementamos 4 milesimas de segundo
-                milesimas += 4;
+    public void actionPerformed( ActionEvent e)  {
+        if (e.getSource() == botonCorrecto) {
+            new audioEcoPregunta("src/resources/ruleta_src/audio/efectos/ecopregunta/a1.wav");
 
-                //Cuando llega a 1000 osea 1 segundo aumenta 1 segundo
-                //y las milesimas de segundo de nuevo a 0
-                if( milesimas == 1000 )
-                {
-                    milesimas = 0;
-                    segundos += 1;
-                    //Si los segundos llegan a 60 entonces aumenta 1 los minutos
-                    //y los segundos vuelven a 0
-                    if( segundos == 60 )
-                    {
-                        segundos = 0;
-                        minutos++;
-                    }
-                }
+        }
+        if(e.getSource() == botonIncorrecto){
+            new audioEcoPregunta("src/resources/ruleta_src/audio/efectos/ecopregunta/a2.wav");
+        }
 
-                //Esto solamente es estetica para que siempre este en formato
-                //00:00:000
-                if( segundos < 10 ) seg = "0" + segundos;
-                else seg = segundos.toString();
-
-                //Colocamos en la etiqueta la informacion
-                time.setText(seg);
-            }
-        }catch(Exception e){}
-        //Cuando se reincie se coloca nuevamente en 00:00:000
-        time.setText( "00" );
     }
-    public void iniciartiempo() {
-        cronometro = true;
-       // hilo = new Thread( this );
-        hilo.start();
-    }
-    public void pararCronometro(){
-        cronometro = false;
+
+    public static void Iniciar() {
+        new Actuacion();
     }
 
 

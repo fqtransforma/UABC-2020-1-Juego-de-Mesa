@@ -9,6 +9,7 @@ public class Carta extends JFrame {
     static int numero;
     public Carta(){
         this.setSize(500,640);
+        this.setLocationRelativeTo(null);
         setTitle("Carta");//titulo del juego
 
         IniciarComponentes();

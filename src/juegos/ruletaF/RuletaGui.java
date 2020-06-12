@@ -1,10 +1,7 @@
 package juegos.ruletaF;
 
-import juegos.ruleta.EcoPregunta;
-import juegos.ruleta.RuletaRun;
+import juegos.ruleta.Actuacion;
 import juegos.ruleta.SwingPaint;
-import juegos.ruleta.WindowPista;
-
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -70,14 +67,9 @@ public class RuletaGui extends JFrame {
                         case 3:dispose();new JuegoBasta();break;*/
 
                       //para pruebas caricaturas
-                    /*    case 1:dispose();new Juego();break;
-                        case 2:dispose();new WindowApp("EcoReto");break;
-                        case 3:dispose();new Juego();break;
-                        case 4:dispose();new WindowPista();break;
-                        case 5:dispose();new SwingPaint().juego();break;
-                        case 6:dispose();new JuegoBasta();break;
-                        //case 7:dispose();new WindowPista();break;*/
-
+                        //case 1:dispose();new Juego();break;
+                        //case 2:dispose();new Juego();break;
+                        //case 3:dispose();new Juego();break;
 
                         //para pruebas ecoreto
                        /* case 1:dispose();new WindowApp("EcoReto");break;
@@ -85,24 +77,12 @@ public class RuletaGui extends JFrame {
                         case 3:dispose();new WindowApp("EcoReto");break;*/
 
                         //para pruebas de los 3
-                       /*case 1:dispose();new JuegoBasta();break;
+                       case 1:dispose();new JuegoBasta();break;
                        case 2:dispose(); new Juego();break;
-                       case 3:dispose();new WindowApp("EcoReto");break;*/
-
-                        //para pruebas ecopista
-                        case 1:dispose();new WindowPista();break;
-                        case 2:dispose();new WindowPista();break;
-                        case 3:dispose();new WindowPista();break;
-
-                        //para pruebas actuacion
-                        /*case 1:dispose();new RuletaRun();break;
-                        case 2:dispose();new RuletaRun();break;
-                        case 3:dispose();new RuletaRun();break;*/
-
-                        //para pruebas dibujar
-                       /* case 1:dispose();new SwingPaint().juego();break;
-                        case 2:dispose();new SwingPaint().juego();break;
-                        case 3:dispose();new SwingPaint().juego();break;*/
+                       case 3:dispose();new WindowApp("EcoReto");break;
+                       case 4: dispose();new SwingPaint().show(); break;
+                       case 5: dispose();new Actuacion().setVisible(true);break;
+                       //case 6: dispose();new EcoPista();break;
 
                     }
                 }
@@ -120,17 +100,21 @@ public class RuletaGui extends JFrame {
                 //valor=r1.nextInt(3);//entre 0 y 2
                 if(aux!=0){
                     do {
-                        valor = r1.nextInt(3) + 1;    //entre 1 y 3
+                        valor = r1.nextInt(5) + 1;    //entre 1 y 3
                     } while (aux == valor);
                     aux = valor;
                 }else{
-                    valor = r1.nextInt(3)+1;	//entre 1 y 3
+                    valor = r1.nextInt(5)+1;	//entre 1 y 3
                     aux=valor;
                 }
                 switch(valor){
                     case 1: labelImage = new ImageIcon("src/resources/ruletaF_src/graficos/ruletaGui/basta3.gif");break;
                     case 2: labelImage = new ImageIcon("src/resources/ruletaF_src/graficos/ruletaGui/caricaturas3.gif");break;
                     case 3: labelImage = new ImageIcon("src/resources/ruletaF_src/graficos/ruletaGui/ecoreto3.gif");break;
+                    case 4: labelImage = new ImageIcon("src/resources/ruleta_src/graficos/Adibujar/dibujar.gif");break;
+                    case 5: labelImage = new ImageIcon("src/resources/ruleta_src/graficos/Actuacion/actuacion.gif");break;
+
+
                 }
                 /////////////////////////////////////////////////
                 //      Sonido de ruleta silenciado para las pruebas

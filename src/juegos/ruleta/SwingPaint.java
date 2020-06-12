@@ -39,6 +39,7 @@ public class SwingPaint {
     public void show() {
         //Creamos el frame principal
         JFrame frame = new JFrame("Swing Paint");
+        frame.setLocation(100,100);
         Container content =  frame.getContentPane();
         //Creamos el Layout del contenido
         content.setLayout(new BorderLayout());
@@ -48,6 +49,7 @@ public class SwingPaint {
         content.add(dGame, BorderLayout.CENTER);
         //Creamos controles para aplicar colores y de limpia
         JPanel controls = new JPanel();
+        ImageIcon carta = new ImageIcon("src/resources/ruleta_src/graficos/Adibujar/dibujar.gif");
 
         clearBtn = new JButton("Clear");
         clearBtn.addActionListener(actionListener);
@@ -64,6 +66,8 @@ public class SwingPaint {
         jugarBtn = new JButton("Jugar");
         jugarBtn.setFont(new Font("cooper black",0,30 ));
         jugarBtn.setBounds(450,100, 200,40);
+        //jugarBtn.setLocation(500,800);
+        //jugarBtn.setIcon(new ImageIcon(carta.getImage().getScaledInstance(200,40,Image.SCALE_SMOOTH)));
         //evento para que cuando presione Jugar aparezaca lo que dibujara
         ActionListener act = new ActionListener() {
             @Override
@@ -80,6 +84,7 @@ public class SwingPaint {
         controls.add(redBtn);
         controls.add(magentaBtn);
         controls.add(clearBtn);
+        //este boton al presionarse muestra la carta con lo que se dibujara
         controls.add(jugarBtn);
 
         //Agregar al contenido
