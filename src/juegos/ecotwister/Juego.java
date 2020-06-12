@@ -4,6 +4,8 @@ import juegos.mainmenu.MenuRun;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Juego extends JPanel{
     JFrame marco = new JFrame("EcoTwister");
@@ -26,7 +28,7 @@ public class Juego extends JPanel{
 
     public Juego()
     {
-       String filepath = "resources/ecotwister_src/audio/musica/musiquita.wav";
+       String filepath = "src/resources/ecotwister_src/audio/musica/musica.wav";
         Tablero GameTablero = new Tablero(0,0);
         Tapete tap = new Tapete(0,0);
         Fondo fondo = new Fondo(0,0);
@@ -35,7 +37,7 @@ public class Juego extends JPanel{
         musica.Play(filepath);
         vim = new VisualManager();
         marco.getContentPane().setLayout(null);
-        marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        marco.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         marco.setSize(1200, 720);
         marco.getContentPane().setBackground(new Color(52, 185, 255));
         ButtonSalir.setBounds(1025, 550, 100, 40);
@@ -146,8 +148,17 @@ public class Juego extends JPanel{
             });
         });
 
-        ButtonSalir.addActionListener(e -> System.exit(1));
-        repaint();
+
+        ButtonSalir.addActionListener(e -> {
+            musica.c.stop();
+            marco.setVisible(false);
+        });
+        marco.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                musica.c.stop();
+            }
+        });
     }
 
     public static void run(){
