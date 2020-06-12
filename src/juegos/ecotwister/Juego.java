@@ -1,5 +1,7 @@
 package juegos.ecotwister;
 
+import juegos.mainmenu.MenuRun;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,6 +13,8 @@ public class Juego extends JPanel{
     JButton ButtonComenzar = new JButton("Comenzar");
     JButton ButtonGirar = new JButton("Girar");
     JButton ButtonTablero = new JButton("Tablero");
+    JButton BotonRegresar1 = new JButton("Regresar");
+    JButton BotonRegresar2 = new JButton("Regresar");
     JLabel etiqueta1 = new JLabel();
     JLabel etiqueta2 = new JLabel();
     JLabel etiqueta3 = new JLabel();
@@ -24,6 +28,9 @@ public class Juego extends JPanel{
     {
        String filepath = "resources/ecotwister_src/audio/musica/musiquita.wav";
         Tablero GameTablero = new Tablero(0,0);
+        Tapete tap = new Tapete(0,0);
+        Fondo fondo = new Fondo(0,0);
+        Menu menu = new Menu(0,0);
         Audio musica = new Audio();
         musica.Play(filepath);
         vim = new VisualManager();
@@ -35,20 +42,27 @@ public class Juego extends JPanel{
         ButtonJugar.setBounds(1025, 450, 100, 40);
         marco.add(vim);
         marco.add(ButtonSalir);
+        ButtonSalir.setVisible(true);
         marco.add(ButtonJugar);
         ButtonJugar.setVisible(true);
         marco.setVisible(true);
         ButtonJugar.addActionListener(e -> {
+            ButtonSalir.setVisible(false);
             ButtonComenzar.setBounds(1025, 350, 100, 40);
             ButtonTablero.setBounds(1025, 450, 100, 40);
+            BotonRegresar1.setBounds(1025, 550, 100, 40);
             ButtonJugar.setVisible(false);
             marco.add(ButtonComenzar);
+            ButtonComenzar.setVisible(true);
             marco.add(ButtonTablero);
+            ButtonTablero.setVisible(true);
+            marco.add(BotonRegresar1);
+            BotonRegresar1.setVisible(true);
             vim.setVisible(false);
             etiqueta1.setText("Reglas del juego: ");
             etiqueta1.setBounds(20,30,100,30);
             marco.add(etiqueta1);
-            etiqueta2.setText("1. Crear un tapete con 6 imagenes de cada una de las 4 imágenes (ver en boton 'Tablero').");
+            etiqueta2.setText("1. Crear un tapete lo suficientemente grande para jugar (ver en boton 'Tablero').");
             etiqueta2.setBounds(20,30,1100,100); // height=separacion de los labels
             marco.add(etiqueta2);
             etiqueta3.setText("2. Se necesita de un jugador que se encargue de girar la flecha del tablero " +
@@ -68,9 +82,14 @@ public class Juego extends JPanel{
             marco.add(etiqueta6);
             ButtonComenzar.addActionListener(event -> {
                 ButtonGirar.setBounds(1025, 450, 100, 40);
+                BotonRegresar2.setBounds(1025, 550, 100, 40);
                 ButtonComenzar.setVisible(false);
                 ButtonTablero.setVisible(false);
+                BotonRegresar1.setVisible(false);
                 marco.add(ButtonGirar);
+                ButtonGirar.setVisible(true);
+                marco.add(BotonRegresar2);
+                BotonRegresar2.setVisible(true);
                 vim.setVisible(true);
                 vim.graphicList.add(GameTablero);
                 vim.repaint();
@@ -86,11 +105,44 @@ public class Juego extends JPanel{
                         repaint();
                     }
                 });
+                BotonRegresar2.addActionListener(ev -> {
+                    ButtonGirar.setVisible(false);
+                    BotonRegresar2.setVisible(false);
+                    vim.setVisible(false);
+                    ButtonComenzar.setVisible(true);
+                    ButtonTablero.setVisible(true);
+                    BotonRegresar1.setVisible(true);
+                });
             });
             ButtonTablero.addActionListener(event -> {
+                BotonRegresar2.setBounds(1025, 550, 100, 40);
+                vim.setVisible(true);
+                vim.graphicList.add(tap);
+                ButtonComenzar.setVisible(false);
+                ButtonTablero.setVisible(false);
+                BotonRegresar1.setVisible(false);
+                marco.add(BotonRegresar2);
+                BotonRegresar2.setVisible(true);
+                BotonRegresar2.addActionListener(ev -> {
+                    ButtonGirar.setVisible(false);
+                    BotonRegresar2.setVisible(false);
+                    vim.setVisible(false);
+                    ButtonComenzar.setVisible(true);
+                    ButtonTablero.setVisible(true);
+                    BotonRegresar1.setVisible(true);
+                });
+            });
+            BotonRegresar1.addActionListener(event -> {
+                vim.setVisible(true);
+                vim.graphicList.add(fondo);
                 //vim.setVisible(true);
-                //vim.graphicList.add(new Tapete(0, 0));
-                //vim.repaint();
+                vim.graphicList.add(menu);
+                ButtonComenzar.setVisible(false);
+                ButtonTablero.setVisible(false);
+                BotonRegresar1.setVisible(false);
+                ButtonJugar.setVisible(true);
+                ButtonSalir.setVisible(true);
+
             });
         });
 
@@ -101,4 +153,7 @@ public class Juego extends JPanel{
     public static void run(){
         Juego m = new Juego();
     }
+    /*public static void main(String []args){  //sólo se usa para probar el juego de manera individual cuando se le
+        Juego m = new Juego();                  // hace una modificación
+    }*/
 }
