@@ -1,5 +1,6 @@
 package juegos.serpientesyescaleras;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,14 +32,10 @@ public class Game extends Canvas implements Runnable, ActionListener {
     private  BufferedImage dado5 = null;
     private  BufferedImage dado6 = null;
 
-    //
-
     private static Player p1;
     private static Player p2;
     private int turnoCont=2;
     private int turno=1;
-
-    private int nume;
 
     public int getTurno() {
         return turno;
@@ -56,13 +53,6 @@ public class Game extends Canvas implements Runnable, ActionListener {
         turnoCont = turnoCont+1;
     }
 
-////////////////////////////////////////////////////////////////////
-
-    public int getTurn(){ return nume;}
-    public void setTurn(int nume){this.nume=nume;}
-
-///////////////////////////////////////////////////////////////////
-
     public Game(Player p1, Player p2){
         this.p1=p1;
         this.p2=p2;
@@ -72,22 +62,12 @@ public class Game extends Canvas implements Runnable, ActionListener {
     {
         requestFocus();
         BufferedImageLoader loader=new BufferedImageLoader();
+        BufferedImageLoader loader2=new BufferedImageLoader();
 
         try{
             fondo = loader.loadImage("/serpientesyescaleras_src/graficos/tapete.png");
-            spriteSheet=loader.loadImage("/serpientesyescaleras_src/graficos/player2.png");
-            spriteSheet2=loader.loadImage("/serpientesyescaleras_src/graficos/player2.png");
-
-            //Dados
-
-            dado1=loader.loadImage("/serpientesyescaleras_src/graficos/1.png");
-            dado2=loader.loadImage("/serpientesyescaleras_src/graficos/2.png");
-            dado3=loader.loadImage("/serpientesyescaleras_src/graficos/3.png");
-            dado4=loader.loadImage("/serpientesyescaleras_src/graficos/4.png");
-            dado5=loader.loadImage("/serpientesyescaleras_src/graficos/5.png");
-            dado6=loader.loadImage("/serpientesyescaleras_src/graficos/6.png");
-
-            //
+            spriteSheet=loader.loadImage("/serpientesyescaleras_src/graficos/player1.png");
+            spriteSheet2=loader2.loadImage("/serpientesyescaleras_src/graficos/player2.png");
 
         }catch (IOException e)
         {
@@ -96,12 +76,10 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
         addKeyListener(new KeyInput(this));
         SpriteSheet s1 = new SpriteSheet(spriteSheet);
-        SpriteSheet s2 = new SpriteSheet(spriteSheet);
+        SpriteSheet s2 = new SpriteSheet(spriteSheet2);
         spriteSheet = s1.grabImage(2,2,32,32);
         spriteSheet2 = s2.grabImage(2,2,32,32);
-        System.out.println("X= "+p1.x+ "Y= "+p1.y);
     }
-
 
     public synchronized void start()
     {
@@ -188,12 +166,9 @@ public class Game extends Canvas implements Runnable, ActionListener {
         g.drawImage(spriteSheet,(int)p1.getX(),(int)p1.getY(),null); //Jugador 1
         g.drawImage(spriteSheet2,(int)p2.getX(),(int)p2.getY(),null); //Jugador 2
 
-        renderDados(getTurn());
-
         //dibujar
         g.dispose();
         bs.show();
-
     }
 
     public void keyPressed(KeyEvent e) {
@@ -270,7 +245,6 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
     }
 
     public String msg(Player p,int num){
@@ -359,20 +333,12 @@ public class Game extends Canvas implements Runnable, ActionListener {
         {
             return ("Usaste tenedor de plastico - Bajas cuadro 37\n\n");
         }
+
+        if(p.getPosicion()==49) // CUADRO 47
+        {
+            return ("Meta\n\n");
+
+        }
         return "";
-    }
-
-    public void renderDados(int num)
-    {
-        BufferStrategy bs= this.getBufferStrategy();
-        Graphics g = bs.getDrawGraphics();
-
-        if(num==1) { g.drawImage(dado1, 155, 10, 60, 60, this);}
-        if(num==2) { g.drawImage(dado2, 155, 10, 60, 60, this);}
-        if(num==3) { g.drawImage(dado3, 155, 10, 60, 60, this);}
-        if(num==4) { g.drawImage(dado4, 155, 10, 60, 60, this);}
-        if(num==5) { g.drawImage(dado1, 155, 10, 60, 60, this);}
-        if(num==6) { g.drawImage(dado6, 155, 10, 60, 60, this);}
-
     }
 }

@@ -29,7 +29,6 @@ public class MusicStaff {
 
     }
 
-
     public void Effect(String filepath)
     {
         try{

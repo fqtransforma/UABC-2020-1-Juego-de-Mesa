@@ -1,9 +1,5 @@
 package juegos.serpientesyescaleras;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
 public class Player{
 
     public double x;
@@ -21,6 +17,7 @@ public class Player{
     public void avanzar(int posicion) {
         this.posicion = this.posicion+posicion;
     }
+
 
     private String name;
 
@@ -81,6 +78,14 @@ public class Player{
 
         x += velX;
         y += velY;
+
+        ////////////////////////////////////////////////////
+
+        if(getPosicion()==49)
+        {
+            x=700;
+            y=400;
+        }
 
         //Limitar los bordes de la pantalla para el movimiento
 
