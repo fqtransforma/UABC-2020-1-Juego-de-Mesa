@@ -1,6 +1,7 @@
 package juegos.ruletaF;
 
 import juegos.ruleta.EcoPregunta;
+import juegos.ruleta.RuletaRun;
 import juegos.ruleta.SwingPaint;
 import juegos.ruleta.WindowPista;
 
@@ -69,13 +70,13 @@ public class RuletaGui extends JFrame {
                         case 3:dispose();new JuegoBasta();break;*/
 
                       //para pruebas caricaturas
-                        case 1:dispose();new Juego();break;
+                    /*    case 1:dispose();new Juego();break;
                         case 2:dispose();new WindowApp("EcoReto");break;
                         case 3:dispose();new Juego();break;
                         case 4:dispose();new WindowPista();break;
                         case 5:dispose();new SwingPaint().juego();break;
                         case 6:dispose();new JuegoBasta();break;
-                        //case 7:dispose();new WindowPista();break;
+                        //case 7:dispose();new WindowPista();break;*/
 
 
                         //para pruebas ecoreto
@@ -87,6 +88,21 @@ public class RuletaGui extends JFrame {
                        /*case 1:dispose();new JuegoBasta();break;
                        case 2:dispose(); new Juego();break;
                        case 3:dispose();new WindowApp("EcoReto");break;*/
+
+                        //para pruebas ecopista
+                        case 1:dispose();new WindowPista();break;
+                        case 2:dispose();new WindowPista();break;
+                        case 3:dispose();new WindowPista();break;
+
+                        //para pruebas actuacion
+                        /*case 1:dispose();new RuletaRun();break;
+                        case 2:dispose();new RuletaRun();break;
+                        case 3:dispose();new RuletaRun();break;*/
+
+                        //para pruebas dibujar
+                       /* case 1:dispose();new SwingPaint().juego();break;
+                        case 2:dispose();new SwingPaint().juego();break;
+                        case 3:dispose();new SwingPaint().juego();break;*/
 
                     }
                 }
