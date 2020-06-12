@@ -34,6 +34,7 @@ public class MenuRun extends  JPanel implements Runnable{
     public static Sonido selectSound = new Sonido("src/resources/mainmenu_src/audio/efectos/gmae.wav",false);
 
     boolean creditos=false;
+    boolean clasifica=false;
 
     private static volatile boolean onOff;
     private double fps = 0;
@@ -152,7 +153,10 @@ public class MenuRun extends  JPanel implements Runnable{
             }
             else if(coorX > 1570 && coorX < 1815) {
                 selectSound.restart();
-                System.out.println("Aqui va lo de clasificacion");
+                if(!clasifica){
+                    clasifica=true;
+                    JOptionPane.showMessageDialog(null, "Trabajo en proceso :(");
+                }
                 OST.pause();
             }
             else if(coorX > 2035 && coorX < 2250) {

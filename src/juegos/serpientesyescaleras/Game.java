@@ -66,7 +66,7 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
         try{
             fondo = loader.loadImage("/serpientesyescaleras_src/graficos/tapete.png");
-            spriteSheet=loader.loadImage("/serpientesyescaleras_src/graficos/player1.png");
+            spriteSheet=loader.loadImage("/serpientesyescaleras_src/graficos/player.png");
             spriteSheet2=loader2.loadImage("/serpientesyescaleras_src/graficos/player2.png");
 
         }catch (IOException e)
