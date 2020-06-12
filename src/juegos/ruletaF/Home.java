@@ -27,7 +27,6 @@ public class Home extends JPanel {
         final Home root = this;
         this.app = app;
 
-
         setLayout(null);
         setSize(width, height);
 
@@ -79,7 +78,6 @@ public class Home extends JPanel {
                 if (!PopUp.isVisible)boton.efectoBoton();boton.play(); JOptionPane.showMessageDialog(root, "Ayuda \n\n-Iniciar el juego\nPara iniciar a jugar solo dale click al boton de PLAY\ny depues a la tarjeta reto.\n\n-Como se juega \n Cumple de manera exitosa con todos los retos\n que se te apareceran en pantalla.");
             }
         });
-
 
         btnClose = new GButton(new Vector2(150, 150), "resources/ruletaF_src/graficos/ecoReto/Close.png");
         btnClose.setBounds(getWidth() - btnClose.getWidth() - 30, 30, btnClose.getWidth(), btnClose.getHeight());
