@@ -6,7 +6,7 @@ import java.awt.*;
 public class WindowPista extends JPanel{
     JFrame marco = new JFrame("EcoPistas");
     Window vim;
-    JButton b1 = new JButton("Pista");
+    JButton b1 = new JButton();
     JButton b2 = new JButton("Salir");
 
 
@@ -19,7 +19,7 @@ public class WindowPista extends JPanel{
         b2.setBounds(450, 400, 200, 40);
         b2.setForeground(Color.orange);
         b2.setFont(new Font("cooper black", 0,30));
-        b1.setBounds(450, 100, 200, 40);
+        b1.setBounds(35, 30, 300, 500);
         b1.setForeground(Color.orange);
         b1.setFont(new Font("cooper black", 0,30));
         marco.add(vim);
@@ -27,6 +27,13 @@ public class WindowPista extends JPanel{
         marco.add(b1);
 
         marco.setVisible(true);
+
+        /*Boton invisible pero clickeable*/
+        b1.setOpaque(false);
+        b1.setContentAreaFilled(false);
+        b1.setBorderPainted(false);
+
+
         b1.addActionListener(e -> {
             vim.graphicList.add(new Pistas(0, 0));
             vim.repaint();
