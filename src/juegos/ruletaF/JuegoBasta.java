@@ -191,10 +191,9 @@ public class JuegoBasta extends JFrame implements Runnable{
         Letra.setForeground(Color.BLACK);
 
         panelIzquierdo.add(Box.createVerticalGlue());
-       // panelIzquierdo.add(label);
+
         panelIzquierdo.add(Sacar);
         panelIzquierdo.add(Box.createVerticalGlue());
-      //  panelIzquierdo.add(label2);
         panelIzquierdo.add(Letra);
         panelIzquierdo.add(Box.createVerticalGlue());
 
@@ -216,14 +215,12 @@ public class JuegoBasta extends JFrame implements Runnable{
 
         panelDerecho.add(Box.createVerticalGlue());
         panelDerecho.add(Ayuda);
-        //panelDerecho.add(Box.createVerticalGlue());
 
         panelDerecho.setBackground(Color.CYAN);
         this.getContentPane().add(panelDerecho,BorderLayout.EAST);
 ////pac
         panelCentral = new JPanel();
         panelCentral.setLayout(new BorderLayout());
-
 ////
         tiempo = new JLabel( "00:00:000" );
         tiempo.setFont( new Font( Font.SERIF, Font.BOLD, 80) );
@@ -400,9 +397,6 @@ public class JuegoBasta extends JFrame implements Runnable{
                     sonido3.efectoBotonB();
                     sonido3.play();
 
-                    /*label.setIcon(labelImage);
-                    label.repaint();
-                    label.validate();*/
                     Sacar.setIcon(labelImage);
                     Sacar.repaint();
                     Sacar.validate();
@@ -460,9 +454,6 @@ public class JuegoBasta extends JFrame implements Runnable{
                         sonido3.efectoBotonB();
                         sonido3.play();
 
-                       /* label2.setIcon(labelImage2);
-                        label2.repaint();
-                        label2.validate();*/
                         Letra.setIcon(labelImage2);
                         Letra.repaint();
                         Letra.validate();
@@ -491,7 +482,7 @@ public class JuegoBasta extends JFrame implements Runnable{
                         segundos = 0;
                         minutos++;
                     }
-                    if(segundos==20 && milesimas==0){
+                    if(minutos==1 && segundos==0 && milesimas==0){
                         pararCronometro();
                         tiempo.setText( "01:00:000" );
                         fondo2.cerrar();
@@ -511,25 +502,6 @@ public class JuegoBasta extends JFrame implements Runnable{
                         }
 
                     }
-                   /* if(minutos==1 && segundos==0 && milesimas==0){
-                        pararCronometro();
-                        tiempo.setText( "01:00:000" );
-                        fondo2.cerrar();
-                        temporal=false;
-                        sonido2.efectoCampana();
-                        sonido4.efectoTiempo();
-                        sonido2.play();
-                        JOptionPane.showMessageDialog(null, "Se acabo el tiempo");
-                        sonido4.play();
-                        label5.setVisible(false);
-                        obtenerResultados();
-                        try {
-                            Thread.sleep(1*1000);
-                        }
-                        catch (Exception e) {
-                            System.out.println(e);
-                        }
-                    }*/
                 }
 
                 if( minutos < 10 ) min = "0" + minutos;
@@ -567,12 +539,6 @@ public class JuegoBasta extends JFrame implements Runnable{
         labelAciertos.setText(" ");
         cajaTexto.setText("");
         cajaTexto.setEnabled(false);
-       /* label.setIcon(labelImageP);
-        label.repaint();
-        label.validate();
-        label2.setIcon(labelImage2P);
-        label2.repaint();
-        label2.validate();*/
         Sacar.setIcon(labelImageP);
         Sacar.repaint();
         Sacar.validate();
