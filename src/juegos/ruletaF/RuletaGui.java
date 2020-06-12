@@ -1,7 +1,6 @@
 package juegos.ruletaF;
 
 import juegos.ruleta.Actuacion;
-import juegos.ruleta.EcoPista;
 import juegos.ruleta.SwingPaint;
 import javax.swing.*;
 import java.awt.event.*;
