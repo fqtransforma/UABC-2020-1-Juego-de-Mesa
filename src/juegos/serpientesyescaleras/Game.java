@@ -1,5 +1,7 @@
 package juegos.serpientesyescaleras;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -34,8 +36,8 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
     private static Player p1;
     private static Player p2;
-    private int turnoCont=2;
-    private int turno=1;
+    public int turnoCont=2;
+    public int turno=1;
 
     public int getTurno() {
         return turno;
@@ -51,6 +53,10 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
     public void turno_sig() {
         turnoCont = turnoCont+1;
+    }
+
+    public void setRunning(boolean running) {
+        this.running = running;
     }
 
     public Game(Player p1, Player p2){
@@ -91,17 +97,13 @@ public class Game extends Canvas implements Runnable, ActionListener {
         thread.start();
     }
 
-    private synchronized void stop()
+    public synchronized void stop()
     {
         if(!running)
             return;
 
         running=false;
-        try { thread.join();
-        }catch(InterruptedException e)
-        {e.printStackTrace();}//Si por alguna razon falla nos comenta error
-
-        System.exit(1);
+        this.getGraphics().dispose();
     }
 
     public void run() // runnable game loop
@@ -128,6 +130,7 @@ public class Game extends Canvas implements Runnable, ActionListener {
                 updates++;
                 delta--;
             }
+
             render();
             frames++;
 
@@ -139,6 +142,7 @@ public class Game extends Canvas implements Runnable, ActionListener {
                 frames=0;
             }
         }
+
         stop();
     }
 
@@ -146,18 +150,32 @@ public class Game extends Canvas implements Runnable, ActionListener {
     {
         p1.tick();
         p2.tick();
+
+        if(p1.x>20 && p1.x<150 && p1.y==25)
+        {
+            start();
+            setTurno(0);
+            turnoCont=1;
+        }
+
+        if(p2.x>20 && p2.x<150 && p2.y==25)
+        {
+            start();
+            setTurno(1);
+            turnoCont=1;
+        }
+
     }
 
     private void render()
     {
-        BufferStrategy bs= this.getBufferStrategy();
-
+        BufferStrategy bs = this.getBufferStrategy();
         if(bs==null)
         {
             createBufferStrategy(3);// 3 buffer
             return;
-        }
 
+        }
         Graphics g = bs.getDrawGraphics();
 
         //dibujar
@@ -165,8 +183,6 @@ public class Game extends Canvas implements Runnable, ActionListener {
         g.drawImage(fondo,0,0,getWidth(),getHeight(), this);
         g.drawImage(spriteSheet,(int)p1.getX(),(int)p1.getY(),null); //Jugador 1
         g.drawImage(spriteSheet2,(int)p2.getX(),(int)p2.getY(),null); //Jugador 2
-
-        //dibujar
         g.dispose();
         bs.show();
     }
@@ -206,7 +222,6 @@ public class Game extends Canvas implements Runnable, ActionListener {
         }
     }
 
-
     public void keyReleased(KeyEvent e) {
 
         int key=e.getKeyCode();
@@ -240,7 +255,6 @@ public class Game extends Canvas implements Runnable, ActionListener {
         {
             p2.setVelY(0);
         }
-
     }
 
     @Override
@@ -336,8 +350,7 @@ public class Game extends Canvas implements Runnable, ActionListener {
 
         if(p.getPosicion()==49) // CUADRO 47
         {
-            return ("Meta\n\n");
-
+            return ("M E T A \n\n");
         }
         return "";
     }

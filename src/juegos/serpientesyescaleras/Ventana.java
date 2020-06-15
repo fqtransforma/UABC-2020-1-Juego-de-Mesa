@@ -1,9 +1,7 @@
 package juegos.serpientesyescaleras;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -16,8 +14,11 @@ public class Ventana {
         Game game=new Game(p1,p2);
         game.setBounds(0,0,800,500);
 
+        MusicStaff music = new MusicStaff("src/resources/serpientesyescaleras_src/audio/musica/game.wav");
+        music.PlayMusic();
+
         List<Icon> dados = new ArrayList<Icon>();
-        dados.add(null);
+        dados.add(new ImageIcon((Ventana.class.getResource("/resources/serpientesyescaleras_src/graficos/dado.gif"))));
         dados.add(new ImageIcon((Ventana.class.getResource("/resources/serpientesyescaleras_src/graficos/1.png"))));
         dados.add(new ImageIcon((Ventana.class.getResource("/resources/serpientesyescaleras_src/graficos/2.png"))));
         dados.add(new ImageIcon((Ventana.class.getResource("/resources/serpientesyescaleras_src/graficos/3.png"))));
@@ -28,19 +29,13 @@ public class Ventana {
         JTextArea mensajes = new JTextArea();
         JScrollPane logs = new JScrollPane(mensajes);
         mensajes.append("Serpientes y Escaleras\n\n");
-        mensajes.append("Turno 1: "+p1.getName()+"\n");
+        mensajes.append("Turno 1: "+p1.getName()+"\n\n");
 
         JPanel panel = new JPanel();
         JFrame frame =new JFrame(game.TITLE);
 
         panel.setLayout(null);
         panel.setSize(800,500);
-
-        String filepath= "src/resources/serpientesyescaleras_src/audio/musica/game.wav";
-        MusicStaff music=new MusicStaff();
-        music.PlayMusic(filepath);
-
-        ImageIcon dado = new ImageIcon(Ventana.class.getResource("/resources/serpientesyescaleras_src/graficos/dado.gif"));
 
         //JButtons
 
@@ -57,32 +52,42 @@ public class Ventana {
         //Boton 1 //Jugador 1
         boton1 = new JButton();
         boton1.setBounds(0,500,100,100);
-        boton1.setIcon(dado);
+        boton1.setIcon(dados.get(0));
 
         //Boton 2 //Jugador 2
         boton2.setText("[PLAYER2]");
         boton2.setBounds(700, 500, 100, 100);
         boton2.setVisible(true);
 
+        if(p1.getX()==55 && p1.getY()==25)
+        {
+            mensajes.append("Felicidades Jugador: NARANJA LLEGASTE A META");
+            mensajes.append(p1.META());
+            game.setTurno(1);
+            game.turnoCont=1;
+        }
+
+        if(p2.getX()==55 && p2.getY()==25)
+        {
+            mensajes.append("Felicidades Jugador: MORADO LLEGASTE A META");
+            game.setTurno(0);
+            game.turnoCont=1;
+        }
+
+
         boton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == boton1 && game.getTurno()==1) {
                     int numero1 = (int) (Math.random() * 6 + 1);
-                    mensajes.append("Jugador [Naranja]" + " MUEVES: " + numero1 + "\n\n");
+
+                    mensajes.append("Jugador [NARANJA]" + " MUEVES: " + numero1 + "\n");
                     mensajes.append(game.msg(p1,numero1));
-                    mensajes.append("Turno " + game.getTurnoCont() + ":" + p2.getName() + "\n");
+                    mensajes.append("Turno " + game.getTurnoCont() + ":" + p2.getName() + "\n\n");
                     game.setTurno(0);
                     game.turno_sig();
                     boton1.setIcon(dados.get(numero1));
-                    try {
-                        Thread.sleep(1500);
-                    } catch (InterruptedException interruptedException) {
-                        interruptedException.printStackTrace();
-                    }
-                    boton1.setIcon(null);
-                    boton1.setText("[Player1]");
-                    boton2.setIcon(dado);
+                    boton2.setIcon(dados.get(0));
 
                 }
             }
@@ -93,21 +98,14 @@ public class Ventana {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == boton2 && game.getTurno()==0) {
                     int numero2 = (int) (Math.random() * 6 + 1);
-                    mensajes.append("Jugador [MORADO]" +" MUEVES: " + numero2 + "\n\n");
+                    mensajes.append("Jugador [MORADO]" +" MUEVES: " + numero2 + "\n");
                     mensajes.append(game.msg(p2,numero2));
-                    mensajes.append("Turno "+game.getTurnoCont()+":"+p1.getName()+"\n");
+                    mensajes.append("Turno "+game.getTurnoCont()+":"+p1.getName()+"\n\n");
+
                     game.setTurno(1);
                     game.turno_sig();
                     boton2.setIcon(dados.get(numero2));
-
-                    try {
-                        Thread.sleep(1500);
-                    } catch (InterruptedException interruptedException) {
-                        interruptedException.printStackTrace();
-                    }
-                    boton2.setIcon(null);
-                    boton2.setText("[Player2]");
-                    boton1.setIcon(dado);
+                    boton1.setIcon(dados.get(0));
 
                 }
             }
@@ -154,11 +152,18 @@ public class Ventana {
         //panel.setSize(800,600);
         frame.setContentPane(panel);
         frame.setSize(815,640);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setResizable(true);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setLayout(null);
         game.start();
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e){
+                music.stop();
+                game.setRunning(false);
+            }
+        });
     }
 }

@@ -1,20 +1,27 @@
 package juegos.serpientesyescaleras;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.sound.sampled.*;
 import java.io.File;
+import java.io.IOException;
 
 public class MusicStaff {
 
-    public  void PlayMusic(String filepath){ //audi
+    File musicPath;
+    AudioInputStream audioInput;
+    Clip clip;
+
+    public MusicStaff(String s) {
+        File music = new File(s);
+        musicPath = music;
+    }
+
+    public  void PlayMusic(){ //audi
 
         try{
-            File musicPath=new File(filepath);
             if(musicPath.exists())
             {
-                AudioInputStream audioInput=AudioSystem.getAudioInputStream(musicPath);
-                Clip clip=AudioSystem.getClip();
+                audioInput=AudioSystem.getAudioInputStream(musicPath);
+                clip = AudioSystem.getClip();
                 clip.open(audioInput);
                 clip.start();
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
@@ -29,16 +36,13 @@ public class MusicStaff {
 
     }
 
-    public void Effect(String filepath)
+    public void stop()
     {
         try{
-            File musicPath=new File(filepath);
             if(musicPath.exists())
             {
-                AudioInputStream audioInput= AudioSystem.getAudioInputStream(musicPath);
-                Clip clip=AudioSystem.getClip();
-                clip.open(audioInput);
-                clip.start();
+                clip.stop();
+                clip.close();
 
             }else{
                 System.out.println("No encontro archivo");
@@ -47,6 +51,5 @@ public class MusicStaff {
         }catch(Exception e){
             e.printStackTrace();
         }
-
     }
 }

@@ -8,7 +8,7 @@ public class Player{
     private double velX=0;
     private double velY=0;
 
-    private int posicion=1;
+    public int posicion=1;
 
     public int getPosicion() {
         return posicion;
@@ -17,7 +17,6 @@ public class Player{
     public void avanzar(int posicion) {
         this.posicion = this.posicion+posicion;
     }
-
 
     private String name;
 
@@ -80,12 +79,18 @@ public class Player{
         y += velY;
 
         ////////////////////////////////////////////////////
+        //META
 
-        if(getPosicion()==49)
+        if(x==55 && y==25)
         {
-            x=700;
-            y=400;
-        }
+            x=740;
+            y=455;
+            Player p1 = new Player(700,430,"Naranja");
+            Player p2 = new Player(700,450,"Morado");
+            Game game=new Game(p1,p2);
+            game.setBounds(0,0,800,500);
+
+    }
 
         //Limitar los bordes de la pantalla para el movimiento
 
@@ -113,4 +118,9 @@ public class Player{
         if (x < 1) //valida izquierda
             x = 10;
     }
+
+    public String META(){
+            return ("FELICIDADES LLEGASTE A META\n\n");
+    }
+
 }
