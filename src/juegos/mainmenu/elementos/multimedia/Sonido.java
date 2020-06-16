@@ -1,4 +1,4 @@
-package general;
+package juegos.mainmenu.elementos.multimedia;
 
 import javax.sound.sampled.*;
 import java.io.File;

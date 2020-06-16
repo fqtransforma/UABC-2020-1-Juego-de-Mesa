@@ -1,4 +1,4 @@
-package general;
+package juegos.mainmenu.elementos.visuales;
 
 import javax.swing.*;
 import java.awt.*;

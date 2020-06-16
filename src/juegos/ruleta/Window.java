@@ -1,7 +1,5 @@
 package juegos.ruleta;
 
-import general.Sonido;
-
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;

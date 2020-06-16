@@ -10,29 +10,23 @@
  */
 
 package juegos.mainmenu;
-
-import general.Objeto2D;
-import general.Sonido;
-import general.Teclado;
+import juegos.mainmenu.elementos.multimedia.Sonido;
+import juegos.mainmenu.elementos.Teclado;
 import juegos.ecotwister.Juego;
+import juegos.mainmenu.elementos.visuales.Objeto2D;
 import juegos.ruletaF.RuletaGui;
 import juegos.serpientesyescaleras.Ventana;
 
 import javax.swing.*;
-import java.awt.*;
 
-public class MenuRun extends  JPanel implements Runnable{
 
-    static Teclado teclado;
-    static JFrame frame;
-    //agregado
-    Objeto2D fondo = new Objeto2D("src/resources/mainmenu_src/graficos/Fondo.png", -90, -550, 1280, 720);
-    Objeto2D personaje = new Objeto2D("src/resources/mainmenu_src/graficos/EcoMono.png", 640, 360);
-    Objeto2D fondo1 = new Objeto2D("src/resources/mainmenu_src/graficos/primeraPantalla.png",0 ,0, 1280, 720);
+public class Control extends JPanel implements Runnable{
+
 
     public static Sonido OST = new Sonido("src/resources/mainmenu_src/audio/musica/TownTheme.wav",true);
     public static Sonido selectSound = new Sonido("src/resources/mainmenu_src/audio/efectos/gmae.wav",false);
-
+    public Teclado teclado;
+    public Objeto2D fondo;
     boolean creditos=false;
     boolean clasifica=false;
 
@@ -42,22 +36,9 @@ public class MenuRun extends  JPanel implements Runnable{
 
     public static Thread hilo;
 
-    public MenuRun() {
-        setPreferredSize(new Dimension(1280,720));
-
-        frame = new JFrame();
-
+    public Control(Objeto2D fondo) {
+        this.fondo= fondo;
         teclado = new Teclado();
-
-        frame.addKeyListener(teclado);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        frame.setLayout(new BorderLayout());
-        frame.add(this, BorderLayout.CENTER);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-        frame.setTitle("Juego de Mesa -");
         OST.play();
     }
 
@@ -83,7 +64,7 @@ public class MenuRun extends  JPanel implements Runnable{
             delta+= tiempo/nanosAps;
 
             while(delta >= 1) {
-                actualizar();
+               actualizar();
                 delta--;
             }
 
@@ -105,34 +86,31 @@ public class MenuRun extends  JPanel implements Runnable{
         fps++;
     }
 
-    private void actualizar() {
+    public void actualizar() {
 
         teclado.actualizar();
 
-        if(teclado.abajo && fondo.getY() > -620){
-            fondo.setY(fondo.getY()-1);
-            System.out.println("X:"+fondo.getX()+" Y:"+fondo.getY());
-        }
-        else if(teclado.arriba && fondo.getY() < -530){
-            fondo.setY(fondo.getY()+1);
-            System.out.println("X:"+fondo.getX()+" Y:"+fondo.getY());
+        if (teclado.abajo && fondo.getY() > -620) {
+            fondo.setY(fondo.getY() - 1);
+            System.out.println("X:" + fondo.getX() + " Y:" + fondo.getY());
+        } else if (teclado.arriba && fondo.getY() < -530) {
+            fondo.setY(fondo.getY() + 1);
+            System.out.println("X:" + fondo.getX() + " Y:" + fondo.getY());
 
-        }
-        else if(teclado.derecha && fondo.getX() > -2550){
-            fondo.setX(fondo.getX()-1);
-            System.out.println("X:"+fondo.getX()+" Y:"+fondo.getY());
-        }
-        else if(teclado.izquierda && fondo.getX() < 0){
-            System.out.println("X:"+fondo.getX()+" Y:"+fondo.getY());
-            fondo.setX(fondo.getX()+1);
+        } else if (teclado.derecha && fondo.getX() > -2550) {
+            fondo.setX(fondo.getX() - 1);
+            System.out.println("X:" + fondo.getX() + " Y:" + fondo.getY());
+        } else if (teclado.izquierda && fondo.getX() < 0) {
+            System.out.println("X:" + fondo.getX() + " Y:" + fondo.getY());
+            fondo.setX(fondo.getX() + 1);
 
-        } else if(teclado.enter){
-            menu(-fondo.getX(),-fondo.getY());
+        } else if (teclado.enter) {
+            menu(-fondo.getX(), -fondo.getY());
         }
         aps++;
     }
 
-    private void menu(int coorX, int coorY){
+    public void menu(int coorX, int coorY){
         if(coorY >= 530 && coorY <= 550){
             if(coorX > 345 && coorX < 600) {
                 selectSound.restart();
@@ -167,13 +145,13 @@ public class MenuRun extends  JPanel implements Runnable{
         }
         teclado.enter = false;
         creditos = false;
+        OST.play();
 
     }
     public synchronized void init() {
 
         onOff = true;
         hilo = new Thread(this, "Name");
-
         hilo.start();
 
     }
@@ -190,13 +168,5 @@ public class MenuRun extends  JPanel implements Runnable{
         }
     }
 
-    public void paintComponent(Graphics g){
-        this.repaint();
-        actualizar();
-        g.drawImage(fondo.getImage(), fondo.getX(), fondo.getY(), fondo.getSizex()*3, fondo.getSizey()*3, this);
-        g.drawImage(personaje.getImage(), personaje.getX(), personaje.getY(), this);
-        setOpaque(false);
-        super.paintComponent(g);
 
-    }
 }

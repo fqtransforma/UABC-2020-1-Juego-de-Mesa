@@ -1,8 +1,7 @@
-package general;
+package juegos.mainmenu.elementos;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.security.Key;
 
 public final class Teclado implements KeyListener {
 
