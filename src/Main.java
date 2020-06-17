@@ -4,7 +4,7 @@
  * Descripcion: Clase de arranque del proyecto
  */
 import juegos.mainmenu.*;
-import juegos.mainmenu.elementos.visuales.Ventana;
+//import juegos.mainmenu.elementos.visuales.Ventana;
 
 public class Main {
     public static void main(String []args){

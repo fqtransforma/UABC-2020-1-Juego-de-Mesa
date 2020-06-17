@@ -1,5 +1,6 @@
 package juegos.ecotwister;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -18,9 +19,12 @@ public class Juego extends JPanel{
     JLabel etiqueta1 = new JLabel();
     JLabel etiqueta2 = new JLabel();
     JLabel etiqueta3 = new JLabel();
+    JLabel etiqueta35 = new JLabel();
     JLabel etiqueta4 = new JLabel();
     JLabel etiqueta5 = new JLabel();
+    JLabel etiqueta55 = new JLabel();
     JLabel etiqueta6 = new JLabel();
+    JLabel etiqueta65 = new JLabel();
     public final static double DIVICION = 2*Math.PI/16;
 
 
@@ -38,8 +42,14 @@ public class Juego extends JPanel{
         marco.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         marco.setSize(1200, 720);
         marco.getContentPane().setBackground(new Color(52, 185, 255));
-        ButtonSalir.setBounds(1025, 550, 100, 40);
-        ButtonJugar.setBounds(1025, 450, 100, 40);
+        ButtonSalir.setBounds(1025, 550, 100, 100);
+        ButtonSalir.setBackground(new Color(52,185,255));
+        ImageIcon salB = new ImageIcon("src/resources/ecotwister_src/salir.png");
+        ButtonSalir.setIcon(new ImageIcon(salB.getImage().getScaledInstance(ButtonSalir.getWidth(),ButtonSalir.getHeight(),Image.SCALE_SMOOTH)));
+        ButtonJugar.setBounds(1025, 350, 100, 100);
+        ButtonJugar.setBackground(new Color(52,185,255));
+        ImageIcon derB = new ImageIcon("src/resources/ecotwister_src/derecha.png");
+        ButtonJugar.setIcon(new ImageIcon(derB.getImage().getScaledInstance(ButtonJugar.getWidth(),ButtonJugar.getHeight(),Image.SCALE_SMOOTH)));
         marco.add(vim);
         marco.add(ButtonSalir);
         ButtonSalir.setVisible(true);
@@ -48,9 +58,15 @@ public class Juego extends JPanel{
         marco.setVisible(true);
         ButtonJugar.addActionListener(e -> {
             ButtonSalir.setVisible(false);
-            ButtonComenzar.setBounds(1025, 350, 100, 40);
+            ButtonComenzar.setBounds(1025, 250, 150, 150);
+            ButtonComenzar.setBackground(new Color(52,185,255));
+            ImageIcon playB = new ImageIcon("src/resources/ecotwister_src/play.png");
+            ButtonComenzar.setIcon(new ImageIcon(playB.getImage().getScaledInstance(ButtonComenzar.getWidth(),ButtonComenzar.getHeight(),Image.SCALE_SMOOTH)));
             ButtonTablero.setBounds(1025, 450, 100, 40);
-            BotonRegresar1.setBounds(1025, 550, 100, 40);
+            BotonRegresar1.setBounds(1025, 550, 100, 100);
+            BotonRegresar1.setBackground(new Color(52,185,255));
+            ImageIcon izqB = new ImageIcon("src/resources/ecotwister_src/izquierda.png");
+            BotonRegresar1.setIcon(new ImageIcon(izqB.getImage().getScaledInstance(BotonRegresar1.getWidth(),BotonRegresar1.getHeight(),Image.SCALE_SMOOTH)));
             ButtonJugar.setVisible(false);
             marco.add(ButtonComenzar);
             ButtonComenzar.setVisible(true);
@@ -60,29 +76,52 @@ public class Juego extends JPanel{
             BotonRegresar1.setVisible(true);
             vim.setVisible(false);
             etiqueta1.setText("Reglas del juego: ");
-            etiqueta1.setBounds(20,30,100,30);
+            etiqueta1.setBounds(20,30,600,30);
+            etiqueta1.setFont(new Font("lucida console",Font.PLAIN,22));
             marco.add(etiqueta1);
             etiqueta2.setText("1. Crear un tapete lo suficientemente grande para jugar (ver en boton 'Tablero').");
-            etiqueta2.setBounds(20,30,1100,100); // height=separacion de los labels
+            etiqueta2.setBounds(20,30,1100,150); // height=separacion de los labels
+            etiqueta2.setFont(new Font("lucida console",Font.PLAIN,16));
             marco.add(etiqueta2);
             etiqueta3.setText("2. Se necesita de un jugador que se encargue de girar la flecha del tablero " +
-                    "y mencione la acción positiva que indique la flecha.");
-            etiqueta3.setBounds(20,30,1100,150); //height=separacion de los labels
+                    "y mencione la acción");
+            etiqueta3.setBounds(20,30,1100,250); //height=separacion de los labels
+            etiqueta3.setFont(new Font("lucida console",Font.PLAIN,16));
             marco.add(etiqueta3);
+            etiqueta35.setText(" positiva que indique la flecha.");
+            etiqueta35.setBounds(20,30,1100,300); //height=separacion de los labels
+            etiqueta35.setFont(new Font("lucida console",Font.PLAIN,16));
+            marco.add(etiqueta35);
             etiqueta4.setText("3. Jugar de 2-3 personas. Todos los jugadores deben quitarse los zapatos.");
-            etiqueta4.setBounds(20,30,1100,200); //height=separacion de los labels
+            etiqueta4.setBounds(20,30,1100,400); //height=separacion de los labels
+            etiqueta4.setFont(new Font("lucida console",Font.PLAIN,16));
             marco.add(etiqueta4);
             etiqueta5.setText("4. Todos los participantes deberán colocar el pie o la mano (según sea el caso) " +
-                    "en el ícono correspondiente a dicha acción.");
-            etiqueta5.setBounds(20,30,1100,250); //height=separacion de los labels
+                    "en el ícono");
+            etiqueta5.setBounds(20,30,1100,500); //height=separacion de los labels
+            etiqueta5.setFont(new Font("lucida console",Font.PLAIN,16));
             marco.add(etiqueta5);
-            etiqueta6.setText("5. Para iniciar, debe haber dos jugadores frente a frente, en las esquinas paralelas del tapete" +
-                    " y deben colocar sus pies en la parte lateral de en medio.");
-            etiqueta6.setBounds(20,30,1100,300); //height=separacion de los labels
+            etiqueta55.setText(" correspondiente a dicha acción.");
+            etiqueta55.setBounds(20,30,1100,550); //height=separacion de los labels
+            etiqueta55.setFont(new Font("lucida console",Font.PLAIN,16));
+            marco.add(etiqueta55);
+            etiqueta6.setText("5. Para iniciar, debe haber dos jugadores frente a frente, en las esquinas paralelas del tapete");
+            etiqueta6.setBounds(20,30,1100,650); //height=separacion de los labels
+            etiqueta6.setFont(new Font("lucida console",Font.PLAIN,16));
             marco.add(etiqueta6);
+            etiqueta65.setText(" y deben colocar sus pies en la parte lateral de en medio.");
+            etiqueta65.setBounds(20,30,1100,700); //height=separacion de los labels
+            etiqueta65.setFont(new Font("lucida console",Font.PLAIN,16));
+            marco.add(etiqueta65);
             ButtonComenzar.addActionListener(event -> {
-                ButtonGirar.setBounds(1025, 450, 100, 40);
-                BotonRegresar2.setBounds(1025, 550, 100, 40);
+                ButtonGirar.setBounds(1025, 250, 100, 100);
+                ButtonGirar.setBackground(new Color(52,185,255));
+                ImageIcon giB = new ImageIcon("src/resources/ecotwister_src/girar.png");
+                ButtonGirar.setIcon(new ImageIcon(giB.getImage().getScaledInstance(ButtonGirar.getWidth(),ButtonGirar.getHeight(),Image.SCALE_SMOOTH)));
+                BotonRegresar2.setBounds(1025, 550, 100, 100);
+                BotonRegresar2.setBackground(new Color(52,185,255));
+                ImageIcon izquB = new ImageIcon("src/resources/ecotwister_src/izquierda.png");
+                BotonRegresar2.setIcon(new ImageIcon(izquB.getImage().getScaledInstance(BotonRegresar2.getWidth(),BotonRegresar2.getHeight(),Image.SCALE_SMOOTH)));
                 ButtonComenzar.setVisible(false);
                 ButtonTablero.setVisible(false);
                 BotonRegresar1.setVisible(false);
@@ -115,7 +154,10 @@ public class Juego extends JPanel{
                 });
             });
             ButtonTablero.addActionListener(event -> {
-                BotonRegresar2.setBounds(1025, 550, 100, 40);
+                BotonRegresar2.setBounds(1025, 550, 100, 100);
+                BotonRegresar2.setBackground(new Color(52,185,255));
+                ImageIcon izquB = new ImageIcon("src/resources/ecotwister_src/izquierda.png");
+                BotonRegresar2.setIcon(new ImageIcon(izquB.getImage().getScaledInstance(BotonRegresar2.getWidth(),BotonRegresar2.getHeight(),Image.SCALE_SMOOTH)));
                 vim.setVisible(true);
                 vim.graphicList.add(tap);
                 ButtonComenzar.setVisible(false);
@@ -164,5 +206,5 @@ public class Juego extends JPanel{
     }
     /*public static void main(String []args){  //sólo se usa para probar el juego de manera individual cuando se le
         Juego m = new Juego();                  // hace una modificación
-    }*/
+    } */
 }
