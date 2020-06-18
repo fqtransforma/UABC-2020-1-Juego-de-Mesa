@@ -62,7 +62,8 @@ public class Juego extends JPanel{
             ButtonComenzar.setBackground(new Color(52,185,255));
             ImageIcon playB = new ImageIcon("src/resources/ecotwister_src/play.png");
             ButtonComenzar.setIcon(new ImageIcon(playB.getImage().getScaledInstance(ButtonComenzar.getWidth(),ButtonComenzar.getHeight(),Image.SCALE_SMOOTH)));
-            ButtonTablero.setBounds(1025, 450, 100, 40);
+            ButtonTablero.setBounds(1025, 450, 110, 60);
+            ButtonTablero.setFont(new Font("lucida console",Font.PLAIN,16));
             BotonRegresar1.setBounds(1025, 550, 100, 100);
             BotonRegresar1.setBackground(new Color(52,185,255));
             ImageIcon izqB = new ImageIcon("src/resources/ecotwister_src/izquierda.png");
@@ -114,9 +115,9 @@ public class Juego extends JPanel{
             etiqueta65.setFont(new Font("lucida console",Font.PLAIN,16));
             marco.add(etiqueta65);
             ButtonComenzar.addActionListener(event -> {
-                ButtonGirar.setBounds(1025, 250, 100, 100);
+                ButtonGirar.setBounds(1025, 250, 150, 150);
                 ButtonGirar.setBackground(new Color(52,185,255));
-                ImageIcon giB = new ImageIcon("src/resources/ecotwister_src/girar.png");
+                ImageIcon giB = new ImageIcon("src/resources/ecotwister_src/rotar2.png");
                 ButtonGirar.setIcon(new ImageIcon(giB.getImage().getScaledInstance(ButtonGirar.getWidth(),ButtonGirar.getHeight(),Image.SCALE_SMOOTH)));
                 BotonRegresar2.setBounds(1025, 550, 100, 100);
                 BotonRegresar2.setBackground(new Color(52,185,255));
@@ -201,10 +202,10 @@ public class Juego extends JPanel{
         });
     }
 
-    public static void run(){
+    /*public static void run(){
         Juego m = new Juego();
-    }
-    /*public static void main(String []args){  //sólo se usa para probar el juego de manera individual cuando se le
+    }*/
+    public static void main(String []args){  //sólo se usa para probar el juego de manera individual cuando se le
         Juego m = new Juego();                  // hace una modificación
-    } */
+    }
 }
