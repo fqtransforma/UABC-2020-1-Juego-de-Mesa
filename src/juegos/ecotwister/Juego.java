@@ -202,10 +202,10 @@ public class Juego extends JPanel{
         });
     }
 
-    /*public static void run(){
+    public static void run(){
         Juego m = new Juego();
-    }*/
-    public static void main(String []args){  //sólo se usa para probar el juego de manera individual cuando se le
-        Juego m = new Juego();                  // hace una modificación
     }
+    /*public static void main(String []args){  //sólo se usa para probar el juego de manera individual cuando se le
+        Juego m = new Juego();                  // hace una modificación
+    }*/
 }

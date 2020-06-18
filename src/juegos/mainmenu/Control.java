@@ -114,7 +114,7 @@ public class Control extends JPanel implements Runnable{
         if(coorY >= 530 && coorY <= 550){
             if(coorX > 345 && coorX < 600) {
                 selectSound.restart();
-                //Juego.run();
+                Juego.run();
                 OST.pause();
             }
             else if(coorX > 760 && coorX < 1020) {
