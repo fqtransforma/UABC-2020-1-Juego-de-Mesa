@@ -94,12 +94,19 @@ public class Game extends JPanel implements Runnable {
                         mover(turno,num); // invocar metodo mover para mover el personaje
                         turno_contador++; // incrementar turno
                         mensajes.append("Turno "+turno_contador+" -> Jugador ["+p2.getName()+"]\n");
+
+                        Serializacion serializacion1 = new Serializacion(p1.getName(),num,p1.getPosicion());
+                        serializacion1.Escrbir("src/juegos/serpientesyescaleras/Turnos.txt");
+
                     }
                     else{
                         mensajes.append("Jugador 2 ["+p2.getName()+"] : Mueves "+num+" -> Cuadro "+(p2.getPosicion()+num)+"\n");
                         mover(turno,num); // invocar metodo mover para mover el personaje
                         turno_contador++; // incrementar turno
                         mensajes.append("Turno "+turno_contador+" -> Jugador ["+p1.getName()+"]\n");
+
+                        Serializacion serializacion2 = new Serializacion(p2.getName(),num,p2.getPosicion());
+                        serializacion2.Escrbir("src/juegos/serpientesyescaleras/Turnos.txt");
                     }
                     boton_dado.setIcon(new ImageIcon(dados.get(0))); // regresa al gif que hace loop
                 }).start();

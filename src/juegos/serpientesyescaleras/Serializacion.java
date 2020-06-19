@@ -11,7 +11,7 @@ public class Serializacion{
     public String jugador;
     public String mensaje;
 
-    public Serializacion(String jugador,String mensaje,int turno,int dado)
+    public Serializacion(String jugador,int turno,int dado)
     {
         this.dado=dado;
         this.turno=turno;
@@ -67,7 +67,7 @@ public class Serializacion{
                 escribir = new FileWriter(archivo, true);// Escribe al final del archivo
                 linea = new PrintWriter(escribir);
                 //Escribir archivo
-                linea.println("Turno: " + turn + "Jugador: " + jugador + "Num dado: " + dice + "Mensaje: " + mensaje);
+                linea.println(" Turno: " + turn + " Jugador: " + jugador + " Num dado: " + dice);
                 linea.close();
                 escribir.close();
 
@@ -80,7 +80,7 @@ public class Serializacion{
                 escribir=new FileWriter(archivo,true);//true escribe al final del archivo
                 linea=new PrintWriter(escribir);
                 //Escribir archivo
-                linea.println("Turno: " + turn + "Jugador: " + jugador + "Num dado: " + dice + "Mensaje: " + mensaje);
+                linea.println(" Turno: " + turn + " Jugador: " + jugador + " Num dado: " + dice);
                 linea.close();
                 escribir.close();
 
@@ -92,14 +92,4 @@ public class Serializacion{
 
     }
 
-
-    @Override
-    public String toString() {
-        return "Serializacion{" +
-                "dado=" + dado +
-                ", turno=" + turno +
-                ", jugador='" + jugador + '\'' +
-                ", mensaje='" + mensaje + '\'' +
-                '}';
-    }
 }
