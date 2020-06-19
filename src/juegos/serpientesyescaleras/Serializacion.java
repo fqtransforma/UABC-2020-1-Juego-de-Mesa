@@ -8,15 +8,18 @@ public class Serializacion{
 
     public int dado;
     public int turno;
+    public int posicionAnt;
+    public int posicionSig;
     public String jugador;
-    public String mensaje;
 
-    public Serializacion(String jugador,int turno,int dado)
+
+    public Serializacion(String jugador,int turno,int dado,int posicionAnt,int posicionSig)
     {
         this.dado=dado;
         this.turno=turno;
         this.jugador=jugador;
-        this.mensaje=mensaje;
+        this.posicionAnt=posicionAnt;
+        this.posicionSig=posicionSig;
     }
 
     public int getDado() {
@@ -35,20 +38,28 @@ public class Serializacion{
         this.turno = turno;
     }
 
+    public int getPosicionAnt() {
+        return posicionAnt;
+    }
+
+    public void setPosicionAnt(int posicionAnt) {
+        this.posicionAnt = posicionAnt;
+    }
+
+    public int getPosicionSig() {
+        return posicionSig;
+    }
+
+    public void setPosicionSig(int posicionSig) {
+        this.posicionSig = posicionSig;
+    }
+
     public String getJugador() {
         return jugador;
     }
 
     public void setJugador(String jugador) {
         this.jugador = jugador;
-    }
-
-    public String getMensaje() {
-        return mensaje;
-    }
-
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
     }
 
     public void Escrbir(String file){
@@ -67,7 +78,7 @@ public class Serializacion{
                 escribir = new FileWriter(archivo, true);// Escribe al final del archivo
                 linea = new PrintWriter(escribir);
                 //Escribir archivo
-                linea.println(" Turno: " + turn + " Jugador: " + jugador + " Num dado: " + dice);
+                linea.println(" Turno: " + turn + " Jugador: " + jugador + " Posicion Actual: " +posicionAnt+ " Numero Dado: "+dice+ " Poscicion Siguiente: "+posicionSig);
                 linea.close();
                 escribir.close();
 
@@ -80,7 +91,7 @@ public class Serializacion{
                 escribir=new FileWriter(archivo,true);//true escribe al final del archivo
                 linea=new PrintWriter(escribir);
                 //Escribir archivo
-                linea.println(" Turno: " + turn + " Jugador: " + jugador + " Num dado: " + dice);
+                linea.println(" Turno: " + turn + " Jugador: " + jugador + " Posicion Actual: " +posicionAnt+ " Numero Dado: "+dice+ " Poscicion Siguiente: "+posicionSig);
                 linea.close();
                 escribir.close();
 

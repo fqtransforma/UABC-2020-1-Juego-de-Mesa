@@ -95,7 +95,7 @@ public class Game extends JPanel implements Runnable {
                         turno_contador++; // incrementar turno
                         mensajes.append("Turno "+turno_contador+" -> Jugador ["+p2.getName()+"]\n");
 
-                        Serializacion serializacion1 = new Serializacion(p1.getName(),num,p1.getPosicion());
+                        Serializacion serializacion1 = new Serializacion(p1.getName(),turno_contador-1,num,p1.getPosicion(),p1.getPosicion()+num);
                         serializacion1.Escrbir("src/juegos/serpientesyescaleras/Turnos.txt");
 
                     }
@@ -105,7 +105,7 @@ public class Game extends JPanel implements Runnable {
                         turno_contador++; // incrementar turno
                         mensajes.append("Turno "+turno_contador+" -> Jugador ["+p1.getName()+"]\n");
 
-                        Serializacion serializacion2 = new Serializacion(p2.getName(),num,p2.getPosicion());
+                        Serializacion serializacion2 = new Serializacion(p2.getName(),turno_contador-1,num,p2.getPosicion(),p2.getPosicion()+num);
                         serializacion2.Escrbir("src/juegos/serpientesyescaleras/Turnos.txt");
                     }
                     boton_dado.setIcon(new ImageIcon(dados.get(0))); // regresa al gif que hace loop
@@ -318,7 +318,7 @@ public class Game extends JPanel implements Runnable {
         {
             m.append ("Jugador ["+p.getName()+"] : Compraste Fruta empacada - Bajas a cuadro 8\n");
             p.setY(p.getY()+80);
-            p.setPosicion(21);
+            p.setPosicion(8);
             p.setRenglon(2);
         }
 
@@ -385,7 +385,7 @@ public class Game extends JPanel implements Runnable {
         {
             m.append ("Jugador ["+p.getName()+"] : Desperdisiaste mucho los botes de plastico - Bajas cuadro 27\n");
             p.setY(p.getY()+160);
-            p.setPosicion(41);
+            p.setPosicion(27);
             p.setRenglon(4);
         }
 
