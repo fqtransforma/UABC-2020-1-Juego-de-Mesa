@@ -15,6 +15,7 @@ public class DGame extends JComponent {
     //Coordenadas para el mouse
     private  int currentX, currentY, oldX, oldY;
 
+
     public DGame() {
         setDoubleBuffered(false);
         addMouseListener(new MouseAdapter() {
@@ -48,6 +49,7 @@ public class DGame extends JComponent {
     @Override
     protected void paintComponent(Graphics g) {
         if (image == null) {
+
             //imagen para crear null, la creamos
             image = createImage(getSize().width,getSize().height);
             g2 = (Graphics2D) image.getGraphics();

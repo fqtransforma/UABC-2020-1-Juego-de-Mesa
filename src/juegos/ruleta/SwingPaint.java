@@ -39,7 +39,7 @@ public class SwingPaint {
     public void show() {
         //Creamos el frame principal
         JFrame frame = new JFrame("Swing Paint");
-        frame.setLocation(100,100);
+        frame.setLocation(10,10);
         Container content =  frame.getContentPane();
         //Creamos el Layout del contenido
         content.setLayout(new BorderLayout());
@@ -49,25 +49,34 @@ public class SwingPaint {
         content.add(dGame, BorderLayout.CENTER);
         //Creamos controles para aplicar colores y de limpia
         JPanel controls = new JPanel();
-        ImageIcon carta = new ImageIcon("src/resources/ruleta_src/graficos/Adibujar/dibujar.gif");
-
+        ImageIcon carta = new ImageIcon("src/resources/ruleta_src/graficos/Adibujar/01.png");
+        //carta.getImage().getScaledInstance(200,50,Image.SCALE_SMOOTH);
         clearBtn = new JButton("Clear");
         clearBtn.addActionListener(actionListener);
+        clearBtn.setFont(new Font("cooper black",0,30));
         blackBtn = new JButton("Black");
+        blackBtn.setFont(new Font("cooper black",0,30));
         blackBtn.addActionListener(actionListener);
         blueBtn = new JButton("Blue");
+        blueBtn.setForeground(Color.BLUE);
+        blueBtn.setFont(new Font("cooper black",0,30));
         blueBtn.addActionListener(actionListener);
         greenBtn = new JButton("Green");
+        greenBtn.setForeground(Color.GREEN);
+        greenBtn.setFont(new Font("cooper black",0,30));
         greenBtn.addActionListener(actionListener);
         redBtn = new JButton("Red");
+        redBtn.setForeground(Color.RED);
+        redBtn.setFont(new Font("cooper black",0,30));
         redBtn.addActionListener(actionListener);
         magentaBtn = new JButton("Magenta");
+        magentaBtn.setForeground(Color.MAGENTA);
+        magentaBtn.setFont(new Font("cooper black",0,30));
         magentaBtn.addActionListener(actionListener);
-        jugarBtn = new JButton("Jugar");
-        jugarBtn.setFont(new Font("cooper black",0,30 ));
-        jugarBtn.setBounds(450,100, 200,40);
-        //jugarBtn.setLocation(500,800);
-        //jugarBtn.setIcon(new ImageIcon(carta.getImage().getScaledInstance(200,40,Image.SCALE_SMOOTH)));
+        jugarBtn = new JButton("");
+        //jugarBtn.setFont(new Font("cooper black",0,30 ));
+
+        jugarBtn.setIcon(carta);
         //evento para que cuando presione Jugar aparezaca lo que dibujara
         ActionListener act = new ActionListener() {
             @Override
@@ -90,7 +99,7 @@ public class SwingPaint {
         //Agregar al contenido
         content.add(controls, BorderLayout.NORTH);
 
-        frame.setSize(600, 600);
+        frame.setSize(1200, 700);
         //Puede cerrar el Frame
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //Mostrar el panel a pintar
