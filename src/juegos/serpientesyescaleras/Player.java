@@ -1,126 +1,76 @@
 package juegos.serpientesyescaleras;
 
+import java.awt.image.BufferedImage;
+
 public class Player{
 
-    public double x;
-    public double y;
+    public int x;
+    public int y;
+    private int posicion=1;
+    private int renglon=1;
+    private String name;
+    private BufferedImage image;
 
-    private double velX=0;
-    private double velY=0;
+    public void setX(int x) {
+        this.x = x;
+    }
 
-    public int posicion=1;
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public Player(String nombre, int x, int y, BufferedImage n){
+        this.name=nombre;
+        this.x = x;
+        this.y = y;
+        this.image = n;
+    }
+
+    public void subirRenglon() {
+        this.renglon += 1;
+    }
 
     public int getPosicion() {
         return posicion;
     }
 
-    public void avanzar(int posicion) {
-        this.posicion = this.posicion+posicion;
+    public void setPosicion(int n){
+        this.posicion=n;
     }
 
-    private String name;
+    public void setRenglon(int renglon) {
+        this.renglon = renglon;
+    }
 
-    public Player(double x,double y,String nombre)
-    {
-        this.x=x;
-        this.y=y;
-        this.name=nombre;
+    public void incPosicion(){
+        this.posicion +=1;
     }
 
     public String getName() {
         return name;
     }
 
-    public double getVelX() {
-        return velX;
-    }
-
-    public double getVelY() {
-        return velY;
-    }
-
-    public double getX()
+    public int getX()
     {
         return x;
     }
 
-    public double getY()
+    public int getY()
     {
         return y;
     }
 
-    public void setX(double x)
-    {
-        this.x=x;
+    public BufferedImage getImage(){
+        return image;
     }
 
-    public void setY(double y)
-    {
-        this.y=y;
-    }
-
-    public void setVelX(double velX)
-    {
-     this.velX=velX;
-    }
-
-    public void setVelY(double velY)
-    {
-        this.velY=velY;
-    }
-
-    public void tick() {
-        int limSuperiorX = 800;
-        int limInferiorX = 0;
-        int limSuperiorY = 600;
-        int limInferiorY = 10;
-
-        x += velX;
-        y += velY;
-
-        ////////////////////////////////////////////////////
-        //META
-
-        if(x==55 && y==25)
-        {
-            x=740;
-            y=455;
-            Player p1 = new Player(700,430,"Naranja");
-            Player p2 = new Player(700,450,"Morado");
-            Game game=new Game(p1,p2);
-            game.setBounds(0,0,800,500);
-
-    }
-
-        //Limitar los bordes de la pantalla para el movimiento
-
-        if (x <= limInferiorX)
-            x = limInferiorX;
-
-        if (x >= limSuperiorX)
-            x = limSuperiorX;
-
-        if (y <= limInferiorY)
-            y = limInferiorY;
-
-        if (y >= limSuperiorY)
-            y = limSuperiorY;
-
-        if (y > 500) // validar abajo corregir
-            y = 450;
-
-        if (y < 30)//reset posicion una vez llega tope
-            y = 25;
-
-        if (x == 800)//valida derecha corregir
-            x = 750;
-
-        if (x < 1) //valida izquierda
-            x = 10;
-    }
-
-    public String META(){
-            return ("FELICIDADES LLEGASTE A META\n\n");
+    public void mover(){
+        if(this.renglon % 2 !=0){ // si el jugador esta en un renglon de numero impar se mueve hacia izquierda , caso contrario se mueve hacia derecha
+            x += -145;
+        }
+        else{
+            x += 145;
+        }
     }
 
 }
