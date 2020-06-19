@@ -152,13 +152,16 @@ public class RuletaGui extends JFrame{
                     switch(valor){
 
                         //Ruleta F
-                        case 1:dispose();new JuegoBasta();break;
-                        case 2:dispose(); new Juego();break;
-                        case 3:dispose();new WindowApp("EcoReto");break;
+                        //case 1:dispose();new JuegoBasta();break;
+                        //case 2:dispose(); new Juego();break;
+                        //case 3:dispose();new WindowApp("EcoReto");break;
 
                         //Ruleta A
-                        case 4: dispose();new SwingPaint().show(); break;
-                        case 5: dispose();new Actuacion().setVisible(true);break;
+                        //case 4: dispose();new SwingPaint().show(); break;
+                        //case 5: dispose();new Actuacion().setVisible(true);break;
+                        case 1: dispose();new WindowPista(); break;
+                        case 2: dispose();new WindowPista(); break;
+                        case 3: dispose();new WindowPista(); break;
                     }
                 }
             }

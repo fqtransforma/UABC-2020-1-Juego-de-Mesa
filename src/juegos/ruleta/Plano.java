@@ -21,7 +21,7 @@ public class Plano  {
 
     public void draw(Graphics g){
         if(img != null){
-            g.drawImage(img, xCoord, yCoord, 30, 30, null);
+            g.drawImage(img, xCoord, yCoord, 0, 0, null);
         }
     }
 

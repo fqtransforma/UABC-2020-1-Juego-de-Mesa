@@ -11,7 +11,7 @@ public class Principal extends Plano {
     public Principal(int x, int y) {
         super(x, y);
         try {
-            img = ImageIO.read(new File("resources/ruleta_src/graficos/ecopista/EcopistasPrin.png"));
+            img = ImageIO.read(new File("src/resources/ruleta_src/graficos/ecopista/EcopistasPrin.png"));
 
         } catch (IOException e) {
             System.out.println("Error");
@@ -22,7 +22,7 @@ public class Principal extends Plano {
     @Override
     public void draw(Graphics g) {
 
-        g.drawImage(img, 35, 30, 300, 500, null);
+        g.drawImage(img, 0, 0, 400, 600, null);
 
     }
 }
