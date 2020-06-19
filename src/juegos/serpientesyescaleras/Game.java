@@ -41,6 +41,7 @@ public class Game extends JPanel implements Runnable {
     //Dado
     private final Toolkit tk = Toolkit.getDefaultToolkit();
     private List<URL> dados = new ArrayList<URL>();
+    private int delay=6000;
 
     //Turno
     private int turno_contador=1; // contador para contar numero de turno
@@ -73,6 +74,13 @@ public class Game extends JPanel implements Runnable {
 
     public void init(){
 
+        //JLabel para reproducir gif resultado
+        JLabel dadoAnimacion = new JLabel();
+        dadoAnimacion.setBounds(13,588,120,120);
+        dadoAnimacion.setVisible(false);
+        this.add(dadoAnimacion);
+
+
         //boton dado
         boton_dado = new JButton();
         boton_dado.setBounds(13,588,120,120);
@@ -81,11 +89,19 @@ public class Game extends JPanel implements Runnable {
         boton_dado.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                int num = (int) (Math.random() * 6 + 1); // numero aleatorio 1-6
                 new Thread(()->{
-                    boton_dado.setIcon(new ImageIcon(tk.createImage(dados.get(num)))); //reproduce un gif de la lista dependiendo el numero aleatorio que genera
+                    int num = (int) (Math.random() * 6 + 1); // numero aleatorio 1-6
+                    boton_dado.setVisible(false);
+                    Timer timer = new Timer((delay+(num*1000)), e1 -> {
+                        boton_dado.setVisible(true);
+                        dadoAnimacion.setVisible(false);
+                    });
+                    timer.setRepeats(false);
+                    timer.start();
+                    dadoAnimacion.setVisible(true);
+                    dadoAnimacion.setIcon(new ImageIcon(tk.createImage(dados.get(num)))); //reproduce un gif de la lista dependiendo el numero aleatorio que genera
                     try {
-                        thread.sleep(5000); // pausa de 5 segundos para ver el resultado
+                        thread.sleep(5000);
                     } catch (InterruptedException interruptedException) {
                         interruptedException.printStackTrace();
                     }
@@ -108,7 +124,6 @@ public class Game extends JPanel implements Runnable {
                         Serializacion serializacion2 = new Serializacion(p2.getName(),turno_contador-1,num,p2.getPosicion(),p2.getPosicion()+num);
                         serializacion2.Escrbir("src/juegos/serpientesyescaleras/Turnos.txt");
                     }
-                    boton_dado.setIcon(new ImageIcon(dados.get(0))); // regresa al gif que hace loop
                 }).start();
             }
         });
@@ -221,6 +236,7 @@ public class Game extends JPanel implements Runnable {
 
     public void mover(boolean turno,int cuadros){ // metodo para mover el personaje
         new Thread(()->{
+
             if(turno==true){ // jugador 1
                 for(int i=0;i<cuadros;i++) {
                     if(p1.getPosicion() % 7 ==0){ //si llega a un cuadro de un numero multiplo de 7 se sube 1 cuadro
