@@ -194,7 +194,7 @@ public class RuletaGui extends JFrame{
                 switch(valor){
 
                     //      Ruleta F
-                    case 1: labelImage = new ImageIcon("src/resources/ruletaF_src/graficos/ruletaGui/basta3.gif");break;
+                   case 1: labelImage = new ImageIcon("src/resources/ruletaF_src/graficos/ruletaGui/basta3.gif");break;
                     case 2: labelImage = new ImageIcon("src/resources/ruletaF_src/graficos/ruletaGui/caricaturas3.gif");break;
                     case 3: labelImage = new ImageIcon("src/resources/ruletaF_src/graficos/ruletaGui/ecoreto3.gif");break;
 

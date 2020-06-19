@@ -1,4 +1,6 @@
 package juegos.ruleta;
+import juegos.ruletaF.PlayMusic;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -14,10 +16,6 @@ public class Actuacion extends JFrame{
     public JPanel panel = new JPanel();
     public JButton botonCorrecto = new JButton("Correcto");
     public JButton botonIncorrecto = new JButton("Incorrecto");
-   // public JButton iniciarTime = new JButton("Iniciar");
-   // public JLabel time = new JLabel("00");
-    //private Random r1= new Random(System.currentTimeMillis());
-   // private boolean cronometro;
     static int numero;
     //private Thread hilo;
 
@@ -185,11 +183,14 @@ public class Actuacion extends JFrame{
     }
     public void actionPerformed( ActionEvent e)  {
         if (e.getSource() == botonCorrecto) {
-            new audioEcoPregunta("src/resources/ruleta_src/audio/efectos/ecopregunta/a1.wav");
+          AudioBotones s = new AudioBotones();
+          s.audio("src/resources/ruleta_src/audio/efectos/ecopregunta/a1.wav");
 
         }
         if(e.getSource() == botonIncorrecto){
-            new audioEcoPregunta("src/resources/ruleta_src/audio/efectos/ecopregunta/a2.wav");
+           new AudioBotones();
+            AudioBotones s = new AudioBotones();
+            s.audio("src/resources/ruleta_src/audio/efectos/ecopregunta/a1.wav");
         }
 
     }
