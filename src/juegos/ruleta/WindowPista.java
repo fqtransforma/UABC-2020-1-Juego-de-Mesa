@@ -1,5 +1,7 @@
 package juegos.ruleta;
 
+import juegos.mainmenu.elementos.multimedia.Sonido;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,19 +15,15 @@ public class WindowPista extends JPanel{
 
     public WindowPista()
     {
+        Sonido OST = new Sonido("src/resources/ruleta_src/audio/musica/London_Bridge_instrumental.wav",true);
         vim = new Window();
         marco.getContentPane().setLayout(null);
         //marco.setExtendedState(JFrame.MAXIMIZED_BOTH);
         //marco.setUndecorated(true);
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        marco.setSize(400, 650);
+        marco.setSize(400, 680);
 
-        b3.setBounds(440, 600, 40, 40);
-        b3.setBackground(Color.green);
-        b3.setForeground(Color.orange);
-        b3.setFont(new Font("cooper black", 0,30));
-
-        b2.setBounds(0, 600, 440, 40);
+        b2.setBounds(0, 600, 400, 40);
         b2.setBackground(Color.RED);
         b2.setForeground(Color.orange);
         b2.setAlignmentX(Component.RIGHT_ALIGNMENT);
@@ -54,9 +52,5 @@ public class WindowPista extends JPanel{
         b2.addActionListener(e -> marco.setVisible(false));
         repaint();
 
-        b3.addActionListener(e -> JOptionPane.showInternalMessageDialog(null,"Para Jugar se presiona la imagen de EcoPista" +
-                "\ndespues esperamos la pista y se presiona de nuevo si se busca " +
-                "\nnuevas pistas."));
-        repaint();
     }
 }
