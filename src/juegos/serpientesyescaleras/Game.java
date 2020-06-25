@@ -149,6 +149,7 @@ public class Game extends JPanel implements Runnable {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(getParent(),"Reglas\n\n" +
+                        "**** Para comenzar a jugar: Cada jugador debe presionar el dado para ejecutar sus movimientos. ****\n\n" +
                         "1. Cada jugador lanza por turnos el dado y avanza con su ficha tantas casillas como puntos saque.\n\n" +
                         "2. Si cae en una casilla situada al pie de las escaleras, avanza hasta el final de la misma.\n\n" +
                         "3. Si cae en la casilla ocupada por la cola de la serpiente, retrocede hasta la cabeza.\n\n" +
