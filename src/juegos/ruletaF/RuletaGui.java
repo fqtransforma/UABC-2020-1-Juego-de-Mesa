@@ -152,16 +152,15 @@ public class RuletaGui extends JFrame{
                     switch(valor){
 
                         //Ruleta F
-                        //case 1:dispose();new JuegoBasta();break;
-                        //case 2:dispose(); new Juego();break;
-                        //case 3:dispose();new WindowApp("EcoReto");break;
+                        case 1:dispose();new JuegoBasta();break;
+                        case 2:dispose(); new Juego();break;
+                        case 3:dispose();new WindowApp("EcoReto");break;
 
                         //Ruleta A
-                        //case 4: dispose();new SwingPaint().show(); break;
-                        //case 5: dispose();new Actuacion().setVisible(true);break;
-                        case 1: dispose();new WindowPista(); break;
-                        case 2: dispose();new WindowPista(); break;
-                        case 3: dispose();new WindowPista(); break;
+                        case 4: dispose();new SwingPaint().show(); break;
+                        case 5: dispose();new Actuacion().setVisible(true);break;
+                        case 6: dispose();new WindowPista(); break;
+                        case 7: dispose();new EcoPregunta.run();break;
                     }
                 }
             }
@@ -204,6 +203,8 @@ public class RuletaGui extends JFrame{
                     //      Ruleta A
                     case 4: labelImage = new ImageIcon("src/resources/ruleta_src/graficos/Adibujar/dibujar.gif");break;
                     case 5: labelImage = new ImageIcon("src/resources/ruleta_src/graficos/Actuacion/actuacion.gif");break;
+                    case 6: labelImage = new ImageIcon("src/resources/ruleta_src/graficos/ecopista/EcoPistas.gif");break;
+                    case 7: labelImage = new ImageIcon("src/resources/ruleta_src/graficos/ecopregunta/ecpPreguntas.gif");break;
                 }
                 sonido2.efectoWheel();
                 sonido2.play();
