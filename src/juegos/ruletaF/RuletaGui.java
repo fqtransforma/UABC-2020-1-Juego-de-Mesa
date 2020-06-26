@@ -160,7 +160,8 @@ public class RuletaGui extends JFrame{
                         case 4: dispose();new SwingPaint().show(); break;
                         case 5: dispose();new Actuacion().setVisible(true);break;
                         case 6: dispose();new WindowPista(); break;
-                        case 7: dispose();new EcoPregunta.run();break;
+                        case 7: dispose(); EcoPregunta eco= new EcoPregunta(toString());
+                            eco.pintar();break;
                     }
                 }
             }
